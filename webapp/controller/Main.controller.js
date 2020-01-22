@@ -3,5 +3,7 @@ sap.ui.define([
 ], function(Controller) {
   "use strict";
 
-  return Controller.extend("sapmarco.projectpages.controller.Main", {});
+  return Controller.extend("sapmarco.projectpages.controller.Main", {
+    
+  });
 });

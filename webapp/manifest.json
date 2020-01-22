@@ -8,7 +8,13 @@
 			"version": "1.0.0"
 		},
 		"title": "{{appTitle}}",
-		"description": "{{appDescription}}"
+		"description": "{{appDescription}}",
+		"dataSources": {
+			"local_model": {
+				"uri": "model/main.json",
+				"type": "JSON"
+			}
+		}
 	},
 
 	"sap.ui": {
@@ -53,6 +59,10 @@
 				"settings": {
 					"bundleName": "sapmarco.projectpages.i18n.i18n"
 				}
+			},
+			"lm": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "local_model"
 			}
 		},
 		"resources": {
