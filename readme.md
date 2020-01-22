@@ -1,6 +1,6 @@
 # projectpages
-Insert the purpose of this project and some intersting infos here
+Just a private repository to store my page in before releasing a build version to the github.io site.
 
 
 ## Credits
-This project has been generated with 💙 and [easy-ui5](https://github.com/SAP)
+This project has been generated with [easy-ui5](https://github.com/SAP)
