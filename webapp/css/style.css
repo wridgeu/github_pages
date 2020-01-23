@@ -1,1 +1,18 @@
 /* Enter your custom styles here */
+.IntroTextHeader {
+    font-weight: bold;
+}
+/*
+.HeaderBar ::after {
+    background-image: url(/resources/img/code.jpg);    
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content:"";
+    opacity: 0.1;
+}

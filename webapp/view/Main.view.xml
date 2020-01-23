@@ -1,11 +1,39 @@
  <mvc:View controllerName="sapmarco.projectpages.controller.Main"
 	displayBlock="true"
 	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc">
 	<App id="idAppControl">
 		<pages>
-			<Page title="{lm>/FirstName}">
-				<content></content>
+			<Page showHeader="false">
+				<content>
+					<l:BlockLayout>
+						<l:BlockLayoutRow>
+							<l:BlockLayoutCell class="HeaderBar" width="100%" backgroundColorSet="ColorSet5" backgroundColorShade="ShadeA">
+						 		<FlexBox alignItems="Center" 
+								 		 alignContent="Center" 
+										 justifyContent="Center"
+										 backgroundDesign="Transparent"
+										 direction="Column">
+											<Avatar src="./resources/img/myself.jpg">
+											</Avatar>
+											<Text text="{lm>/Header}">
+											</Text>
+								</FlexBox>
+							</l:BlockLayoutCell>
+						</l:BlockLayoutRow>
+						<l:BlockLayoutRow>
+							<l:BlockLayoutCell>
+								<FlexBox direction="Column">
+									<Text class="IntroTextHeader" text="{lm>/IntroHeader}"></Text>
+									<FlexBox direction="Row">
+										<Text text="{lm>/IntroText}"></Text>
+									</FlexBox>
+								</FlexBox>
+							</l:BlockLayoutCell>
+						</l:BlockLayoutRow>
+					</l:BlockLayout>
+				</content>
 			</Page>
 		</pages>
 	</App>
