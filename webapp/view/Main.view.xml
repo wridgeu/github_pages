@@ -1,5 +1,6 @@
  <mvc:View controllerName="sapmarco.projectpages.controller.Main"
 	displayBlock="true"
+	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc">
@@ -15,11 +16,35 @@
 										 justifyContent="Center"
 										 backgroundDesign="Transparent"
 										 direction="Column">
-											<Avatar src="./resources/img/myself.jpg">
+											<Avatar class="Avatar" showBorder="true" displaySize="M" src="./resources/img/myself.jpg">
 											</Avatar>
-											<Text text="{lm>/Header}">
-											</Text>
 								</FlexBox>
+									<FlexBox class="sapUiTinyMarginTop" direction="Row" justifyContent="Center">
+									<html:a href="https://linkedin.com/in/dev-marco-beier" target="_blank">
+										<Image src="./resources/img/linkedin_brands.svg"
+											width="5vw"
+											height="5vh">
+										</Image>
+									</html:a>
+									<html:a href="https://www.xing.com/profile/Marco_Beier8/cv" target="_blank">
+										<Image src="./resources/img/xing-square-brands.svg"
+											width="5vw"
+											height="5vh">
+										</Image>
+									</html:a>									
+									<html:a href="https://github.com/SAPMarco" target="_blank">
+										<Image src="./resources/img/github-square-brands.svg"
+											width="5vw"
+											height="5vh">
+										</Image>
+									</html:a>									
+									<html:a href="https://twitter.com/Wridgeu" target="_blank">
+										<Image src="./resources/img/twitter-square-brands.svg"
+											width="5vw"
+											height="5vh">
+										</Image>
+									</html:a>
+									</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
 						<l:BlockLayoutRow>
@@ -32,6 +57,7 @@
 								</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
+
 					</l:BlockLayout>
 				</content>
 			</Page>
