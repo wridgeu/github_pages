@@ -20,25 +20,25 @@
 											</Avatar>
 								</FlexBox>
 									<FlexBox class="sapUiTinyMarginTop" direction="Row" justifyContent="Center">
-									<html:a href="https://linkedin.com/in/dev-marco-beier" target="_blank">
+									<html:a class="socialImage"  href="https://linkedin.com/in/dev-marco-beier" target="_blank">
 										<Image src="./resources/img/linkedin_brands.svg"
 											width="5vw"
 											height="5vh">
 										</Image>
 									</html:a>
-									<html:a href="https://www.xing.com/profile/Marco_Beier8/cv" target="_blank">
+									<html:a class="socialImage" href="https://www.xing.com/profile/Marco_Beier8/cv" target="_blank">
 										<Image src="./resources/img/xing-square-brands.svg"
 											width="5vw"
 											height="5vh">
 										</Image>
 									</html:a>									
-									<html:a href="https://github.com/SAPMarco" target="_blank">
+									<html:a class="socialImage" href="https://github.com/SAPMarco" target="_blank">
 										<Image src="./resources/img/github-square-brands.svg"
 											width="5vw"
 											height="5vh">
 										</Image>
 									</html:a>									
-									<html:a href="https://twitter.com/Wridgeu" target="_blank">
+									<html:a class="socialImage" href="https://twitter.com/Wridgeu" target="_blank">
 										<Image src="./resources/img/twitter-square-brands.svg"
 											width="5vw"
 											height="5vh">
