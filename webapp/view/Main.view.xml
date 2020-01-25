@@ -3,6 +3,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc">
 	<App id="idAppControl">
 		<pages>
@@ -54,6 +55,18 @@
 									<FlexBox direction="Row">
 										<Text text="{lm>/IntroText}"></Text>
 									</FlexBox>
+								</FlexBox>
+							</l:BlockLayoutCell>
+						</l:BlockLayoutRow>
+						<l:BlockLayoutRow>
+							<l:BlockLayoutCell>
+								<FlexBox direction="Column">
+									<Tree items="{path: 'cv>/cv', parameters: {arrayNames: ['nodes']}}">
+										<CustomTreeItem>
+											<Label text="{text}"/>
+											<Label text="Test1"/>
+										</CustomTreeItem>
+									</Tree>
 								</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>

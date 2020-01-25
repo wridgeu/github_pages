@@ -1,0 +1,35 @@
+{
+    "cv": [
+        {
+            "text": "Test",
+            "nodes": [
+                {
+                    "text": "Arbeit",
+                    "ref": "sap-icon://attachment-e-pub",
+                    "nodes": [
+                        {
+                            "text": "Text",
+                            "ref": "sap-icon://attachment-photo",
+                            "nodes": [
+                                {
+                                    "text": "Node1-1-2-1",
+                                    "ref": "sap-icon://attachment-text-file",
+                                    "nodes": [
+                                        {
+                                            "text": "Node1-1-2-1-1",
+                                            "ref": "sap-icon://attachment-video"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "text": "Company2",
+            "ref": "sap-icon://customer-financial-fact-sheet"
+        }
+    ]
+}

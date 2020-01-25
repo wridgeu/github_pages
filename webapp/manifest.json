@@ -13,6 +13,10 @@
 			"local_model": {
 				"uri": "model/main.json",
 				"type": "JSON"
+			},
+			"cv":{
+				"uri":"model/cv.json",
+				"type":"JSON"
 			}
 		}
 	},
@@ -63,6 +67,10 @@
 			"lm": {
 				"type": "sap.ui.model.json.JSONModel",
 				"dataSource": "local_model"
+			},
+			"cv":{
+				"type":"sap.ui.model.json.JSONModel",
+				"dataSource":"cv"
 			}
 		},
 		"resources": {
