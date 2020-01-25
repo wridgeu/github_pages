@@ -60,11 +60,10 @@
 						</l:BlockLayoutRow>
 						<l:BlockLayoutRow>
 							<l:BlockLayoutCell>
-								<FlexBox direction="Column">
-									<Tree items="{path: 'cv>/cv', parameters: {arrayNames: ['nodes']}}">
+								<FlexBox>
+									<Tree items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">
 										<CustomTreeItem>
-											<Label text="{text}"/>
-											<Label text="Test1"/>
+											<Label text="{text}" />
 										</CustomTreeItem>
 									</Tree>
 								</FlexBox>
@@ -75,4 +74,4 @@
 			</Page>
 		</pages>
 	</App>
-</mvc:View> 
+</mvc:View>

@@ -14,13 +14,12 @@
 				"uri": "model/main.json",
 				"type": "JSON"
 			},
-			"cv":{
-				"uri":"model/cv.json",
-				"type":"JSON"
+			"cv": {
+				"uri": "model/cv.json",
+				"type": "JSON"
 			}
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -37,7 +36,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "sapmarco.projectpages.view.Main",
@@ -68,15 +66,17 @@
 				"type": "sap.ui.model.json.JSONModel",
 				"dataSource": "local_model"
 			},
-			"cv":{
-				"type":"sap.ui.model.json.JSONModel",
-				"dataSource":"cv"
+			"cv": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "cv"
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -87,11 +87,15 @@
 				"controlAggregation": "pages",
 				"async": true
 			},
-			"routes": [{
-				"name": "RouteMain",
-				"pattern": "RouteMain",
-				"target": ["TargetMain"]
-			}],
+			"routes": [
+				{
+					"name": "RouteMain",
+					"pattern": "RouteMain",
+					"target": [
+						"TargetMain"
+					]
+				}
+			],
 			"targets": {
 				"TargetMain": {
 					"viewType": "XML",
