@@ -1,14 +1,14 @@
 [
 	{
-		"text": "Node1",
+		"companies": "SALT Solutions AG",
 		"nodes":
 		[
 			{
-				"text": "Node1-2"
+				"companies": "Node1-2"
 			}
 		]
 	},
 	{
-		"text": "Node2"
+		"companies": "Node2"
 	}
 ]

@@ -61,9 +61,9 @@
 						<l:BlockLayoutRow>
 							<l:BlockLayoutCell>
 								<FlexBox>
-									<Tree items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">
+									<Tree items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">									
 										<CustomTreeItem>
-											<Label text="{text}" />
+											<Label text="{cv>companies}" />
 										</CustomTreeItem>
 									</Tree>
 								</FlexBox>
