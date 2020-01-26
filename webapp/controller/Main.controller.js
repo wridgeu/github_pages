@@ -4,6 +4,8 @@ sap.ui.define([
 ], function(Controller, JSONModel) {
   "use strict";
   return Controller.extend("sapmarco.projectpages.controller.Main", {
-    
+    onInit: function(){
+    // this.byId("cvTree").expandToLevel(1);
+    }
   });
 });
