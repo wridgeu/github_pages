@@ -11,13 +11,13 @@
 				<content>
 					<l:BlockLayout>
 						<l:BlockLayoutRow>
-							<l:BlockLayoutCell class="HeaderBar" width="100%" backgroundColorSet="ColorSet5" backgroundColorShade="ShadeA">
+							<l:BlockLayoutCell class="HeaderBar" width="100%" backgroundColorSet="ColorSet5" backgroundColorShade="ShadeC">
 						 		<FlexBox alignItems="Center" 
 								 		 alignContent="Center" 
 										 justifyContent="Center"
 										 backgroundDesign="Transparent"
 										 direction="Column">
-											<Avatar class="Avatar" showBorder="true" displaySize="M" src="./resources/img/myself.jpg">
+											<Avatar class="Avatar" showBorder="true" displaySize="L" src="./resources/img/myself.jpg">
 											</Avatar>
 								</FlexBox>
 									<FlexBox class="sapUiTinyMarginTop" direction="Row" justifyContent="Center">
@@ -27,7 +27,7 @@
 											height="5vh">
 										</Image>
 									</html:a>
-									<html:a class="socialImage" href="https://www.xing.com/profile/Marco_Beier8/cv" target="_blank">
+									<html:a class="socialImage" href="https://xing.com/profile/Marco_Beier8/cv" target="_blank">
 										<Image src="./resources/img/xing-square-brands.svg"
 											width="5vw"
 											height="5vh">
@@ -59,13 +59,27 @@
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
 						<l:BlockLayoutRow>
-							<l:BlockLayoutCell>
-								<FlexBox>
-									<Tree items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">									
+							<l:BlockLayoutCell class="cV" backgroundColorSet="ColorSet10" backgroundColorShade="ShadeC">
+								<FlexBox direction="Column">
+									<FlexBox justifyContent="Center">
+									<Tree id="cvTree" items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">									
 										<CustomTreeItem>
-											<Label text="{cv>companies}" />
+											<Text renderWhitespace="true" text="{cv>description}"></Text>
+											<Link href="{cv>website}" text="{cv>companie}" target="_blank"/>
+											<Label text="{cv>position}"/>
+											<FlexBox direction="Column">
+												<FlexBox direction="Row">
+													<Text renderWhitespace="true" text="{cv>textTo}"></Text>															
+													<Label text="{cv>to}"/>												
+												</FlexBox>			
+												<FlexBox direction="Row">
+													<Text renderWhitespace="true" text="{cv>textFrom}"></Text>
+													<Label text="{cv>from}"/>												
+												</FlexBox>			
+											</FlexBox>										
 										</CustomTreeItem>
 									</Tree>
+									</FlexBox>
 								</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>

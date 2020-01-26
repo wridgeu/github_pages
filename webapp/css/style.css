@@ -2,6 +2,19 @@
 .IntroTextHeader {
     font-weight: bold;
 }
+.HeaderBar{
+    background-image: url(/resources/img/open_ui5.jpg);
+    background-repeat: round;
+    background-size: contain;
+    background-blend-mode: luminosity;
+}
+.socialImage {
+    opacity: 60%;
+}
+.socialImage:hover {
+    opacity: 100%;
+    transition: 1s;
+}
 /*
 .HeaderBar ::after {
     background-image: url(/resources/img/code.jpg);    
@@ -16,11 +29,9 @@
     content:"";
     opacity: 0.1;
 }
-*/
-.socialImage {
-    opacity: 50%;
-}
-.socialImage:hover {
-    opacity: 100%;
-    transition: 1s;
-}
+.cV {
+    background-image: url(/resources/img/code.jpg);    
+    background-repeat: no-repeat;
+    background-size: cover;    
+    background-blend-mode: screen;
+}*/
