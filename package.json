@@ -17,10 +17,11 @@
                 "@openui5/sap.m": "^1.73.1",
                 "@openui5/sap.ui.core": "^1.74.0",
                 "@openui5/sap.ui.layout": "^1.74.0",
+                "@openui5/themelib_sap_belize": "^1.74.0",
                 "shx": "^0.3.2"
         },
         "devDependencies": {
-                "@ui5/cli": "^1.12.1",
+                "@ui5/cli": "^1.13.1",
                 "eslint": "^6.7.2",
                 "karma": "^4.4.1",
                 "karma-chrome-launcher": "^3.1.0",
