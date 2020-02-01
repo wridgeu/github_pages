@@ -21,41 +21,38 @@
 											</Avatar>
 								</FlexBox>
 									<FlexBox class="sapUiTinyMarginTop" direction="Row" justifyContent="Center">
-									<html:a class="socialImage"  href="https://linkedin.com/in/dev-marco-beier" target="_blank">
-										<Image src="./resources/img/linkedin_brands.svg"
-											width="5vw"
-											height="5vh">
-										</Image>
-									</html:a>
-									<html:a class="socialImage" href="https://xing.com/profile/Marco_Beier8/cv" target="_blank">
-										<Image src="./resources/img/xing-square-brands.svg"
-											width="5vw"
-											height="5vh">
-										</Image>
-									</html:a>									
-									<html:a class="socialImage" href="https://github.com/SAPMarco" target="_blank">
-										<Image src="./resources/img/github-square-brands.svg"
-											width="5vw"
-											height="5vh">
-										</Image>
-									</html:a>									
-									<html:a class="socialImage" href="https://twitter.com/Wridgeu" target="_blank">
-										<Image src="./resources/img/twitter-square-brands.svg"
-											width="5vw"
-											height="5vh">
-										</Image>
-									</html:a>
+										<html:a class="socialImage"  href="https://linkedin.com/in/dev-marco-beier" target="_blank">
+											<Image src="./resources/img/linkedin_brands.svg"
+												width="5vw"
+												height="5vh">
+											</Image>
+										</html:a>
+										<html:a class="socialImage" href="https://xing.com/profile/Marco_Beier8/cv" target="_blank">
+											<Image src="./resources/img/xing-square-brands.svg"
+												width="5vw"
+												height="5vh">
+											</Image>
+										</html:a>									
+										<html:a class="socialImage" href="https://github.com/SAPMarco" target="_blank">
+											<Image src="./resources/img/github-square-brands.svg"
+												width="5vw"
+												height="5vh">
+											</Image>
+										</html:a>									
+										<html:a class="socialImage" href="https://twitter.com/Wridgeu" target="_blank">
+											<Image src="./resources/img/twitter-square-brands.svg"
+												width="5vw"
+												height="5vh">
+											</Image>
+										</html:a>
 									</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
 						<l:BlockLayoutRow>
 							<l:BlockLayoutCell>
-								<FlexBox direction="Column">
-									<Text class="IntroTextHeader" text="{lm>/IntroHeader}"></Text>
-									<FlexBox direction="Row">
+									<FlexBox direction="Row" justifyContent="Center">								
 										<Text text="{lm>/IntroText}"></Text>
 									</FlexBox>
-								</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
 						<l:BlockLayoutRow>
