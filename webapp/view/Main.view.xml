@@ -58,7 +58,7 @@
 						<l:BlockLayoutRow class="cV setMiddle">
 							<l:BlockLayoutCell>
 									<FlexBox  width="100%" direction="Row">
-										<Text class="text" text="{lm>/IntroText}"></Text>
+										<Text class="text" text="{lm>/Placeholder}"></Text>
 									</FlexBox>
 							</l:BlockLayoutCell>
 							<l:BlockLayoutCell>
@@ -88,7 +88,7 @@
 						<l:BlockLayoutRow>
 							<l:BlockLayoutCell>
 								<FlexBox class="sapUiMediumMarginTop setMiddle" width="100%" direction="Row">
-									<Text class="title" text="What am I working with?"/>
+									<Text class="title" text="{i18n>sectionSkills}"/>
 								</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
