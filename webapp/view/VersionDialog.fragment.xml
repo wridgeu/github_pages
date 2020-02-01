@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      title="Info"
+      verticalScrolling="false"
+      horizontalScrolling="false">
+      <FlexBox direction="Row" justifyContent="Center">
+        <Label text="UI5 Version: "/>  
+        <Text renderWhitespace="true" text=" {versionInfo>/version}"/>
+      </FlexBox>
+        <beginButton>
+            <Button text="close" press="onCloseDialog"/>
+        </beginButton>
+   </Dialog>
+</core:FragmentDefinition>
