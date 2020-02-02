@@ -31,7 +31,7 @@ jobs:
         ACTIONS_DEPLOY_KEY: ${{ secrets.actions_deploy_secret }}
         EXTERNAL_REPOSITORY: SAPMarco/SAPMarco.github.io
         PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./
+        PUBLISH_DIR: ./docs
       with:
         commitMessage: "PersonalPage Upd."
         keepFiles: true
