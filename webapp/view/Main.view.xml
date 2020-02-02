@@ -96,7 +96,7 @@
 				</content>
 				<footer>
 					<Toolbar class="toolbar" design="Info">
-							<core:Icon src="sap-icon://lightbulb" class="size2"	color="#ffffff"	press=".onThemeSwap('sap_fiori_3_dark')"/>
+							<core:Icon src="sap-icon://lightbulb" class="size2"	color="#ffffff"	press=".onThemeSwap('sap_fiori_3_dark')" alt="Toggle Theme" tooltip="{i18n>themeToggleTooltip}"/>
 						<ToolbarSpacer/>
 						<Text text="{i18n>footerText}" >
 							<layoutData>
@@ -104,7 +104,7 @@
 							</layoutData>
 						</Text>
 						<ToolbarSpacer/>
-							<core:Icon src="sap-icon://sap-ui5"	class="size2" color="#ffffff" press="onUI5IconPress"/>
+							<core:Icon src="sap-icon://sap-ui5"	class="size2" color="#ffffff" press="onUI5IconPress" alt="UI5 Version" tooltip="{i18n>versionInfoTooltip}"/>
 					</Toolbar>
 				</footer>
 			</Page>
