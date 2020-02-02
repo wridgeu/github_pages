@@ -12,7 +12,7 @@
                 "karma": "rimraf coverage && npm run karma-ci",
                 "lint": "eslint webapp",
                 "build:ui": "ui5 build --clean-dest --dest approuter/webapp ",
-                "build": "ui5 build self-contained --all --dest"
+                "build": "ui5 build self-contained --all --dest ../docs"
         },
         "dependencies": {
                 "@openui5/sap.m": "^1.73.1",
