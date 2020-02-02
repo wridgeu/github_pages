@@ -92,7 +92,7 @@
 								</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
-					</l:BlockLayout> 
+					</l:BlockLayout>
 				</content>
 				<footer>
 					<Toolbar class="toolbar" design="Info">
