@@ -55,7 +55,7 @@
 									</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
-						<l:BlockLayoutRow class="cV setMiddle">
+						<l:BlockLayoutRow class="cV setMiddle" id="cVRow">
 							<l:BlockLayoutCell>
 									<FlexBox  width="100%" direction="Row">
 										<Text class="text" text="{lm>/Placeholder}"></Text>
@@ -109,8 +109,13 @@
 				</content>
 				<footer>
 					<Toolbar class="toolbar" design="Info">
+							<core:Icon
+								src="sap-icon://lightbulb"
+								class="size2"
+								color="#ffffff"
+								press=".onThemeSwap('sap_fiori_3_dark')"/>
 						<ToolbarSpacer/>
-						<Text text="I'm just a little demo project, don't hurt me." >
+						<Text text="I'm just a little demo project, don't hurt me. Kill me. Now." >
 							<layoutData>
 									<ToolbarLayoutData shrinkable="true" />
 							</layoutData>
