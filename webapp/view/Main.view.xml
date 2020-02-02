@@ -17,33 +17,20 @@
 										 justifyContent="Center"
 										 backgroundDesign="Transparent"
 										 direction="Column">
-											<Avatar class="Avatar" showBorder="true" displaySize="L" src="./resources/img/myself.jpg">
-											</Avatar>
+											<Avatar class="Avatar" showBorder="true" displaySize="L" src="./resources/img/myself.jpg"/>
 								</FlexBox>
 									<FlexBox class="sapUiTinyMarginTop" direction="Row" justifyContent="Center">
 										<html:a class="setOpacity"  href="https://linkedin.com/in/dev-marco-beier" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_LinkedIn.svg"
-												width="5vw"
-												height="5vh">
-											</Image>
+											<Image class="setMinSeperator" src="./resources/img/Logo_LinkedIn.svg" width="5vw" height="5vh"/>
 										</html:a>
 										<html:a class="setOpacity" href="https://xing.com/profile/Marco_Beier8/cv" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_Xing.svg"
-												width="5vw"
-												height="5vh">
-											</Image>
+											<Image class="setMinSeperator" src="./resources/img/Logo_Xing.svg" width="5vw" height="5vh"/>
 										</html:a>									
 										<html:a class="setOpacity" href="https://github.com/SAPMarco" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_Github.svg"
-												width="5vw"
-												height="5vh">
-											</Image>
+											<Image class="setMinSeperator" src="./resources/img/Logo_Github.svg" width="5vw" height="5vh"/>
 										</html:a>									
 										<html:a class="setOpacity" href="https://twitter.com/Wridgeu" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_Twitter.svg"
-												width="5vw"
-												height="5vh">
-											</Image>
+											<Image class="setMinSeperator" src="./resources/img/Logo_Twitter.svg" width="5vw" height="5vh"/>
 										</html:a>
 									</FlexBox>
 							</l:BlockLayoutCell>
@@ -51,36 +38,36 @@
 						<l:BlockLayoutRow>
 							<l:BlockLayoutCell>
 									<FlexBox class="setMiddle" width="100%" direction="Row">
-										<Text class="text" text="{lm>/IntroText}"></Text>
+										<Text class="text" text="{lm>/IntroText}"/>
 									</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
 						<l:BlockLayoutRow class="cV setMiddle" id="cVRow">
 							<l:BlockLayoutCell>
 									<FlexBox  width="100%" direction="Row">
-										<Text class="text" text="{lm>/Placeholder}"></Text>
+										<Text class="text" text="{lm>/Placeholder}"/>
 									</FlexBox>
 							</l:BlockLayoutCell>
 							<l:BlockLayoutCell>
 								<FlexBox direction="Column">
 									<FlexBox justifyContent="Center">
-									<Tree id="cvTree" items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">									
-										<CustomTreeItem>
-											<Text renderWhitespace="true" text="{cv>description}"></Text>
-											<Link href="{cv>website}" text="{cv>companie}" target="_blank"/>
-											<Label text="{cv>position}"/>
-											<FlexBox direction="Column">
-												<FlexBox direction="Row">
-													<Text renderWhitespace="true" text="{cv>textTo}"></Text>															
-													<Label text="{cv>to}"/>												
-												</FlexBox>			
-												<FlexBox direction="Row">
-													<Text renderWhitespace="true" text="{cv>textFrom}"></Text>
-													<Label text="{cv>from}"/>												
-												</FlexBox>			
-											</FlexBox>										
-										</CustomTreeItem>
-									</Tree>
+										<Tree id="cvTree" items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">									
+											<CustomTreeItem>
+												<Text renderWhitespace="true" text="{cv>description}"/>
+												<Link href="{cv>website}" text="{cv>companie}" target="_blank"/>
+												<Label text="{cv>position}"/>
+												<FlexBox direction="Column">
+													<FlexBox direction="Row">
+														<Text renderWhitespace="true" text="{cv>textTo}"/>															
+														<Label text="{cv>to}"/>												
+													</FlexBox>			
+													<FlexBox direction="Row">
+														<Text renderWhitespace="true" text="{cv>textFrom}"/>
+														<Label text="{cv>from}"/>												
+													</FlexBox>			
+												</FlexBox>										
+											</CustomTreeItem>
+										</Tree>
 									</FlexBox>
 								</FlexBox>
 							</l:BlockLayoutCell>
@@ -109,23 +96,15 @@
 				</content>
 				<footer>
 					<Toolbar class="toolbar" design="Info">
-							<core:Icon
-								src="sap-icon://lightbulb"
-								class="size2"
-								color="#ffffff"
-								press=".onThemeSwap('sap_fiori_3_dark')"/>
+							<core:Icon src="sap-icon://lightbulb" class="size2"	color="#ffffff"	press=".onThemeSwap('sap_fiori_3_dark')"/>
 						<ToolbarSpacer/>
-						<Text text="I'm just a little demo project, don't hurt me. Kill me. Now." >
+						<Text text="{i18n>footerText}" >
 							<layoutData>
-									<ToolbarLayoutData shrinkable="true" />
+									<ToolbarLayoutData shrinkable="true"/>
 							</layoutData>
 						</Text>
 						<ToolbarSpacer/>
-							<core:Icon
-								src="sap-icon://sap-ui5"
-								class="size2"
-								color="#ffffff"
-								press="onUI5IconPress"/>
+							<core:Icon src="sap-icon://sap-ui5"	class="size2" color="#ffffff" press="onUI5IconPress"/>
 					</Toolbar>
 				</footer>
 			</Page>
