@@ -10,10 +10,6 @@
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"dataSources": {
-			"local_model": {
-				"uri": "model/main.json",
-				"type": "JSON"
-			},
 			"cv": {
 				"uri": "model/cv.json",
 				"type": "JSON"
@@ -61,10 +57,6 @@
 				"settings": {
 					"bundleName": "sapmarco.projectpages.i18n.i18n"
 				}
-			},
-			"lm": {
-				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "local_model"
 			},
 			"cv": {
 				"type": "sap.ui.model.json.JSONModel",
