@@ -21,7 +21,8 @@ sap.ui.define([
 			if (!oView.byId("VersionDialog")) {
 				var oFragmentController = {
 					onCloseDialog : function (oEvt) {
-                        oEvt.getSource().getParent().close();
+						oEvt.getSource().getParent().close();
+						oEvt.getSource().getParent().getModel("versionInfo").destroy();
 					}
 				};
 				// load asynchronous XML fragment

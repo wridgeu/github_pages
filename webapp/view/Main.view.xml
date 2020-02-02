@@ -17,20 +17,20 @@
 										 justifyContent="Center"
 										 backgroundDesign="Transparent"
 										 direction="Column">
-											<Avatar class="Avatar" showBorder="true" displaySize="L" src="./resources/img/myself.jpg"/>
+											<Avatar class="Avatar" showBorder="true" displaySize="L" src="./resources/img/myself.jpg" fallbackIcon="sap-icon://person-placeholder"/>
 								</FlexBox>
 									<FlexBox class="sapUiTinyMarginTop" direction="Row" justifyContent="Center">
 										<html:a class="setOpacity"  href="https://linkedin.com/in/dev-marco-beier" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_LinkedIn.svg" width="5vw" height="5vh"/>
+											<Image class="setMinSeperator" src="./resources/img/Logo_LinkedIn.svg" alt="Linkedin Logo" width="5vw" height="5vh"/>
 										</html:a>
 										<html:a class="setOpacity" href="https://xing.com/profile/Marco_Beier8/cv" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_Xing.svg" width="5vw" height="5vh"/>
+											<Image class="setMinSeperator" src="./resources/img/Logo_Xing.svg" alt="Xing Logo" width="5vw" height="5vh"/>
 										</html:a>									
 										<html:a class="setOpacity" href="https://github.com/SAPMarco" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_Github.svg" width="5vw" height="5vh"/>
+											<Image class="setMinSeperator" src="./resources/img/Logo_Github.svg" alt="Github Logo" width="5vw" height="5vh"/>
 										</html:a>									
 										<html:a class="setOpacity" href="https://twitter.com/Wridgeu" target="_blank">
-											<Image class="setMinSeperator" src="./resources/img/Logo_Twitter.svg" width="5vw" height="5vh"/>
+											<Image class="setMinSeperator" src="./resources/img/Logo_Twitter.svg" alt="Twitter Logo" width="5vw" height="5vh"/>
 										</html:a>
 									</FlexBox>
 							</l:BlockLayoutCell>
@@ -82,13 +82,13 @@
 						<l:BlockLayoutRow>
 							<l:BlockLayoutCell>
 								<FlexBox class="sapUiTinyMarginTop" wrap="Wrap" direction="Row" justifyContent="Center" alignItems="Center">
-										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_SAP.svg"/>										
-										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_ABAP.svg"/>
-										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_UI5.png"/>
-										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_JS.png"/>
-										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_HTML5.svg"/>	
-										<Image class="setOpacity bioImage borderRadius" width="100px" height="100px" src="./resources/img/Logo_CSS.svg"/>	
-										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_Github.svg"/>
+										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_SAP.svg" alt="SAP Logo"/>										
+										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_ABAP.svg" alt="ABAP Logo"/>
+										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_UI5.png" alt="UI5 Phoenix Logo"/>
+										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_JS.png" alt="JavaScript Logo"/>
+										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_HTML5.svg" alt="HTML5 Logo"/>	
+										<Image class="setOpacity bioImage borderRadius" width="100px" height="100px" src="./resources/img/Logo_CSS.svg" alt="CSS Logo"/>	
+										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_Github.svg" alt="Github Logo"/>
 								</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
