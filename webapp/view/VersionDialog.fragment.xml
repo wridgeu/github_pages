@@ -8,11 +8,11 @@
         <FlexBox direction="Row" justifyContent="Center">
             <FlexBox direction="Column">
                 <FlexBox direction="Row" justifyContent="Start">
-                    <Label text="UI5 Version: "/>
+                    <Label text="{i18n>UI5Ver}"/>
                     <Text renderWhitespace="true" text=" {versionInfo>/version}"/>
                 </FlexBox>                
                 <FlexBox direction="Row" justifyContent="Start">
-                    <Label text="Versionsname: "/>
+                    <Label text="{i18n>Versionname}"/>
                     <Text renderWhitespace="true" text=" {versionInfo>/name}"/>
                 </FlexBox>
             </FlexBox>
