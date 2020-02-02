@@ -4,7 +4,9 @@ sap.ui.define([
   "use strict";
   return Controller.extend("sapmarco.projectpages.controller.Main", {
     onInit: function(){
-    // this.byId("cvTree").expandToLevel(1); sap_fiori_3_dark
+      //set content density
+      this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+      //check users prefered color scheme
       if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         sap.ui.getCore().applyTheme("sap_fiori_3_dark");
         this.byId("cVRow").removeStyleClass("cV");
@@ -15,12 +17,13 @@ sap.ui.define([
     },
     onThemeSwap: function(sTheme){
       //read current theme sap_belize
-      if(sap.ui.getCore().getConfiguration().getTheme() == "sap_belize"){
+      if (sap.ui.getCore().getConfiguration().getTheme() === "sap_belize"){
         sap.ui.getCore().applyTheme(sTheme);
        this.byId("cVRow").removeStyleClass("cV");
-      } else{
+      } else {
         sap.ui.getCore().applyTheme("sap_belize");
         this.byId("cVRow").addStyleClass("cV");
-      }}
+      }
+    }
   });
 });

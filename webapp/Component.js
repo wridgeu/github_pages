@@ -5,13 +5,11 @@ sap.ui.define([
 	"./controller/VersionDialog"
 ], function(UIComponent, Device, models, VersionDialog) {
 	"use strict";
-
 	return UIComponent.extend("sapmarco.projectpages.Component", {
-
+		
 		metadata: {
 			manifest: "json"
 		},
-
 		/**
 		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
 		 * @public
@@ -31,11 +29,6 @@ sap.ui.define([
 			this.setModel(models.createDeviceModel(), "device");
 						
 		},
-		exit : function () {
-			this._VersionDialog.destroy();
-			delete this._VersionDialog;
-		},
-
 		openVersionDialog : function () {
 			this._VersionDialog.open();
 		},
@@ -48,6 +41,10 @@ sap.ui.define([
 				}
 			}
 			return this._sContentDensityClass;
+		},		
+		exit : function () {
+			this._VersionDialog.destroy();
+			delete this._VersionDialog;
 		}
 	});
 });
