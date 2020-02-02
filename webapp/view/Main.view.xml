@@ -21,46 +21,26 @@
 											</Avatar>
 								</FlexBox>
 									<FlexBox class="sapUiTinyMarginTop" direction="Row" justifyContent="Center">
-<<<<<<< HEAD
-										<html:a class="socialImage"  href="https://linkedin.com/in/dev-marco-beier" target="_blank">
-											<Image src="./resources/img/linkedin_brands.svg"
-=======
 										<html:a class="setOpacity"  href="https://linkedin.com/in/dev-marco-beier" target="_blank">
 											<Image class="setMinSeperator" src="./resources/img/Logo_LinkedIn.svg"
->>>>>>> 8c57c690c5b7038873fadf57514359fa7d2370b8
 												width="5vw"
 												height="5vh">
 											</Image>
 										</html:a>
-<<<<<<< HEAD
-										<html:a class="socialImage" href="https://xing.com/profile/Marco_Beier8/cv" target="_blank">
-											<Image src="./resources/img/xing-square-brands.svg"
-=======
 										<html:a class="setOpacity" href="https://xing.com/profile/Marco_Beier8/cv" target="_blank">
 											<Image class="setMinSeperator" src="./resources/img/Logo_Xing.svg"
->>>>>>> 8c57c690c5b7038873fadf57514359fa7d2370b8
 												width="5vw"
 												height="5vh">
 											</Image>
 										</html:a>									
-<<<<<<< HEAD
-										<html:a class="socialImage" href="https://github.com/SAPMarco" target="_blank">
-											<Image src="./resources/img/github-square-brands.svg"
-=======
 										<html:a class="setOpacity" href="https://github.com/SAPMarco" target="_blank">
 											<Image class="setMinSeperator" src="./resources/img/Logo_Github.svg"
->>>>>>> 8c57c690c5b7038873fadf57514359fa7d2370b8
 												width="5vw"
 												height="5vh">
 											</Image>
 										</html:a>									
-<<<<<<< HEAD
-										<html:a class="socialImage" href="https://twitter.com/Wridgeu" target="_blank">
-											<Image src="./resources/img/twitter-square-brands.svg"
-=======
 										<html:a class="setOpacity" href="https://twitter.com/Wridgeu" target="_blank">
 											<Image class="setMinSeperator" src="./resources/img/Logo_Twitter.svg"
->>>>>>> 8c57c690c5b7038873fadf57514359fa7d2370b8
 												width="5vw"
 												height="5vh">
 											</Image>
@@ -70,13 +50,8 @@
 						</l:BlockLayoutRow>
 						<l:BlockLayoutRow>
 							<l:BlockLayoutCell>
-<<<<<<< HEAD
-									<FlexBox direction="Row" justifyContent="Center">								
-										<Text text="{lm>/IntroText}"></Text>
-=======
 									<FlexBox class="setMiddle" width="100%" direction="Row">
 										<Text class="text" text="{lm>/IntroText}"></Text>
->>>>>>> 8c57c690c5b7038873fadf57514359fa7d2370b8
 									</FlexBox>
 							</l:BlockLayoutCell>
 						</l:BlockLayoutRow>
