@@ -85,7 +85,7 @@
 										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_SAP.svg" alt="SAP Logo"/>										
 										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_ABAP.svg" alt="ABAP Logo"/>
 										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_UI5.png" alt="UI5 Phoenix Logo"/>
-										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_JS.png" alt="JavaScript Logo"/>
+										<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_JS.svg" alt="JavaScript Logo"/>
 										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_HTML5.svg" alt="HTML5 Logo"/>	
 										<Image class="setOpacity bioImage borderRadius" width="100px" height="100px" src="./resources/img/Logo_CSS.svg" alt="CSS Logo"/>	
 										<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_Github.svg" alt="Github Logo"/>
