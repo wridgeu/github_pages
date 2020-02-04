@@ -2,7 +2,7 @@
 ![OpenUI5 logo](http://openui5.org/images/OpenUI5_new_big_side.png)
 
 # Name: "projectpages"
-Private repository for development purposes only. It is used for development and add changes on the [main repository](https://github.com/SAPMarco/SAPMarco.github.io). Hosting is done via [Github Pages](https://pages.github.com/). 
+Private repository for development purposes only. It is used for development and adding changes on the [main repository](https://github.com/SAPMarco/SAPMarco.github.io). Hosting is done via [Github Pages](https://pages.github.com/). 
 
 # CI/CD
 CD is done via Workflow(Action) which will be triggerd up on changes within the package.json-file. It will deploy a self-contained build of the UI5 application. [Visit the workflow-file](https://github.com/SAPMarco/github_pages/blob/master/.github/workflows/build-deploy-test.yml).
