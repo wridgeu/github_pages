@@ -29,5 +29,13 @@
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.1",
                 "karma-ui5": "^1.1.0"
-        }
+        },
+        "ui5": {
+           "dependencies": [
+                "@openui5/sap.m",
+                "@openui5/sap.ui.core",
+                "@openui5/sap.ui.layout",
+                "@openui5/themelib_sap_belize",
+                "@openui5/themelib_sap_fiori_3"
+        ]}
 }
