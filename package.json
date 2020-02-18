@@ -1,6 +1,10 @@
 {
         "name": "projectpages",
         "version": "0.1.4",
+        "repository": {
+                "type": "git",
+                "directory": "https://github.com/SAPMarco/github_pages"
+        },
         "engines": {
                 "node": "12.x.x"
         },
