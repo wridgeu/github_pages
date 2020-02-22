@@ -25,14 +25,12 @@ sap.ui.define([
             sap.ui.getCore().applyTheme(sTheme);
             this.byId("cVRow").removeStyleClass("cV");
             this._setInvertedStyleOnSocials();
-            this.byId("footerToolbar").removeStyleClass("toolbar");
-            this.byId("footerToolbar").addStyleClass("setToolbarDarkMode");
+            this.byId("footerToolbar").removeStyleClass("toolbar").addStyleClass("setToolbarDarkMode");
           } else {
             sap.ui.getCore().applyTheme(sSapBelize);
             this.byId("cVRow").addStyleClass("cV");        
             this._setInvertedStyleOnSocials();
-            this.byId("footerToolbar").removeStyleClass("setToolbarDarkMode");
-            this.byId("footerToolbar").addStyleClass("toolbar");
+            this.byId("footerToolbar").removeStyleClass("setToolbarDarkMode").addStyleClass("toolbar");
           }
         },
       }
