@@ -27,7 +27,7 @@
                 "shx": "^0.3.2"
         },
         "devDependencies": {
-                "@ui5/cli": "^1.13.1",
+                "@ui5/cli": "^1.14.0",
                 "eslint": "^6.7.2",
                 "karma": "^4.4.1",
                 "karma-chrome-launcher": "^3.1.0",
@@ -36,13 +36,13 @@
                 "ui5-middleware-livereload": "^0.1.5"
         },
         "ui5": {
-          "dependencies": [
-            "@openui5/sap.m",
-            "@openui5/sap.ui.core",
-            "@openui5/sap.ui.layout",
-            "@openui5/themelib_sap_belize",
-            "@openui5/themelib_sap_fiori_3",
-            "ui5-middleware-livereload"
-          ]
+                "dependencies": [
+                        "@openui5/sap.m",
+                        "@openui5/sap.ui.core",
+                        "@openui5/sap.ui.layout",
+                        "@openui5/themelib_sap_belize",
+                        "@openui5/themelib_sap_fiori_3",
+                        "ui5-middleware-livereload"
+                ]
         }
 }
