@@ -5,6 +5,7 @@
                 "type": "git",
                 "directory": "https://github.com/SAPMarco/github_pages"
         },
+        "homepage": "https://sapmarco.github.io/",
         "engines": {
                 "node": "12.x.x"
         },
