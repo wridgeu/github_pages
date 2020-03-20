@@ -1,6 +1,6 @@
 {
         "name": "projectpages",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "repository": {
                 "type": "git",
                 "directory": "https://github.com/SAPMarco/github_pages"
