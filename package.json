@@ -20,21 +20,21 @@
                 "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest --dest ./docs"
         },
         "dependencies": {
-                "@openui5/sap.m": "^1.73.1",
-                "@openui5/sap.ui.core": "^1.74.0",
-                "@openui5/sap.ui.layout": "^1.74.0",
-                "@openui5/themelib_sap_belize": "^1.74.0",
-                "@openui5/themelib_sap_fiori_3": "^1.74.0",
+                "@openui5/sap.m": "^1.75.0",
+                "@openui5/sap.ui.core": "^1.75.0",
+                "@openui5/sap.ui.layout": "^1.75.0",
+                "@openui5/themelib_sap_belize": "^1.75.0",
+                "@openui5/themelib_sap_fiori_3": "^1.75.0",
                 "shx": "^0.3.2"
         },
         "devDependencies": {
                 "@ui5/cli": "^1.14.0",
-                "eslint": "^6.7.2",
+                "eslint": "^6.8.0",
                 "karma": "^4.4.1",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.1",
                 "karma-ui5": "^1.1.0",
-                "ui5-middleware-livereload": "^0.1.5"
+                "ui5-middleware-livereload": "^0.1.7"
         },
         "ui5": {
                 "dependencies": [
