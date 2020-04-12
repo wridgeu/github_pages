@@ -93,7 +93,7 @@
 									<Image class="setOpacity bioImage" width="100px" src="./resources/img/Logo_JS.svg" alt="JavaScript Logo" tooltip="Javascript"/>
 									<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_HTML5.svg" alt="HTML5 Logo" tooltip="HTML5"/>	
 									<Image class="setOpacity bioImage borderRadius" width="100px" height="100px" src="./resources/img/Logo_CSS.svg" alt="CSS Logo" tooltip="CSS"/>	
-									<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/Logo_Github.svg" alt="Github Logo" tooltip="Github / GIT"/>
+									<Image class="setOpacity bioImage borderRadius" width="100px" src="./resources/img/giticon.png" alt="Github Logo" tooltip="github/gitlab"/>
 							</FlexBox>
 						</l:BlockLayoutCell>
 					</l:BlockLayoutRow>
