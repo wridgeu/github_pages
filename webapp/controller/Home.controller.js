@@ -2,17 +2,17 @@ sap.ui.define([
 	"./Base",
 ], function (BaseController) {
 	"use strict";
-	return BaseController.extend("sapmarco.projectpages.controller.Main", {
+	return BaseController.extend("sapmarco.projectpages.controller.Home", {
 		onInit: function () {
 			//set content density
-			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 			this.initializeViewTheme();
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 		},
 		onUI5IconPress: function () {
 			this.getOwnerComponent().openVersionDialog();
 		},
 		onThemeSwap: function (sTheme) {
 			this.toggleTheme(sTheme);
-		},
+		}
 	});
 });

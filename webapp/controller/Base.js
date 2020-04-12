@@ -5,6 +5,7 @@ sap.ui.define([
 	var sFiori3DarkTheme = "sap_fiori_3_dark";
 	var sSapBelize = "sap_belize"
 	return Controller.extend("Base", {
+
 		initializeViewTheme: function () {
 			this._setInvertedStyleOnSocials = function () {
 				return this.byId("socialsGrouped").aCustomStyleClasses.indexOf("invertSocials") > -1 ? this.byId("socialsGrouped").removeStyleClass('invertSocials') : this.byId("socialsGrouped").addStyleClass("invertSocials");
@@ -20,6 +21,7 @@ sap.ui.define([
 				}
 			};
 		},
+
 		toggleTheme: function (sTheme) {
 			if (sap.ui.getCore().getConfiguration().getTheme() === sSapBelize) {
 				sap.ui.getCore().applyTheme(sTheme);
