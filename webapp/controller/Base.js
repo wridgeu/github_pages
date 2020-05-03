@@ -10,7 +10,7 @@ sap.ui.define([
 			this._setInvertedStyleOnSocials = function () {
 				return this.byId("socialsGrouped").aCustomStyleClasses.indexOf("invertSocials") > -1 ? this.byId("socialsGrouped").removeStyleClass('invertSocials') : this.byId("socialsGrouped").addStyleClass("invertSocials");
 			};
-			//check users prefered color scheme
+			//check users preferred color scheme
 			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 				sap.ui.getCore().applyTheme(sFiori3DarkTheme);
 				this.byId("cVRow").removeStyleClass("cV");
