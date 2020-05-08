@@ -1,6 +1,6 @@
 {
         "name": "projectpages",
-        "version": "0.1.8",
+        "version": "1.0.0",
         "repository": {
                 "type": "git",
                 "directory": "https://github.com/SAPMarco/github_pages"
@@ -24,9 +24,9 @@
         },
         "devDependencies": {
                 "@openui5/ts-types": "^1.60.5",
-                "@ui5/cli": "^2.1.0",
+                "@ui5/cli": "^2.2.0",
                 "eslint": "^6.8.0",
-                "karma": "^5.0.4",
+                "karma": "^5.0.5",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.2",
                 "karma-ui5": "^2.1.0",
