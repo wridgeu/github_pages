@@ -23,8 +23,10 @@ sap.ui.define(
 					window.matchMedia("(prefers-color-scheme: dark)").matches
 				) {
 					sap.ui.getCore().applyTheme(sFiori3DarkTheme);
-					this.byId("cVRow").removeStyleClass("cV");
-					this._setInvertedStyleOnSocials();
+					if (this.byId("cVRow")) {
+						this.byId("cVRow").removeStyleClass("cV");
+						this._setInvertedStyleOnSocials();
+					}
 					if (
 						this.byId("footerToolbar").aCustomStyleClasses.indexOf("toolbar") >
 						-1
