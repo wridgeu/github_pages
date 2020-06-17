@@ -142,6 +142,20 @@
 						</FlexBox>
 					</l:BlockLayoutCell>
 				</l:BlockLayoutRow>
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell>
+						<FlexBox class="sapUiTinyMarginTop setMiddle" width="100%" direction="Row">
+							<Text class="title" text="{i18n>wiki}"/>
+						</FlexBox>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell>
+						<FlexBox class="sapUiTinyMarginTop setMiddle" width="100%" direction="Row">							
+							<Button text="Go To" iconFirst="false" icon="sap-icon://arrow-right" press="onWiki"></Button>
+						</FlexBox>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
 			</l:BlockLayout>
 		</content>
 		<footer>
