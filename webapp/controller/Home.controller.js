@@ -14,5 +14,8 @@ sap.ui.define(["./Base"], function (BaseController) {
 		onThemeSwap: function (sTheme) {
 			this.toggleTheme(sTheme);
 		},
+		onWiki: function(){
+			this.navTo("RouteWiki");
+		}
 	});
 });
