@@ -41,17 +41,17 @@ sap.ui.define(
 				if (sap.ui.getCore().getConfiguration().getTheme() === sSapBelize) {
 					sap.ui.getCore().applyTheme(sTheme);
 					this.byId("cVRow").removeStyleClass("cV");
-					this._setInvertedStyleOnSocials();
 					this.byId("footerToolbar")
 						.removeStyleClass("toolbar")
 						.addStyleClass("setToolbarDarkMode");
+					this._setInvertedStyleOnSocials();
 				} else {
 					sap.ui.getCore().applyTheme(sSapBelize);
 					this.byId("cVRow").addStyleClass("cV");
-					this._setInvertedStyleOnSocials();
 					this.byId("footerToolbar")
 						.removeStyleClass("setToolbarDarkMode")
 						.addStyleClass("toolbar");
+					this._setInvertedStyleOnSocials();
 				}
 			},
 			navTo: function (psTarget, pmParameters, pbReplace) {
