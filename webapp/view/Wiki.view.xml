@@ -6,8 +6,20 @@
     xmlns:mvc="sap.ui.core.mvc">
     <Page showHeader="true" showNavButton="true" navButtonPress="onBackHome">
         <content>
-        <Button text="Markdown_Test" press="onMarkdown"></Button>
-         <html:div id="markdown"></html:div>
+            <Button text="Markdown_Test" press="onMarkdown"></Button>
+            <html:div id="markdown"></html:div>
         </content>
+        <footer>
+            <Toolbar id="footerToolbar" class="toolbar" design="Info">
+                <core:Icon src="sap-icon://lightbulb" class="size2" color="#ffffff" press=".onThemeSwap('sap_fiori_3_dark')" alt="Toggle Theme" tooltip="{i18n>themeToggleTooltip}"/>
+                <ToolbarSpacer/>
+                <Text class="footerText" text="{i18n>footerText}">
+                    <layoutData>
+                        <ToolbarLayoutData shrinkable="true"/>
+                    </layoutData>
+                </Text>
+                <ToolbarSpacer/>
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>
