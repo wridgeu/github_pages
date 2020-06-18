@@ -7,7 +7,10 @@
     <Page showHeader="true" showNavButton="true" navButtonPress="onBackHome">
         <content>
             <Button text="Markdown_Test" press="onMarkdown"></Button>
-            <html:div id="markdown"></html:div>
+            <html:div class="container" id="container">
+                <html:div class="sidenav" id="markdownSidebar">Test_SideNav</html:div>
+                <html:div class="main" id="markdownContent">Test</html:div>
+            </html:div>
         </content>
         <footer>
             <Toolbar id="footerToolbar" class="toolbar" design="Info">

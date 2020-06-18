@@ -1,46 +1,62 @@
 /* Enter your custom styles here */
 .setOpacity {
-    opacity: 60%;
+	opacity: 60%;
 }
 .setOpacity:hover {
-    opacity: 100%;
-    transition: 1s;
+	opacity: 100%;
+	transition: 1s;
 }
 .setMinSeperator {
-    margin: 1vw;
+	margin: 1vw;
 }
 .toolbar {
-    background-color: #3b61a1 !important 
+	background-color: #3b61a1 !important;
 }
-.setToolbarDarkMode{
-    background-color: #21365a !important;
+.setToolbarDarkMode {
+	background-color: #21365a !important;
 }
-.footerText{
-    color: #fff !important;
+.footerText {
+	color: #fff !important;
 }
 .setMiddle {
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 1140px;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: 1140px;
 }
 .title {
-    font-weight: bold;
-    font-size: x-large;
+	font-weight: bold;
+	font-size: x-large;
 }
 .cV {
-    background-color: #e0e0e0;
+	background-color: #e0e0e0;
 }
-.borderRadius{
-    border-radius: 10%;
+.borderRadius {
+	border-radius: 10%;
 }
-.text{
-    font-size: 100%;
-    line-height: 24px;
+.text {
+	font-size: 100%;
+	line-height: 24px;
 }
-.invertSocials{
-    filter: invert(1);
+.invertSocials {
+	filter: invert(1);
 }
-/*.bioImage {
-    padding: auto;
-    margin: 1vw;
-}*/
+.container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.sidenav {
+    /* background-color: #111; */
+    padding: 5px 5px 5px 5px;
+    margin: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+.main {
+    background-color: red;
+    padding: 5px 5px 5px 5px;
+    margin: 20px 20px 20px 20px;    
+    border-radius: 10px;
+
+}
