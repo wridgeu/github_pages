@@ -19,11 +19,20 @@ sap.ui.define(["./Base", "sapmarco/projectpages/libs/marked.min"], function (
 		},
 		onMarkdown: function () {
 			(async function () {
+				Marked.setOptions({
+					highlight: function(code, lang, callback){
+						sap.ui.require(["sapmarco/projectpages/libs/prism"], function(prism){
+							const result = prism.highlight(code, lang)
+							callback(result.toString());
+						})
+					}
+				})
 				let response = await fetch(
-					"https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/_Sidebar.md"
+					"https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/UI5%20Instantiation.md"//_Sidebar.md" 
 				).then((response) => response.text());
-				this.byId("markdown").getDomRef().innerHTML = Marked(response); //_xContent.innerHTML
-			}.bind(this)());
+				// this.byId("container").getDomRef().innerHTML = Marked(response);
+			    this.byId("container").getDomRef().childNodes[1].innerHTML = Marked(response);
+			}.call(this));
 		},
 	});
 });
