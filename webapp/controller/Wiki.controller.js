@@ -31,7 +31,7 @@ sap.ui.define(["./Base", "sapmarco/projectpages/libs/marked.min"], function (
 				});
 				const renderer = {
 					paragraph(text) {
-						const regEx = /\.(?:jpg|gif|png)/g;
+						const regEx = /\[\[.+?\.(?:jpg|gif|png)\]\]/g;
 						if (!text.match(regEx)) {
 							return false;
 						}
