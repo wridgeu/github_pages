@@ -6,11 +6,33 @@
     xmlns:mvc="sap.ui.core.mvc">
     <Page showHeader="true" showNavButton="true" navButtonPress="onBackHome">
         <content>
-            <Button text="Markdown_Test" press="onMarkdown"></Button>
-            <html:div class="container" id="container">
-                <html:div class="sidenav" id="markdownSidebar">Test_SideNav</html:div>
-                <html:div class="main" id="markdownContent">Test</html:div>
-            </html:div>
+            <l:ResponsiveSplitter defaultPane="default">
+                <l:PaneContainer>
+                    <l:PaneContainer orientation="Vertical">
+                        <l:SplitPane requiredParentWidth="500">
+                            <Page titleAlignment="Center" title="Sidebar">
+                                <content>
+                                    <List id="sidebar" />
+                                </content>
+                            </Page>
+                        </l:SplitPane>
+                    </l:PaneContainer>
+                    <l:PaneContainer orientation="Horizontal">
+                        <l:layoutData>
+                            <l:SplitterLayoutData size="80%" />
+                        </l:layoutData>
+                        <l:SplitPane requiredParentWidth="800" id="default">
+                            <Page showHeader="false">
+                                <content>
+                                    <html:div class="container" id="markdownContainer">
+                                        <html:div id="markdownContent" />
+                                    </html:div>
+                                </content>
+                            </Page>
+                        </l:SplitPane>
+                    </l:PaneContainer>
+                </l:PaneContainer>
+            </l:ResponsiveSplitter>
         </content>
         <footer>
             <Toolbar id="footerToolbar" class="toolbar" design="Info">

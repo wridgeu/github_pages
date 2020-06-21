@@ -1,56 +1,50 @@
-sap.ui.define(["./Base", "sapmarco/projectpages/libs/marked.min"], function (
-	BaseController,
-	Marked
-) {
-	"use strict";
-	return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
-		onInit: function () {
-			//Init
-			this.initializeViewTheme();
-			this.getView().addStyleClass(
-				this.getOwnerComponent().getContentDensityClass()
-			);
-		},
-		onThemeSwap: function (sTheme) {
-			this.toggleTheme(sTheme);
-		},
-		onBackHome: function () {
-			this.onNavBack();
-		},
-		onMarkdown: function () {
-			(async function () {
-				Marked.setOptions({
-					highlight: function (code, lang, callback) {
-						sap.ui.require(["sapmarco/projectpages/libs/prism"], function (
-							prism
-						) {
-							const result = prism.highlight(code, lang);
-							callback(result.toString());
-						});
-					},
-				});
-				const renderer = {
-					paragraph(text) {
-						const regEx = /\[\[.+?\.(?:jpg|gif|png)\]\]/g;
-						if (!text.match(regEx)) {
-							return false;
-						}
-						const image = text.substring(2, text.length - 2);
-						const imagePath = `https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${image}`;
-						return `
-							<img src="${imagePath}"></img>
-						`;
-					},
-				};
-				Marked.use({ renderer });
-				let response = await fetch(
-					"https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/UI5%20Instantiation.md" //_Sidebar.md"
-				).then((response) => response.text());
-				// this.byId("container").getDomRef().innerHTML = Marked(response);
-				this.byId("container").getDomRef().childNodes[1].innerHTML = Marked(
-					response
+sap.ui.define(
+	["./Base", "sapmarco/projectpages/model/marked", "sap/m/ActionListItem"],
+	function (BaseController, Marked, ActionListItem) {
+		"use strict";
+		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
+			onInit: function () {
+				//Init
+				this.initializeViewTheme();
+				this.getView().addStyleClass(
+					this.getOwnerComponent().getContentDensityClass()
 				);
-			}.call(this));
-		},
-	});
-});
+				this._initializeSidebar();
+			},
+			onThemeSwap: function (sTheme) {
+				this.toggleTheme(sTheme);
+			},
+			onBackHome: function () {
+				this.onNavBack();
+			},
+			_initializeSidebar: function () {
+				// set up the sidebar
+				(async function () {
+					const response = await fetch(
+						"https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/_Sidebar.md"
+					).then((response) => response.text());
+					const parsedMarkdown = await Marked(response);
+					let matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)\"/g)];
+					for (let i = 0; i < matches.length; i++) {
+						this.byId("sidebar").addItem(
+							new ActionListItem({
+								text: `${matches[i][1]}`,
+								press: this.onSidebarSelection,
+							})
+						);
+					}
+				}.call(this));
+			},
+			onSidebarSelection: function () {
+				(async function () {
+					//get markdown page and encode - to %20
+					const response = await fetch(
+						`https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${this.getText().replace(/[-*?]/g,"%20")}.md`
+					).then((response) => response.text());
+					//dirty but works for now...
+					this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getParent().byId("markdownContainer").getDomRef().childNodes[1].innerHTML = await Marked(response);
+				}.call(this));
+			},
+		});
+	}
+);
