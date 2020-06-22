@@ -25,7 +25,8 @@ sap.ui.define(
 						`https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${this.getText().replace(/[-*?]/g,"%20")}.md`
 					).then((response) => response.text());
 					//dirty but works for now...
-					this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getParent().byId("markdownContainer").getDomRef().childNodes[1].innerHTML = await Marked(response);
+					//childNodes[1]
+					this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getParent().byId("markdownContainer").getDomRef().innerHTML = await Marked(response);
 				}.call(this));
 			},
 			_onRouteMatched: function(oEvt){
