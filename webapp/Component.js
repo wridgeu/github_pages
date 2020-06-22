@@ -37,9 +37,9 @@ sap.ui.define(
 							amd: true,
 							exports: "marked",
 						},
-						"sapmarco/projectpages/libs/prism": {
+						"sapmarco/projectpages/libs/highlight": {
 							amd: true,
-							exports: "Prism"
+							exports: "hljs"
 						}
 					},
 				});
