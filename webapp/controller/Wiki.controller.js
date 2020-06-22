@@ -19,7 +19,7 @@ sap.ui.define(
 			},
 			onSidebarSelection: function (oEvt) {
 				//TODO: fetch in another file
-				(async function (markdownContent) {
+				(async function () {
 					//get markdown page and encode - to %20
 					const response = await fetch(
 						`https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${this.getText().replace(/[-*?]/g,"%20")}.md`
