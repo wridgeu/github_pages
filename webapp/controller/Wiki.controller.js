@@ -9,7 +9,7 @@ sap.ui.define(
 				this.getView().addStyleClass(
 					this.getOwnerComponent().getContentDensityClass()
 				);
-				this._initializeSidebar();
+				this.getRouter().getRoute("RouteWiki").attachMatched(this._onRouteMatched, this);
 			},
 			onThemeSwap: function (sTheme) {
 				this.toggleTheme(sTheme);
@@ -17,8 +17,22 @@ sap.ui.define(
 			onBackHome: function () {
 				this.onNavBack();
 			},
+			onSidebarSelection: function (oEvt) {
+				//TODO: fetch in another file
+				(async function (markdownContent) {
+					//get markdown page and encode - to %20
+					const response = await fetch(
+						`https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${this.getText().replace(/[-*?]/g,"%20")}.md`
+					).then((response) => response.text());
+					//dirty but works for now...
+					this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getParent().byId("markdownContainer").getDomRef().childNodes[1].innerHTML = await Marked(response);
+				}.call(this));
+			},
+			_onRouteMatched: function(oEvt){
+				this._initializeSidebar();
+			},
 			_initializeSidebar: function () {
-				// set up the sidebar
+				// set up the sidebar - TODO: fetch in another file
 				(async function () {
 					const response = await fetch(
 						"https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/_Sidebar.md"
@@ -34,17 +48,7 @@ sap.ui.define(
 						);
 					}
 				}.call(this));
-			},
-			onSidebarSelection: function () {
-				(async function () {
-					//get markdown page and encode - to %20
-					const response = await fetch(
-						`https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${this.getText().replace(/[-*?]/g,"%20")}.md`
-					).then((response) => response.text());
-					//dirty but works for now...
-					this.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getParent().byId("markdownContainer").getDomRef().childNodes[1].innerHTML = await Marked(response);
-				}.call(this));
-			},
+			}
 		});
 	}
 );
