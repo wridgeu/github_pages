@@ -4,6 +4,7 @@
         "noEmit": true,
         "checkJs": true,
         "allowJs": true,
-        "types": ["@openui5/ts-types"]
+        "types": ["@openui5/ts-types"],
+        "lib": ["ES2015", "DOM"]
     }
 }

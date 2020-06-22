@@ -20,18 +20,19 @@
                 "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest --dest ./docs"
         },
         "dependencies": {
-                "npm-check-updates": "^6.0.0",
+                "marked": "^1.1.0",
+                "npm-check-updates": "^7.0.1",
                 "shx": "^0.3.2"
         },
         "devDependencies": {
                 "@openui5/ts-types": "^1.60.5",
-                "@ui5/cli": "^2.2.3",
-                "eslint": "^7.0.0",
-                "karma": "^5.0.5",
+                "@ui5/cli": "^2.2.6",
+                "eslint": "^7.2.0",
+                "karma": "^5.1.0",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.2",
-                "karma-ui5": "^2.1.0",
-                "ui5-middleware-livereload": "^0.2.0"
+                "karma-ui5": "^2.2.0",
+                "ui5-middleware-livereload": "^0.3.0"
         },
         "ui5": {
                 "dependencies": [
