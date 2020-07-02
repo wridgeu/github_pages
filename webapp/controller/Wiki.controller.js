@@ -23,11 +23,23 @@ sap.ui.define(
 			},
 			onBackHome: function () {
 				this.onNavBack();
+				//Reset the header as we're not reloading the page when re-entering it								
+				this.byId("wikiPage").setTitle(this.getView().getModel("i18n").getResourceBundle().getText("wiki"));
 			},
 			onSidebarSelection: async function (oEvt) {
 				//get markdown page and encode - to %20
 				const response = await githubService.getSelectedContent(this.getText());
-				// parse markdown to html - dirty & unflexible...
+				// dirty & unflexible... -> has to be revisited
+				this.getParent()
+				.getParent()
+				.getParent()
+				.getParent()
+				.getParent()
+				.getParent()
+				.getParent()
+				.getParent()
+				.byId("wikiPage").setTitle(this.getText())
+				// parse markdown to html - dirty & unflexible... -> has to be revisited
 				this.getParent()
 					.getParent()
 					.getParent()
@@ -45,7 +57,6 @@ sap.ui.define(
 			_initializeSidebar: async function () {
 				//get sidebar from wiki
 				const response = await githubService.getWikiIndex();
-
 				//parse markdown to html
 				const parsedMarkdown = await Marked(response);
 				let matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)\"/g)];				
