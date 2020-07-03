@@ -7,6 +7,9 @@ sap.ui.define(
 	],
 	function (BaseController, Marked, ActionListItem, githubService) {
 		"use strict";
+		//global vars
+		var wikiPage, wikiContainer;
+
 		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
 			onInit: function () {
 				//Init
@@ -29,30 +32,14 @@ sap.ui.define(
 			onSidebarSelection: async function (oEvt) {
 				//get markdown page and encode - to %20
 				const response = await githubService.getSelectedContent(this.getText());
-				// dirty & unflexible... -> has to be revisited
-				this.getParent()
-				.getParent()
-				.getParent()
-				.getParent()
-				.getParent()
-				.getParent()
-				.getParent()
-				.getParent()
-				.byId("wikiPage").setTitle(this.getText())
-				// parse markdown to html - dirty & unflexible... -> has to be revisited
-				this.getParent()
-					.getParent()
-					.getParent()
-					.getParent()
-					.getParent()
-					.getParent()
-					.getParent()
-					.getParent()
-					.byId("markdownContainer")
-					.getDomRef().innerHTML = await Marked(response);
+				wikiPage.setTitle(this.getText());
+				wikiContainer.getDomRef().innerHTML = await Marked(response);
 			},
 			_onRouteMatched: function (oEvt) {
 				this._initializeSidebar();
+				//retrieve UI5 controls
+				wikiPage = this.byId("wikiPage");
+				wikiContainer = this.byId("markdownContainer");
 			},
 			_initializeSidebar: async function () {
 				//get sidebar from wiki
