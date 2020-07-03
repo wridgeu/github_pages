@@ -7,8 +7,6 @@ sap.ui.define(
 	],
 	function (BaseController, Marked, ActionListItem, githubService) {
 		"use strict";
-		//global vars
-		var wikiPage, wikiContainer;
 
 		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
 			onInit: function () {
@@ -29,17 +27,16 @@ sap.ui.define(
 				//Reset the header as we're not reloading the page when re-entering it								
 				this.byId("wikiPage").setTitle(this.getView().getModel("i18n").getResourceBundle().getText("wiki"));
 			},
-			onSidebarSelection: async function (oEvt) {
+			onSidebarSelection: async function (sText) {
 				//get markdown page and encode - to %20
-				const response = await githubService.getSelectedContent(this.getText());
-				wikiPage.setTitle(this.getText());
-				wikiContainer.getDomRef().innerHTML = await Marked(response);
+				const response = await githubService.getSelectedContent(sText);
+				
+				this.byId("wikiPage").setTitle(sText);
+				this.byId("markdownContainer").getDomRef().innerHTML = await Marked(response);
 			},
 			_onRouteMatched: function (oEvt) {
+
 				this._initializeSidebar();
-				//retrieve UI5 controls
-				wikiPage = this.byId("wikiPage");
-				wikiContainer = this.byId("markdownContainer");
 			},
 			_initializeSidebar: async function () {
 				//get sidebar from wiki
@@ -51,7 +48,7 @@ sap.ui.define(
 					this.byId("sidebar").addItem(
 						new ActionListItem({
 							text: `${matches[i][1]}`,
-							press: this.onSidebarSelection,
+							press: this.onSidebarSelection.bind(this, matches[i][1]),
 						})
 					);
 				}
