@@ -5,7 +5,7 @@ sap.ui.define(
 		"sapmarco/projectpages/model/models",
 		"./controller/VersionDialog",
 	],
-	function (UIComponent, Device, models, VersionDialog) {
+	(UIComponent, Device, models, VersionDialog) => {
 		"use strict";
 		return UIComponent.extend("sapmarco.projectpages.Component", {
 			metadata: {
@@ -16,7 +16,7 @@ sap.ui.define(
 			 * @public
 			 * @override
 			 */
-			init: function () {
+			init() {
 				// call the base component's init function
 				UIComponent.prototype.init.apply(this, arguments);
 
@@ -44,10 +44,10 @@ sap.ui.define(
 					},
 				});
 			},
-			openVersionDialog: function () {
+			openVersionDialog() {
 				this._VersionDialog.open();
 			},
-			getContentDensityClass: function () {
+			getContentDensityClass() {
 				if (!this._sContentDensityClass) {
 					if (!Device.support.touch) {
 						this._sContentDensityClass = "sapUiSizeCompact";
@@ -57,7 +57,7 @@ sap.ui.define(
 				}
 				return this._sContentDensityClass;
 			},
-			exit: function () {
+			exit() {
 				this._VersionDialog.destroy();
 				delete this._VersionDialog;
 			},

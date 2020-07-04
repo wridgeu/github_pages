@@ -1,4 +1,4 @@
-sap.ui.define(["./Base"], function (BaseController) {
+sap.ui.define(["./Base"], (BaseController) => {
 	"use strict";
 
 	return BaseController.extend("sapmarco.projectpages.controller.Shell", {});

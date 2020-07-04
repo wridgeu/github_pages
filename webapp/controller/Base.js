@@ -3,13 +3,13 @@ sap.ui.define(
 		"sap/ui/core/mvc/Controller",
 		"sap/ui/core/routing/History",
 		"sap/ui/core/UIComponent",
-	],
-	function (Controller, History, UIComponent) {
+	], 
+	(Controller, History, UIComponent) => {
 		"use strict";
 		var sFiori3DarkTheme = "sap_fiori_3_dark";
 		var sSapBelize = "sap_belize";
 		return Controller.extend("Base", {
-			initializeViewTheme: function () {
+			initializeViewTheme() {
 				this._setInvertedStyleOnSocials = function () {
 					return this.byId("socialsGrouped").aCustomStyleClasses.indexOf(
 						"invertSocials"
@@ -37,7 +37,7 @@ sap.ui.define(
 				}
 			},
 
-			toggleTheme: function (sTheme) {
+			toggleTheme(sTheme) {
 				if (sap.ui.getCore().getConfiguration().getTheme() === sSapBelize) {
 					sap.ui.getCore().applyTheme(sTheme);
 					this.byId("cVRow").removeStyleClass("cV");
@@ -54,15 +54,15 @@ sap.ui.define(
 					this._setInvertedStyleOnSocials();
 				}
 			},
-			navTo: function (psTarget, pmParameters, pbReplace) {
+			navTo(psTarget, pmParameters, pbReplace) {
 				this.getRouter().navTo(psTarget, pmParameters, pbReplace);
 			},
 
-			getRouter: function () {
+			getRouter() {
 				return UIComponent.getRouterFor(this);
 			},
 
-			onNavBack: function () {
+			onNavBack() {
 				var sPreviousHash = History.getInstance().getPreviousHash();
 
 				if (sPreviousHash !== undefined) {

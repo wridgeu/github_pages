@@ -1,20 +1,20 @@
-sap.ui.define(["./Base"], function (BaseController) {
+sap.ui.define(["./Base"], (BaseController) => {
 	"use strict";
 	return BaseController.extend("sapmarco.projectpages.controller.Home", {
-		onInit: function () {
+		onInit() {
 			//set content density
 			this.initializeViewTheme();
 			this.getView().addStyleClass(
 				this.getOwnerComponent().getContentDensityClass()
 			);
 		},
-		onUI5IconPress: function () {
+		onUI5IconPress() {
 			this.getOwnerComponent().openVersionDialog();
 		},
-		onThemeSwap: function (sTheme) {
+		onThemeSwap(sTheme) {
 			this.toggleTheme(sTheme);
 		},
-		onWiki: function(){
+		onWiki(){
 			this.navTo("RouteWiki");
 		}
 	});

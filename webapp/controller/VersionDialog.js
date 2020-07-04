@@ -1,6 +1,6 @@
 sap.ui.define(
 	["sap/ui/base/Object", "sap/ui/core/Fragment", "sap/ui/core/syncStyleClass"],
-	function (ManagedObject, Fragment, syncStyleClass) {
+	(ManagedObject, Fragment, syncStyleClass) => {
 		"use strict";
 		return ManagedObject.extend(
 			"sapmarco.projectpages.controller.VersionDialog",
@@ -8,10 +8,10 @@ sap.ui.define(
 				constructor: function (oView) {
 					this._oView = oView;
 				},
-				exit: function () {
+				exit() {
 					delete this._oView;
 				},
-				open: function () {
+				open() {
 					var oView = this._oView;
 
 					// create dialog lazily
