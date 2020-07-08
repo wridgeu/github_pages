@@ -1,4 +1,4 @@
-specVersion: '2.0'
+specVersion: '2.1'
 metadata:
   name: projectpages
 type: application
@@ -8,7 +8,7 @@ resources:
       webapp: docs
 framework:
   name: OpenUI5
-  version: "1.76.0"
+  version: "1.79.0"
   libraries:
     - name: sap.m
     - name: sap.ui.core
@@ -24,4 +24,21 @@ server:
       ext: "xml,json,properties"
       port: 35729
       path: "webapp"
+---
+specVersion: "2.1"
+type: project-shim
+metadata:
+  name:  projectpages.thirdparty
+kind: extension
+shims:
+  configurations:
+    marked:
+      specVersion: "2.1"
+      type: module
+      metadata:
+        name: marked
+      resources:
+        configuration:
+          paths:
+            /resources/thirdparty/marked/: ""
 
