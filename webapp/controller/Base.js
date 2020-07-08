@@ -2,7 +2,7 @@ sap.ui.define(
 	[
 		"sap/ui/core/mvc/Controller",
 		"sap/ui/core/routing/History",
-		"sap/ui/core/UIComponent",
+		"sap/ui/core/UIComponent"
 	], 
 	(Controller, History, UIComponent) => {
 		"use strict";
