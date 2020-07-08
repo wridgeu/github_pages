@@ -1,8 +1,8 @@
-sap.ui.define(["sapmarco/projectpages/libs/marked.min", "sapmarco/projectpages/libs/highlight"], function (Marked, Highlight) {
+sap.ui.define(["thirdparty/marked/marked.min", "sapmarco/projectpages/libs/highlight"], function (markedjs, Highlight) {
 	"use strict";
 	// Syntax Highlighting
-	Marked.setOptions({
-		highlight: function (code, lang, callback) {
+	marked.setOptions({
+		highlight: function (code, lang) {
 			// unsupported edge-cases
 			if(lang === 'i18n' || lang === '' || lang === 'url' ) return
 			return Highlight.highlightAuto(code).value;
@@ -28,7 +28,7 @@ sap.ui.define(["sapmarco/projectpages/libs/marked.min", "sapmarco/projectpages/l
 		}
 	};
 
-	Marked.use({ renderer });
+	marked.use({ renderer });
 
-	return Marked;
+	return marked;
 });
