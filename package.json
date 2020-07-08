@@ -11,7 +11,7 @@
         },
         "scripts": {
                 "start": "ui5 serve -o index.html",
-                "serve": "ui5 serve",
+                "test-dist": "ui5 serve -o index.html --config ui5-dist.yaml",
                 "test": "npm run lint && npm run karma",
                 "karma-ci": "karma start karma-ci.conf.js",
                 "karma": "rimraf coverage && npm run karma-ci",
@@ -37,6 +37,7 @@
         },
         "ui5": {
                 "dependencies": [
+                        "marked",
                         "ui5-middleware-livereload"
                 ]
         }
