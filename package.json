@@ -1,6 +1,6 @@
 {
         "name": "projectpages",
-        "version": "1.2.8",
+        "version": "1.2.9",
         "repository": {
                 "type": "git",
                 "directory": "https://github.com/SAPMarco/SAPMarco.github.io"
@@ -20,6 +20,7 @@
                 "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest --dest ./docs"
         },
         "dependencies": {
+                "highlight.js": "^10.1.1",
                 "marked": "^1.1.0",
                 "npm-check-updates": "^7.0.1",
                 "shx": "^0.3.2"
@@ -27,7 +28,7 @@
         "devDependencies": {
                 "@openui5/ts-types": "^1.60.5",
                 "@ui5/cli": "^2.2.6",
-                "eslint": "^7.3.1",
+                "eslint": "^7.4.0",
                 "karma": "^5.1.0",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.2",
