@@ -20,3 +20,20 @@ server:
       ext: "xml,json,properties"
       port: 35729
       path: "webapp"
+---
+specVersion: "2.1"
+type: project-shim
+metadata:
+  name:  projectpages.thirdparty
+kind: extension
+shims:
+  configurations:
+    marked:
+      specVersion: "2.1"
+      type: module
+      metadata:
+        name: marked
+      resources:
+        configuration:
+          paths:
+            /resources/thirdparty/marked/: ""
