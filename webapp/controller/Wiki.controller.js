@@ -1,9 +1,9 @@
 sap.ui.define(
 	[
 		"./Base",
-		"sapmarco/projectpages/model/marked",
+		"sapmarco/projectpages/util/marked",
 		"sap/m/ActionListItem",
-		"sapmarco/projectpages/model/githubService",
+		"sapmarco/projectpages/util/githubService",
 	], (BaseController, Marked, ActionListItem, githubService) => {
 		"use strict";
 
