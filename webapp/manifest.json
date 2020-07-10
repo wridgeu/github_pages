@@ -51,6 +51,18 @@
 				"sap.m": {},
 				"sap.ui.layout": {
 					"lazy": true
+				},
+				"sap.tnt": {
+					"lazy": true
+				},
+				"sap.ui.table":{
+					"lazy": true
+				},
+				"sap.ui.support": {
+					"lazy": true
+				},
+				"sap.ui.testrecorder":{
+					"lazy": true
 				}
 			}
 		},
