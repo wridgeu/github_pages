@@ -74,7 +74,9 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "sapmarco.projectpages.i18n.i18n"
+					"bundleName": "sapmarco.projectpages.i18n.i18n",
+					"supportedLocales": ["de", "en"],
+					"fallbackLocale": "en"
 				}
 			},
 			"cv": {
