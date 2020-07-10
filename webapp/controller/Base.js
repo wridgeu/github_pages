@@ -6,9 +6,12 @@ sap.ui.define(
 	], 
 	(Controller, History, UIComponent) => {
 		"use strict";
-		var sFiori3DarkTheme = "sap_fiori_3_dark";
-		var sSapBelize = "sap_belize";
+		
 		return Controller.extend("Base", {
+
+			sFiori3DarkTheme: "sap_fiori_3_dark",
+			sSapBelize: "sap_belize",
+
 			initializeViewTheme() {
 				this._setInvertedStyleOnSocials = function () {
 					return this.byId("socialsGrouped").aCustomStyleClasses.indexOf(
@@ -22,7 +25,7 @@ sap.ui.define(
 					window.matchMedia &&
 					window.matchMedia("(prefers-color-scheme: dark)").matches
 				) {
-					sap.ui.getCore().applyTheme(sFiori3DarkTheme);
+					sap.ui.getCore().applyTheme(this.sFiori3DarkTheme);
 					if (this.byId("cVRow")) {
 						this.byId("cVRow").removeStyleClass("cV");
 						this._setInvertedStyleOnSocials();
@@ -38,7 +41,7 @@ sap.ui.define(
 			},
 
 			toggleTheme(sTheme) {
-				if (sap.ui.getCore().getConfiguration().getTheme() === sSapBelize) {
+				if (sap.ui.getCore().getConfiguration().getTheme() === this.sSapBelize) {
 					sap.ui.getCore().applyTheme(sTheme);
 					this.byId("cVRow").removeStyleClass("cV");
 					this.byId("footerToolbar")
@@ -46,7 +49,7 @@ sap.ui.define(
 						.addStyleClass("setToolbarDarkMode");
 					this._setInvertedStyleOnSocials();
 				} else {
-					sap.ui.getCore().applyTheme(sSapBelize);
+					sap.ui.getCore().applyTheme(this.sSapBelize);
 					this.byId("cVRow").addStyleClass("cV");
 					this.byId("footerToolbar")
 						.removeStyleClass("setToolbarDarkMode")
