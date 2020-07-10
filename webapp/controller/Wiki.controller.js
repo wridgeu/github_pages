@@ -28,11 +28,11 @@ sap.ui.define(
 					this.getView().getModel("i18n").getResourceBundle().getText("wiki")
 				);
 			},
-			async onSidebarSelection(sText) {
+			async onSidebarSelection(sMarkdownTitle) {
 				//get markdown page and encode - to %20
-				const response = await githubService.getSelectedContent(sText);
+				const response = await githubService.getSelectedContent(sMarkdownTitle);
 
-				this.byId("wikiPage").setTitle(sText);
+				this.byId("wikiPage").setTitle(sMarkdownTitle);
 				this.byId("markdownContainer").getDomRef().innerHTML = await Marked(
 					response
 				);
