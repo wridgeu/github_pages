@@ -25,14 +25,14 @@ sap.ui.define(
 				}
 			},
 
-			checkToolbarTheme(){
+			adjustToolbarTheme(){
 				if (this.oCore.getConfiguration().getTheme() === this.sLightTheme) {					
 					this.byId("footerToolbar").removeStyleClass("toolbarDarkMode").addStyleClass("toolbarLightMode")						
 				} else {					
 					this.byId("footerToolbar").removeStyleClass("toolbarLightMode").addStyleClass("toolbarDarkMode")	
 				}
 			},
-
+			
 			toggleTheme(sTheme) {
 				if (this.oCore.getConfiguration().getTheme() === this.sLightTheme) {
 					this.oCore.applyTheme(sTheme);

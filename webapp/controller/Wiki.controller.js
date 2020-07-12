@@ -37,7 +37,7 @@ sap.ui.define(
 			},
 			_onRouteMatched(oEvt) {
 				this._initializeSidebar();
-				this.checkToolbarTheme()
+				this.adjustToolbarTheme()
 			},
 			async _initializeSidebar() {
 				//get sidebar from wiki
