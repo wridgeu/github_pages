@@ -9,8 +9,6 @@ sap.ui.define(
 
 		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
 			onInit() {
-				//Init
-				this.initializeViewTheme();
 				this.getView().addStyleClass(
 					this.getOwnerComponent().getContentDensityClass()
 				);
@@ -39,6 +37,7 @@ sap.ui.define(
 			},
 			_onRouteMatched(oEvt) {
 				this._initializeSidebar();
+				this.checkToolbarTheme()
 			},
 			async _initializeSidebar() {
 				//get sidebar from wiki

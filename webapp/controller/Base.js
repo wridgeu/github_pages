@@ -9,51 +9,44 @@ sap.ui.define(
 		
 		return Controller.extend("Base", {
 
-			sFiori3DarkTheme: "sap_fiori_3_dark",
-			sSapBelize: "sap_belize",
+			sDarkTheme: "sap_fiori_3_dark",
+			sLightTheme: "sap_belize",
+			oCore: sap.ui.getCore(),
 
 			initializeViewTheme() {
-				this._setInvertedStyleOnSocials = function () {
-					return this.byId("socialsGrouped").aCustomStyleClasses.indexOf(
-						"invertSocials"
-					) > -1
-						? this.byId("socialsGrouped").removeStyleClass("invertSocials")
-						: this.byId("socialsGrouped").addStyleClass("invertSocials");
-				};
-				//check users preferred color scheme
-				if (
-					window.matchMedia &&
-					window.matchMedia("(prefers-color-scheme: dark)").matches
-				) {
-					sap.ui.getCore().applyTheme(this.sFiori3DarkTheme);
+				//check preferred color scheme of user
+				if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					this.oCore.applyTheme(this.sDarkTheme);
+					this.byId("footerToolbar").addStyleClass("toolbarDarkMode")
 					if (this.byId("cVRow")) {
-						this.byId("cVRow").removeStyleClass("cV");
+						this.byId("cVRow").removeStyleClass("introductionTextBackground");
 						this._setInvertedStyleOnSocials();
-					}
-					if (
-						this.byId("footerToolbar").aCustomStyleClasses.indexOf("toolbar") >
-						-1
-					) {
-						this.byId("footerToolbar").removeStyleClass("toolbar");
-						this.byId("footerToolbar").addStyleClass("setToolbarDarkMode");
-					}
+					}	
+				}
+			},
+
+			checkToolbarTheme(){
+				if (this.oCore.getConfiguration().getTheme() === this.sLightTheme) {					
+					this.byId("footerToolbar").removeStyleClass("toolbarDarkMode").addStyleClass("toolbarLightMode")						
+				} else {					
+					this.byId("footerToolbar").removeStyleClass("toolbarLightMode").addStyleClass("toolbarDarkMode")	
 				}
 			},
 
 			toggleTheme(sTheme) {
-				if (sap.ui.getCore().getConfiguration().getTheme() === this.sSapBelize) {
-					sap.ui.getCore().applyTheme(sTheme);
-					if (this.byId("cVRow")) { this.byId("cVRow").removeStyleClass("cV");}
+				if (this.oCore.getConfiguration().getTheme() === this.sLightTheme) {
+					this.oCore.applyTheme(sTheme);
+					if (this.byId("cVRow")) { this.byId("cVRow").removeStyleClass("introductionTextBackground");}
 					this.byId("footerToolbar")
-						.removeStyleClass("toolbar")
-						.addStyleClass("setToolbarDarkMode");
+						.removeStyleClass("toolbarLightMode")
+						.addStyleClass("toolbarDarkMode");
 					this._setInvertedStyleOnSocials();
 				} else {
-					sap.ui.getCore().applyTheme(this.sSapBelize);
-					if (this.byId("cVRow")) {this.byId("cVRow").addStyleClass("cV");}
+					this.oCore.applyTheme(this.sLightTheme);
+					if (this.byId("cVRow")) {this.byId("cVRow").addStyleClass("introductionTextBackground");}
 					this.byId("footerToolbar")
-						.removeStyleClass("setToolbarDarkMode")
-						.addStyleClass("toolbar");
+						.removeStyleClass("toolbarDarkMode")
+						.addStyleClass("toolbarLightMode");
 					this._setInvertedStyleOnSocials();
 				}
 			},
@@ -74,6 +67,13 @@ sap.ui.define(
 					this.getRouter().navTo("RouteMain", {}, true /*no history*/);
 				}
 			},
+			
+			_setInvertedStyleOnSocials: function () {
+				if(!this.byId("socialsGrouped")) return;
+				return this.byId("socialsGrouped").aCustomStyleClasses.indexOf("invertSocials") > -1
+					? this.byId("socialsGrouped").removeStyleClass("invertSocials")
+					: this.byId("socialsGrouped").addStyleClass("invertSocials");
+			}
 		});
 	}
 );
