@@ -4,6 +4,7 @@
 	--text: #fff;
 	--lightThemeBlue: #3b61a1;
 	--darkThemeBlue: #21365a;
+	--backgroundLightTheme: #e0e0e0; 
 }
 
 /* Socials Bar */
@@ -19,16 +20,11 @@
 	margin: 1vw;
 }
 .invertSocials {
-	filter: invert(1);
+	
 }
 
 /* Footer - Toolbar */
-.toolbarLightMode {	
-	background-color: var(--lightThemeBlue) !important;
-}
-.toolbarDarkMode {
-	background-color: var(--darkThemeBlue) !important;
-}
+
 .footerText {
 	color: var(--text) !important;
 }
@@ -44,10 +40,6 @@
 	font-weight: bold;
 	font-size: x-large;
 }
-.introductionTextBackground {
-	background-color: #e0e0e0;
-}
-
 .text {
 	font-size: 100%;
 	line-height: 24px;
@@ -55,9 +47,6 @@
 
 /* Wiki */
 
-.borderRadius {
-	border-radius: 10%;
-}
 .container {
     display: flex;
     flex-direction: column;
@@ -72,13 +61,33 @@
 	margin-left: 5%;
 }
 .wikiImage {
-	max-width:100%; height:auto
+	max-width: 100%; 
+	height: auto;
 }
 
 /* Links & Links visited - in general*/
+
 a:link{
 	color: var(--link);
 }
 a:visited{
 	color: var(--link-visited);
+}
+
+/* Dark Mode - uses hardcoded ids */
+
+html.sapUiTheme-sap_fiori_3_dark .sapMIBar.sapMTB {
+	background-color: var(--darkThemeBlue) !important;
+}
+html.sapUiTheme-sap_fiori_3_dark #container-projectpages---Home--socialsGrouped {
+	filter: invert(1) !important;
+}
+
+/* Light Mode - uses hardcoded ids */
+
+html.sapUiTheme-sap_belize .sapMIBar.sapMTB  {
+	background-color: var(--lightThemeBlue) !important;
+}
+html.sapUiTheme-sap_belize #container-projectpages---Home--cVRow {
+	background-color: var(--backgroundLightTheme) !important;
 }

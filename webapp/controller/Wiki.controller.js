@@ -9,6 +9,7 @@ sap.ui.define(
 
 		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
 			onInit() {
+				// set content density
 				this.getView().addStyleClass(
 					this.getOwnerComponent().getContentDensityClass()
 				);
@@ -16,9 +17,11 @@ sap.ui.define(
 					.getRoute("RouteWiki")
 					.attachMatched(this._onRouteMatched, this);
 			},
-			onThemeSwap(sTheme) {
-				this.toggleTheme(sTheme);
+
+			onThemeSwap() {
+				this.toggleTheme();
 			},
+
 			onBackHome() {
 				this.onNavBack();
 				//Reset the header as we're not reloading the page when re-entering it
@@ -26,6 +29,7 @@ sap.ui.define(
 					this.getView().getModel("i18n").getResourceBundle().getText("wiki")
 				);
 			},
+
 			async onSidebarSelection(sMarkdownTitle) {
 				//get markdown page and encode - to %20
 				const response = await githubService.getSelectedContent(sMarkdownTitle);
@@ -35,10 +39,10 @@ sap.ui.define(
 					response
 				);
 			},
-			_onRouteMatched(oEvt) {
+			_onRouteMatched() {
 				this._initializeSidebar();
-				this.adjustToolbarTheme()
 			},
+
 			async _initializeSidebar() {
 				//get sidebar from wiki
 				const response = await githubService.getWikiIndex();

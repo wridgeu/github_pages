@@ -2,8 +2,10 @@ sap.ui.define(["./Base"], (BaseController) => {
 	"use strict";
 	return BaseController.extend("sapmarco.projectpages.controller.Home", {
 		onInit() {
-			//set content density
-			this.initializeViewTheme();
+			// Initialize Theme - might prefer dark mode
+			this.initializeTheme();
+
+			// set content density
 			this.getView().addStyleClass(
 				this.getOwnerComponent().getContentDensityClass()
 			);
@@ -11,8 +13,8 @@ sap.ui.define(["./Base"], (BaseController) => {
 		onUI5IconPress() {
 			this.getOwnerComponent().openVersionDialog();
 		},
-		onThemeSwap(sTheme) {
-			this.toggleTheme(sTheme);
+		onThemeSwap() {
+			this.toggleTheme();
 		},
 		onWiki(){
 			this.navTo("RouteWiki");

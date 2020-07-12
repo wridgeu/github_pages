@@ -39,14 +39,7 @@ sap.ui.define([
 								});
 							});
 							// forward compact/cozy style into dialog
-							syncStyleClass(
-								oView
-									.getController()
-									.getOwnerComponent()
-									.getContentDensityClass(),
-								oView,
-								oDialog
-							);
+							syncStyleClass(oView.getController().getOwnerComponent().getContentDensityClass(), oView, oDialog);
 							oDialog.open();
 						});
 					} else {

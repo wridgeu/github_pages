@@ -13,41 +13,18 @@ sap.ui.define(
 			sLightTheme: "sap_belize",
 			oCore: sap.ui.getCore(),
 
-			initializeViewTheme() {
+			initializeTheme() {
 				//check preferred color scheme of user
 				if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
 					this.oCore.applyTheme(this.sDarkTheme);
-					this.byId("footerToolbar").addStyleClass("toolbarDarkMode")
-					if (this.byId("cVRow")) {
-						this.byId("cVRow").removeStyleClass("introductionTextBackground");
-						this._setInvertedStyleOnSocials();
-					}	
-				}
-			},
-
-			adjustToolbarTheme(){
-				if (this.oCore.getConfiguration().getTheme() === this.sLightTheme) {					
-					this.byId("footerToolbar").removeStyleClass("toolbarDarkMode").addStyleClass("toolbarLightMode")						
-				} else {					
-					this.byId("footerToolbar").removeStyleClass("toolbarLightMode").addStyleClass("toolbarDarkMode")	
 				}
 			},
 			
-			toggleTheme(sTheme) {
+			toggleTheme() {
 				if (this.oCore.getConfiguration().getTheme() === this.sLightTheme) {
-					this.oCore.applyTheme(sTheme);
-					if (this.byId("cVRow")) { this.byId("cVRow").removeStyleClass("introductionTextBackground");}
-					this.byId("footerToolbar")
-						.removeStyleClass("toolbarLightMode")
-						.addStyleClass("toolbarDarkMode");
-					this._setInvertedStyleOnSocials();
+					this.oCore.applyTheme(this.sDarkTheme);
 				} else {
 					this.oCore.applyTheme(this.sLightTheme);
-					if (this.byId("cVRow")) {this.byId("cVRow").addStyleClass("introductionTextBackground");}
-					this.byId("footerToolbar")
-						.removeStyleClass("toolbarDarkMode")
-						.addStyleClass("toolbarLightMode");
-					this._setInvertedStyleOnSocials();
 				}
 			},
 			navTo(psTarget, pmParameters, pbReplace) {
@@ -66,13 +43,6 @@ sap.ui.define(
 				} else {
 					this.getRouter().navTo("RouteMain", {}, true /*no history*/);
 				}
-			},
-			
-			_setInvertedStyleOnSocials: function () {
-				if(!this.byId("socialsGrouped")) return;
-				return this.byId("socialsGrouped").aCustomStyleClasses.indexOf("invertSocials") > -1
-					? this.byId("socialsGrouped").removeStyleClass("invertSocials")
-					: this.byId("socialsGrouped").addStyleClass("invertSocials");
 			}
 		});
 	}
