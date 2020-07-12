@@ -1,5 +1,12 @@
-/* Socials Bar */
+:root {
+	--link-visited: #138aeb;
+	--link: #91c8f6;
+	--text: #fff;
+	--lightThemeBlue: #3b61a1;
+	--darkThemeBlue: #21365a;
+}
 
+/* Socials Bar */
 .setOpacity {
 	opacity: 60%;	
 	transition: 0.2s;
@@ -16,15 +23,14 @@
 }
 
 /* Footer - Toolbar */
-
 .toolbarLightMode {	
-	background-color: #3b61a1 !important;
+	background-color: var(--lightThemeBlue) !important;
 }
 .toolbarDarkMode {
-	background-color: #21365a !important;
+	background-color: var(--darkThemeBlue) !important;
 }
 .footerText {
-	color: #fff !important;
+	color: var(--text) !important;
 }
 
 /* General Page Content */
@@ -71,8 +77,8 @@
 
 /* Links & Links visited - in general*/
 a:link{
-	color: #91c8f6;
+	color: var(--link);
 }
 a:visited{
-	color: #138aeb;
+	color: var(--link-visited);
 }
