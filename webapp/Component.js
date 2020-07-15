@@ -29,18 +29,6 @@ sap.ui.define(
 				// set the device model
 				this.setModel(models.createDeviceModel(), "device");
 
-				//configure module loading - provide shim (nonUI5Dependency)
-				//provide custom shim for hljs as it otherwhise does 'require' in it' source code which
-				//isn't supported /build and throws errors even in build version
-				sap.ui.loader.config({
-					async: true,
-					shim: {
-						"sapmarco/projectpages/libs/highlight": {
-							amd: true,
-							exports: "hljs"
-						}
-					},
-				});
 			},
 			openVersionDialog() {
 				this._VersionDialog.open();

@@ -1,11 +1,11 @@
-sap.ui.define(["thirdparty/marked/marked.min", "sapmarco/projectpages/libs/highlight"], function (markedjs, Highlight) {
+sap.ui.define(["thirdparty/marked/marked.min", "thirdparty/highlightjs/highlight"],() => {
 	"use strict";
 	// Syntax Highlighting
 	marked.setOptions({
 		highlight: function (code, lang) {
 			// unsupported edge-cases
 			if(lang === 'i18n' || lang === '' || lang === 'url' ) return
-			return Highlight.highlightAuto(code).value;
+			return hljs.highlightAuto(code).value;
 		}
 	});
 

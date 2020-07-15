@@ -20,7 +20,7 @@
                 "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./docs"
         },
         "dependencies": {
-                "highlight.js": "^10.1.1",
+                "@highlightjs/cdn-assets": "^10.1.1",
                 "marked": "^1.1.0",
                 "npm-check-updates": "^7.0.1",
                 "shx": "^0.3.2"
@@ -37,7 +37,7 @@
         },
         "ui5": {
                 "dependencies": [
-                        "highlight.js",
+                        "@highlightjs/cdn-assets",
                         "marked",
                         "ui5-middleware-livereload"
                 ]
