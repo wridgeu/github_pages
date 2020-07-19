@@ -41,7 +41,7 @@ shims:
         configuration:
           paths:
             /resources/thirdparty/marked/: ""
-    "@highlightjs/cdn-assets": #17 - Escape "@" sign
+    '@highlightjs/cdn-assets': #17 - Escape "@" sign
       specVersion: "2.1"
       type: module
       metadata:
