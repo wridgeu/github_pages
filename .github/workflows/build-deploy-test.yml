@@ -36,5 +36,5 @@ jobs:
         PUBLISH_DIR: ./docs
       with:
         commitMessage: "PersonalPage Upd."
-        keepFiles: true
+        keepFiles: false #true
         emptyCommits: false
