@@ -22,9 +22,8 @@ sap.ui.define(["thirdparty/marked/marked.min", "thirdparty/highlightjs/highlight
 			const image = text.substring(2, text.length - 2);
 			// rebuild image path for raw github
 			const imagePath = `https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${image}`;
-			return `
-				<img class="wikiImage" src="${imagePath}"></img>
-			`;
+
+			return `<img class="wikiImage" src="${imagePath}"></img>`;
 		}
 	};
 

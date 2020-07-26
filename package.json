@@ -1,6 +1,6 @@
 {
         "name": "projectpages",
-        "version": "1.3.6",
+        "version": "1.3.7",
         "repository": {
                 "type": "git",
                 "directory": "https://github.com/SAPMarco/SAPMarco.github.io"
@@ -17,7 +17,8 @@
                 "karma": "rimraf coverage && npm run karma-ci",
                 "lint": "eslint webapp",
                 "build:ui": "ui5 build --clean-dest --dest approuter/webapp ",
-                "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./docs"
+                "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./docs",
+                "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --dest ./docs"
         },
         "dependencies": {
                 "@highlightjs/cdn-assets": "^10.1.1",
