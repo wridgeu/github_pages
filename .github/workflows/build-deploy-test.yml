@@ -24,7 +24,7 @@ jobs:
     - name: build personal website
       run: |
         npm i
-        npm run build
+        npm run build-no-debug
       env:
         CI: true
     - name: deploy

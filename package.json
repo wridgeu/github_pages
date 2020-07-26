@@ -18,7 +18,7 @@
                 "lint": "eslint webapp",
                 "build:ui": "ui5 build --clean-dest --dest approuter/webapp ",
                 "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./docs",
-                "build": "ui5 build self-contained --all --exclude-task=createDebugFiles --dest ./docs"
+                "build": "ui5 build self-contained --all --dest ./docs"
         },
         "dependencies": {
                 "@highlightjs/cdn-assets": "^10.1.1",
