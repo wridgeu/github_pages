@@ -15,6 +15,14 @@ framework:
     - name: sap.ui.testrecorder
     - name: themelib_sap_belize
     - name: themelib_sap_fiori_3
+builder:
+  customTasks:
+    - name: ui5-task-minifier
+      afterTask: uglify
+      configuration:
+        html: true
+        css: true
+        json: false
 server:
   customMiddleware:
   - name: ui5-middleware-livereload
