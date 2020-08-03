@@ -4,7 +4,8 @@ sap.ui.define(["thirdparty/marked/marked.min", "thirdparty/highlightjs/highlight
 	marked.setOptions({
 		highlight: function (code, lang) {
 			// unsupported edge-cases
-			if(lang === 'i18n' || lang === '' || lang === 'url' ) return
+			if (lang === 'i18n' || lang === '' || lang === 'url' ) return
+			// eslint-disable-next-line consistent-return
 			return hljs.highlightAuto(code).value;
 		}
 	});
