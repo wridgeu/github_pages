@@ -8,6 +8,7 @@
 }
 
 /* Socials Bar */
+
 .setOpacity {
 	opacity: 60%;	
 	transition: 0.2s;
@@ -18,9 +19,6 @@
 }
 .setMinSeperator {
 	margin: 1vw;
-}
-.invertSocials {
-	
 }
 
 /* Footer - Toolbar */
