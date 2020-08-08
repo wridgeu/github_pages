@@ -10,7 +10,7 @@ sap.ui.define([
 		Given.iStartMyApp();
 
 		// Assertions
-		Then.onTheAppPage.iShouldSeePageCount(1);
+		Then.onTheAppPage.iShouldSeePageCount(0);
 
 		// Cleanup
 		Then.iTeardownMyApp();

@@ -5,7 +5,7 @@ sap.ui.require([
 	"use strict";
 
 	var sViewName = "sapmarco.projectpages.view.Shell";
-	var sAppId = "idAppControl";
+	var sAppId = "app";
 
 	Opa5.createPageObjects({
 		onTheAppPage: {
@@ -21,7 +21,7 @@ sap.ui.require([
 							length: iItemCount
 						})],
 						success: function() {
-							Opa5.assert.ok(true, "The app contains one page");
+							Opa5.assert.ok(true, "The app contains no direct page and is properly using a the Shell");
 						},
 						errorMessage: "App does not have expected number of pages '" + iItemCount + "'."
 					});
