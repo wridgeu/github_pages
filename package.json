@@ -12,6 +12,7 @@
         "scripts": {
                 "start": "ui5 serve -o index.html",
                 "start-build": "ui5 serve -o index.html --config ui5-dist.yaml",
+                "serve-unit": "ui5 serve --port 8081 --open /test/unit/unitTests.qunit.html",
                 "test": "npm run lint && npm run karma",
                 "karma-ci": "karma start karma-ci.conf.js",
                 "karma": "rimraf coverage && npm run karma-ci",
