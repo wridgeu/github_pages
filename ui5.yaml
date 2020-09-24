@@ -1,10 +1,10 @@
-specVersion: '2.1'
+specVersion: '2.2'
 type: application
 metadata:
   name: projectpages
 framework:
   name: OpenUI5
-  version: "1.80.0"
+  version: "1.82.0"
   libraries:
     - name: sap.m    
     - name: sap.tnt
