@@ -18,10 +18,10 @@ sap.ui.define([
 					// create dialog lazily
 					if (!oView.byId("VersionDialog")) {
 						var oFragmentController = {
-							onCloseDialog: function (oEvt) {
+							onCloseDialog(oEvt) {
 								oEvt.getSource().getParent().close();
 								oEvt.getSource().getParent().getModel("versionInfo").destroy();
-							},
+							}
 						};
 						// load asynchronous XML fragment
 						Fragment.load({
