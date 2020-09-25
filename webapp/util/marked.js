@@ -1,6 +1,10 @@
 sap.ui.define(["thirdparty/marked/marked.min", "thirdparty/highlightjs/highlight"],() => {
 	"use strict";
-	// Syntax Highlighting
+	
+	/**
+	 * Syntax Highlighting
+	 * @returns {string} highlighted code block 
+	 */
 	marked.setOptions({
 		highlight: function (code, lang) {
 			// unsupported edge-cases
@@ -10,7 +14,10 @@ sap.ui.define(["thirdparty/marked/marked.min", "thirdparty/highlightjs/highlight
 		}
 	});
 
-	// Image Rendering
+	/**
+	 * Image Rendering
+	 * @returns {string} Dynamic image HTML-Tag
+	 */
 	const renderer = {
 		paragraph(text) {
 			// transform <p>-tags that match the regex to <img>-tags

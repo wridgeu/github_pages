@@ -8,8 +8,12 @@ sap.ui.define(
 		"use strict";
 
 		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
+
+			/**
+			 * Set the content density and
+			 * attach routing event-handler
+			 */
 			onInit() {
-				// set content density
 				this.getView().addStyleClass(
 					this.getOwnerComponent().getContentDensityClass()
 				);
@@ -18,10 +22,16 @@ sap.ui.define(
 					.attachMatched(this._onRouteMatched, this);
 			},
 
+			/**
+			 * Event-handler for theme toggle
+			 */
 			onThemeSwap() {
 				this.toggleTheme();
 			},
 
+			/**
+			 * Event-handler for backwards navigation
+			 */
 			onBackHome() {
 				this.onNavBack();
 				//Reset the header as we're not reloading the page when re-entering it
@@ -29,34 +39,43 @@ sap.ui.define(
 					this.getView().getModel("i18n").getResourceBundle().getText("wiki")
 				);
 			},
-
-			async onSidebarSelection(sMarkdownTitle) {
+			
+			/**
+			 * @param  {string} sMarkdownFileName name of markdown file
+			 */
+			async onSidebarSelection(sMarkdownFileName) {
 				//get markdown page and encode - to %20
-				const response = await githubService.getSelectedContent(sMarkdownTitle);
-
-				this.byId("wikiPage").setTitle(sMarkdownTitle);
-				this.byId("markdownContainer").getDomRef().innerHTML = await markedParser(
-					response
-				);
+				const response = await githubService.getSelectedContent(sMarkdownFileName);
+				//set title to currently selected page for better UX
+				this.byId("wikiPage").setTitle(sMarkdownFileName);
+				//fill content with actual parsed markdown
+				this.byId("markdownContainer").getDomRef().innerHTML = await markedParser(response);
 			},
+
+			/**
+			 * Event-handler for route matched
+			 */
 			_onRouteMatched() {
 				this._initializeSidebar();
 			},
 
+			/**
+			 * Initialization of sidebar
+			 */
 			async _initializeSidebar() {
-				//get sidebar from wiki
+				//get sidebar from actual github-wiki
 				const response = await githubService.getWikiIndex();
 				//parse markdown to html
 				const parsedMarkdown = await markedParser(response);
 				let matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)\"/g)];
-				for (let i = 0; i < matches.length; i++) {
+				matches.forEach(element => {
 					this.byId("sidebar").addItem(
-						new ActionListItem({
-							text: `${matches[i][1]}`,
-							press: this.onSidebarSelection.bind(this, matches[i][1]),
-						})
-					);
-				}
+								new ActionListItem({
+									text: `${element[1]}`,
+									press: this.onSidebarSelection.bind(this, element[1]),
+								})
+					)
+				})				
 			},
 		});
 	}

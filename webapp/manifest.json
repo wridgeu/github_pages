@@ -1,5 +1,5 @@
 {
-	"_version": "1.23.0",
+	"_version": "1.27.0",
 	"sap.app": {
 		"id": "sapmarco.projectpages",
 		"type": "application",

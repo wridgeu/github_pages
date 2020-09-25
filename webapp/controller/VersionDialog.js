@@ -7,6 +7,9 @@ sap.ui.define([
 
 		return ManagedObject.extend("sapmarco.projectpages.controller.VersionDialog", {
 			
+				/**
+				 * @param  {object} oView View
+				 */
 				constructor: function (oView) {
 					this._oView = oView;
 				},
