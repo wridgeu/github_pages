@@ -1,5 +1,9 @@
-sap.ui.define(["./Base"], (BaseController) => {
+sap.ui.define(
+	[
+		"./Base"
+	], (BaseController) => {
 	"use strict";
+
 	return BaseController.extend("sapmarco.projectpages.controller.Home", {
 
 		/**

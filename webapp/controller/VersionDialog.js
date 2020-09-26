@@ -1,8 +1,9 @@
-sap.ui.define([
-	"sap/ui/base/Object",
-	"sap/ui/core/Fragment",
-	"sap/ui/core/syncStyleClass"
-], (ManagedObject, Fragment, syncStyleClass) => {
+sap.ui.define(
+	[
+		"sap/ui/base/Object",
+		"sap/ui/core/Fragment",
+		"sap/ui/core/syncStyleClass"
+	], (ManagedObject, Fragment, syncStyleClass) => {
 		"use strict";
 
 		return ManagedObject.extend("sapmarco.projectpages.controller.VersionDialog", {

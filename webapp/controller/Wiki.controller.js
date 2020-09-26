@@ -2,9 +2,9 @@ sap.ui.define(
 	[
 		"./Base",
 		"sapmarco/projectpages/util/marked",
-		"sap/m/ActionListItem",
 		"sapmarco/projectpages/util/githubService",
-	], (BaseController, markedParser, ActionListItem, githubService) => {
+		"sap/m/ActionListItem"
+	], (BaseController, markedParser, githubService, ActionListItem) => {
 		"use strict";
 
 		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {

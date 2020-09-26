@@ -1,4 +1,8 @@
-sap.ui.define(["thirdparty/marked/marked.min", "thirdparty/highlightjs/highlight"],() => {
+sap.ui.define(
+	[
+		"thirdparty/marked/marked.min", 
+		"thirdparty/highlightjs/highlight"
+	],() => {
 	"use strict";
 	
 	/**
@@ -16,7 +20,7 @@ sap.ui.define(["thirdparty/marked/marked.min", "thirdparty/highlightjs/highlight
 
 	/**
 	 * Image Rendering
-	 * @returns {string} Dynamic image HTML-Tag
+	 * @returns {HTMLImageElement|string} Dynamic image HTML-Tag
 	 */
 	const renderer = {
 		paragraph(text) {
