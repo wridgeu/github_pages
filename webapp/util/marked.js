@@ -28,10 +28,8 @@ sap.ui.define(
 			const regEx = /\[\[.+?\.(?:jpg|gif|png)\]\]/g;
 			// doesn't match our [[<something>.jpg]]-pattern
 			if (!text.match(regEx)) return false
-			// remove whitespace (edge case)
-			text = text.trim()
-			// remove '[[' and ']]'
-			const image = text.substring(2, text.length - 2);
+			// remove whitespace (edge case) && remove '[[' and ']]'
+			const image = text.trim() && text.substring(2, text.length - 2);
 			// rebuild image path for raw github
 			const imagePath = `https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${image}`;
 
