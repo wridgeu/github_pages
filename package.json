@@ -3,7 +3,7 @@
         "version": "1.12.2",
         "repository": {
                 "type": "git",
-                "url": "https://github.com/SAPMarco/SAPMarco.github.io",
+                "url": "https://github.com/SAPMarco/github_pages.git",
                 "directory": "webapp/"
         },
         "homepage": "https://sapmarco.github.io/",
