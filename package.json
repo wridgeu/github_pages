@@ -1,9 +1,10 @@
 {
         "name": "projectpages",
-        "version": "1.12.1",
+        "version": "1.12.2",
         "repository": {
                 "type": "git",
-                "directory": "https://github.com/SAPMarco/SAPMarco.github.io"
+                "url": "https://github.com/SAPMarco/SAPMarco.github.io",
+                "directory": "webapp/"
         },
         "homepage": "https://sapmarco.github.io/",
         "engines": {
