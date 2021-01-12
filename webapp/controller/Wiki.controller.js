@@ -50,6 +50,8 @@ sap.ui.define(
 				this.byId("wikiPage").setTitle(sMarkdownFileName);
 				//fill content with actual parsed markdown
 				this.byId("markdownContainer").getDomRef().innerHTML = await markedParser(response);
+				//improve UX by always starting at the top when opening up new content
+				this.byId("markdownSection").scrollTo(0);
 			},
 
 			/**
