@@ -31,7 +31,7 @@ sap.ui.define(
 			// remove whitespace (edge case) && remove '[[' and ']]'
 			const image = text.trim() && text.substring(2, text.length - 2);
 			// rebuild image path for raw github
-			const imagePath = `https://raw.githubusercontent.com/wiki/SAPMarco/SAPMarco.github.io/${image}`;
+			const imagePath = `https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/${image}`;
 
 			return `<img class="wikiImage" src="${imagePath}"></img>`;
 		}

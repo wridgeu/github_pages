@@ -1,12 +1,12 @@
 {
         "name": "projectpages",
-        "version": "1.12.3",
+        "version": "1.13.0",
         "repository": {
                 "type": "git",
-                "url": "https://github.com/SAPMarco/github_pages.git",
+                "url": "https://github.com/wridgeu/github_pages.git",
                 "directory": "webapp/"
         },
-        "homepage": "https://sapmarco.github.io/",
+        "homepage": "https://wridgeu.github.io/",
         "engines": {
                 "node": "12.x.x"
         },
@@ -28,9 +28,9 @@
         },
         "devDependencies": {
                 "@openui5/ts-types": "^1.60.5",
-                "@ui5/cli": "^2.7.1",
+                "@ui5/cli": "^2.8.0",
                 "eslint": "^7.17.0",
-                "karma": "^5.2.3",
+                "karma": "^6.0.0",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.3",
                 "karma-ui5": "^2.3.2",
