@@ -25,7 +25,7 @@ server:
       port: 35729
       path: "webapp"
 ---
-specVersion: "2.1"
+specVersion: "2.2"
 type: project-shim
 metadata:
   name:  projectpages.thirdparty
@@ -33,7 +33,7 @@ kind: extension
 shims:
   configurations:
     marked:
-      specVersion: "2.1"
+      specVersion: "2.2"
       type: module
       metadata:
         name: marked
@@ -42,7 +42,7 @@ shims:
           paths:
             /resources/thirdparty/marked/: ""
     '@highlightjs/cdn-assets': #17 - Escape "@" sign
-      specVersion: "2.1"
+      specVersion: "2.2"
       type: module
       metadata:
         name: highlightjs
