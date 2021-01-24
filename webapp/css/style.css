@@ -89,3 +89,8 @@ html.sapUiTheme-sap_belize .sapMIBar.sapMTB  {
 html.sapUiTheme-sap_belize #container-projectpages---Home--cVRow {
 	background-color: var(--backgroundLightTheme) !important;
 }
+
+.card {
+	margin-left: 25px;
+	margin-right: 25px;
+}
