@@ -90,7 +90,6 @@ html.sapUiTheme-sap_belize #container-projectpages---Home--cVRow {
 	background-color: var(--backgroundLightTheme) !important;
 }
 
-.card {
-	margin-left: 25px;
-	margin-right: 25px;
+.integrationcard {
+	margin: 25px 25px 25px 25px
 }
