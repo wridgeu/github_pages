@@ -1,6 +1,6 @@
 {
         "name": "projectpages",
-        "version": "1.14.3",
+        "version": "1.14.4",
         "repository": {
                 "type": "git",
                 "url": "https://github.com/wridgeu/github_pages.git",
@@ -23,14 +23,14 @@
         },
         "dependencies": {
                 "@highlightjs/cdn-assets": "^10.5.0",
-                "marked": "^1.2.7",
+                "marked": "^1.2.8",
                 "shx": "^0.3.3"
         },
         "devDependencies": {
                 "@openui5/ts-types": "^1.60.5",
-                "@ui5/cli": "^2.8.1",
+                "@ui5/cli": "^2.9.3",
                 "eslint": "^7.18.0",
-                "karma": "^6.0.1",
+                "karma": "^6.0.3",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.3",
                 "karma-ui5": "^2.3.2",
