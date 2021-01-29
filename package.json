@@ -1,6 +1,6 @@
 {
         "name": "projectpages",
-        "version": "1.14.4",
+        "version": "1.14.5",
         "repository": {
                 "type": "git",
                 "url": "https://github.com/wridgeu/github_pages.git",
