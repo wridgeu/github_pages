@@ -8,7 +8,6 @@
 }
 
 /* Socials Bar */
-
 .setOpacity {
 	opacity: 60%;	
 	transition: 0.2s;
@@ -22,13 +21,11 @@
 }
 
 /* Footer - Toolbar */
-
 .footerText {
 	color: var(--text) !important;
 }
 
 /* General Page Content */
-
 .setMiddle {
 	justify-content: center;
 	margin: 0 auto;
@@ -44,7 +41,6 @@
 }
 
 /* Wiki */
-
 .container {
     display: flex;
     flex-direction: column;
@@ -64,7 +60,6 @@
 }
 
 /* Links & Links visited - in general*/
-
 a:link{
 	color: var(--link);
 }
@@ -73,7 +68,6 @@ a:visited{
 }
 
 /* Dark Mode - uses hardcoded ids */
-
 html.sapUiTheme-sap_fiori_3_dark .sapMIBar.sapMTB {
 	background-color: var(--darkThemeBlue) !important;
 }
@@ -82,7 +76,6 @@ html.sapUiTheme-sap_fiori_3_dark #container-projectpages---Home--socialsGrouped 
 }
 
 /* Light Mode - uses hardcoded ids */
-
 html.sapUiTheme-sap_belize .sapMIBar.sapMTB  {
 	background-color: var(--lightThemeBlue) !important;
 }
@@ -92,15 +85,4 @@ html.sapUiTheme-sap_belize #container-projectpages---Home--cVRow {
 
 .integrationcard {
 	margin: 25px 25px 25px 25px
-}
-
-.bookshelf-wiki-img {
-	border-radius: 10px;
-	-webkit-filter: grayscale(100%); 
-	filter: grayscale(100%);
-	opacity: 50%;
-}
-
-div#__data36  {
-	position: absolute !important;
 }
