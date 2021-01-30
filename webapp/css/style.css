@@ -86,3 +86,31 @@ html.sapUiTheme-sap_belize #container-projectpages---Home--cVRow {
 .integrationcard {
 	margin: 25px 25px 25px 25px
 }
+
+.wiki-wrapper {
+	position: relative;
+	max-width: 300px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.bookshelf-wiki-img {
+	filter: grayscale(0.7);
+	border-radius: 10px;
+	width: 100%;
+	height: auto;
+	transition: 0.2s;
+}
+
+.bookshelf-wiki-img:hover {
+	filter: grayscale(0);
+	transition: 0.2s;
+}
+
+.visit-wiki-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
