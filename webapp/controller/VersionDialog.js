@@ -1,5 +1,4 @@
-sap.ui.define(
-	[
+sap.ui.define([
 		"sap/ui/base/Object",
 		"sap/ui/core/Fragment",
 		"sap/ui/core/syncStyleClass"

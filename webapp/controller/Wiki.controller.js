@@ -1,5 +1,4 @@
-sap.ui.define(
-	[
+sap.ui.define([
 		"./Base",
 		"sapmarco/projectpages/util/marked",
 		"sapmarco/projectpages/util/githubService",
@@ -45,13 +44,13 @@ sap.ui.define(
 			 */
 			async onSidebarSelection(sMarkdownFileName) {
 				//get markdown page and encode - to %20
-				const response = await githubService.getSelectedContent(sMarkdownFileName);
+				const markdownPage = await githubService.getSelectedContent(sMarkdownFileName);
 				//set title to currently selected page for better UX
 				this.byId("wikiPage").setTitle(sMarkdownFileName);
-				//fill content with actual parsed markdown
-				this.byId("markdownContainer").getDomRef().innerHTML = await markedParser(response);
+				//fill content with actual parsed markdown				
+				this.byId("markdownContainer").getDomRef().innerHTML = await markedParser(markdownPage);
 				//improve UX by always starting at the top when opening up new content
-				this.byId("markdownSection").scrollTo(0);
+				this.byId("markdownSection").scrollTo(0, 0);
 			},
 
 			/**
@@ -66,9 +65,9 @@ sap.ui.define(
 			 */
 			async _initializeSidebar() {
 				//get sidebar from actual github-wiki
-				const response = await githubService.getWikiIndex();
+				const wikiIndex = await githubService.getWikiIndex();
 				//parse markdown to html
-				const parsedMarkdown = await markedParser(response);
+				const parsedMarkdown = await markedParser(wikiIndex);
 				let matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)\"/g)];
 				matches.forEach(element => {
 					this.byId("sidebar").addItem(

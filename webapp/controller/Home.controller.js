@@ -1,5 +1,4 @@
-sap.ui.define(
-	[
+sap.ui.define([
 		"./Base"
 	], (BaseController) => {
 	"use strict";
