@@ -1,16 +1,15 @@
-sap.ui.define(
-	[
+sap.ui.define([
+		"sap/ui/core/Core",
 		"sap/ui/core/mvc/Controller",
 		"sap/ui/core/routing/History",
 		"sap/ui/core/UIComponent"
-	], (Controller, History, UIComponent) => {
+	], (Core, Controller, History, UIComponent) => {
 		"use strict";
 		
 		return Controller.extend("Base", {
 
 			_sDarkTheme: "sap_fiori_3_dark",
 			_sLightTheme: "sap_fiori_3",
-			_oCore: sap.ui.getCore(),
 
 			/**
 			 * Check the preferred color scheme of user
@@ -18,17 +17,17 @@ sap.ui.define(
 			 */
 			initializeTheme() {
 				if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-					this._oCore.applyTheme(this._sDarkTheme);
+					Core.applyTheme(this._sDarkTheme);
 				}
 			},			
 			/**
 			 * Switching between light & dark themes
 			 */
 			toggleTheme() {
-				if (this._oCore.getConfiguration().getTheme() === this._sLightTheme) {
-					this._oCore.applyTheme(this._sDarkTheme);
+				if (Core.getConfiguration().getTheme() === this._sLightTheme) {
+					Core.applyTheme(this._sDarkTheme);
 				} else {
-					this._oCore.applyTheme(this._sLightTheme);
+					Core.applyTheme(this._sLightTheme);
 				}
 			},			
 			/**
