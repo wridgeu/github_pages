@@ -9,7 +9,7 @@ sap.ui.define(
 		return Controller.extend("Base", {
 
 			_sDarkTheme: "sap_fiori_3_dark",
-			_sLightTheme: "sap_belize",
+			_sLightTheme: "sap_fiori_3",
 			_oCore: sap.ui.getCore(),
 
 			/**

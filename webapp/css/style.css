@@ -4,7 +4,9 @@
 	--text: #fff;
 	--lightThemeBlue: #3b61a1;
 	--darkThemeBlue: #21365a;
-	--backgroundLightTheme: #e0e0e0; 
+	--backgroundLightTheme: #e0e0e0;
+	--headerBackgroundShadeLightTheme: #3b61a1;
+	--headerBackgroundShadeDarkTheme: #A2B8DD;
 }
 
 /* Socials Bar */
@@ -67,21 +69,28 @@ a:visited{
 	color: var(--link-visited);
 }
 
-/* Dark Mode - uses hardcoded ids */
+/* Dark Mode - uses hardcoded ids instead of media query */
 html.sapUiTheme-sap_fiori_3_dark .sapMIBar.sapMTB {
 	background-color: var(--darkThemeBlue) !important;
 }
 html.sapUiTheme-sap_fiori_3_dark #container-projectpages---Home--socialsGrouped {
 	filter: invert(1) !important;
 }
+html.sapUiTheme-sap_fiori_3_dark .sapUiBlockLayoutCellColor5C {
+	background-color: var(--headerBackgroundShadeDarkTheme) !important;
+}
 
-/* Light Mode - uses hardcoded ids */
-html.sapUiTheme-sap_belize .sapMIBar.sapMTB  {
+/* Light Mode - uses hardcoded ids instead of media query */
+html.sapUiTheme-sap_fiori_3 .sapMIBar.sapMTB  {
 	background-color: var(--lightThemeBlue) !important;
 }
-html.sapUiTheme-sap_belize #container-projectpages---Home--cVRow {
+html.sapUiTheme-sap_fiori_3 #container-projectpages---Home--cVRow {
 	background-color: var(--backgroundLightTheme) !important;
 }
+html.sapUiTheme-sap_fiori_3 .sapUiBlockLayoutCellColor5C {
+	background-color: var(--headerBackgroundShadeLightTheme) !important;
+}
+
 
 .integrationcard {
 	margin: 25px 25px 25px 25px
