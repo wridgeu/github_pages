@@ -22,19 +22,19 @@
                 "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./docs"
         },
         "dependencies": {
-                "@highlightjs/cdn-assets": "^10.5.0",
+                "@highlightjs/cdn-assets": "^10.6.0",
                 "marked": "^2.0.0",
                 "shx": "^0.3.3"
         },
         "devDependencies": {
                 "@openui5/ts-types": "^1.60.5",
-                "@ui5/cli": "^2.9.3",
-                "eslint": "^7.18.0",
-                "karma": "^6.0.3",
+                "@ui5/cli": "^2.10.0",
+                "eslint": "^7.20.0",
+                "karma": "^6.1.1",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.3",
-                "karma-ui5": "^2.3.2",
-                "ui5-middleware-livereload": "^0.5.1",
+                "karma-ui5": "^2.3.3",
+                "ui5-middleware-livereload": "^0.5.2",
                 "ui5-task-minifier": "^1.0.2"
         },
         "ui5": {
