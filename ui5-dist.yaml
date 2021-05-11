@@ -8,7 +8,7 @@ resources:
       webapp: docs
 framework:
   name: OpenUI5
-  version: "1.88.0"
+  version: "1.89.0"
   libraries:
     - name: sap.m
     - name: sap.tnt
