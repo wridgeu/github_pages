@@ -1,6 +1,6 @@
 {
         "name": "projectpages",
-        "version": "1.15.3",
+        "version": "1.16.0",
         "repository": {
                 "type": "git",
                 "url": "https://github.com/wridgeu/github_pages.git",
@@ -8,7 +8,7 @@
         },
         "homepage": "https://wridgeu.github.io/",
         "engines": {
-                "node": "12.x.x"
+                "node": "16.x.x"
         },
         "scripts": {
                 "start": "ui5 serve -o index.html",
