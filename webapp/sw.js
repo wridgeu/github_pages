@@ -1,3 +1,5 @@
 importScripts("util/ui5swlib.js");
 
-self.worker.initFromManifest();
+self.worker.initFromManifest({
+	manifestUrl: "https://wridgeu.github.io/manifest.json"
+});
