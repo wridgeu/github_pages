@@ -3,7 +3,7 @@ sap.ui.define([
 		"sapmarco/projectpages/util/marked",
 		"sapmarco/projectpages/util/githubService",
 		"sap/m/ActionListItem"
-	], (BaseController, markedParser, githubService, ActionListItem) => {
+	], (BaseController, marked, githubService, ActionListItem) => {
 		"use strict";
 
 		return BaseController.extend("sapmarco.projectpages.controller.Wiki", {
@@ -47,8 +47,8 @@ sap.ui.define([
 				const markdownPage = await githubService.getSelectedContent(sMarkdownFileName);
 				//set title to currently selected page for better UX
 				this.byId("wikiPage").setTitle(sMarkdownFileName);
-				//fill content with actual parsed markdown				
-				this.byId("markdownContainer").getDomRef().innerHTML = await markedParser(markdownPage);
+				//fill content with actual parsed markdown
+				this.byId("markdownContainer").getDomRef().innerHTML = await marked.parse(markdownPage);
 				//improve UX by always starting at the top when opening up new content
 				this.byId("markdownSection").scrollTo(0, 0);
 			},
@@ -67,7 +67,7 @@ sap.ui.define([
 				//get sidebar from actual github-wiki
 				const wikiIndex = await githubService.getWikiIndex();
 				//parse markdown to html
-				const parsedMarkdown = await markedParser(wikiIndex);
+				const parsedMarkdown = await marked.parse(wikiIndex);
 				let matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)\"/g)];
 				matches.forEach(element => {
 					this.byId("sidebar").addItem(

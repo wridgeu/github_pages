@@ -36,7 +36,7 @@ sap.ui.define(
 			return `<img class="wikiImage" src="${imagePath}"></img>`;
 		}
 	};
-
+	
 	marked.use({ renderer });
 
 	return marked;

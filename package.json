@@ -18,23 +18,23 @@
                 "karma-ci": "karma start karma-ci.conf.js",
                 "karma": "rimraf coverage && npm run karma-ci",
                 "lint": "eslint webapp",
-                "build": "ui5 build self-contained --all --dest ./docs",
-                "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./docs"
+                "build": "ui5 build self-contained --all --dest ./dist",
+                "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
         },
         "dependencies": {
-                "@highlightjs/cdn-assets": "^11.0.0",
-                "marked": "^3.0.2",
+                "@highlightjs/cdn-assets": "^11.3.1",
+                "marked": "^4.0.1",
                 "shx": "^0.3.3"
         },
         "devDependencies": {
-                "@openui5/ts-types": "^1.60.5",
-                "@ui5/cli": "^2.10.3",
-                "eslint": "^8.1.0",
-                "karma": "^6.3.2",
+                "@openui5/ts-types": "^1.90.8",
+                "@ui5/cli": "^2.14.0",
+                "eslint": "^8.2.0",
+                "karma": "^6.3.8",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.3",
-                "karma-ui5": "^2.3.3",
-                "ui5-middleware-livereload": "^0.5.4",
+                "karma-ui5": "^2.3.4",
+                "ui5-middleware-livereload": "^0.5.8",
                 "ui5-task-minifier": "^1.0.2"
         },
         "ui5": {
