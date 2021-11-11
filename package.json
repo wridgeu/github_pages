@@ -19,7 +19,7 @@
                 "karma": "rimraf coverage && npm run karma-ci",
                 "lint": "eslint webapp",
                 "build": "ui5 build self-contained --all --dest ./dist",
-                "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
+                "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles generateManifestBundle --clean-dest true --dest ./dist"
         },
         "dependencies": {
                 "@highlightjs/cdn-assets": "^11.3.1",
