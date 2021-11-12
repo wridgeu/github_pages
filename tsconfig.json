@@ -1,10 +1,30 @@
 {
     "compilerOptions": {
-        "module": "none",
-        "noEmit": true,
-        "checkJs": true,
+        "target": "es2015",
+        "module": "CommonJS",
+        "skipLibCheck": true,
+        "preserveConstEnums": true,
+        "sourceMap": false,
         "allowJs": true,
-        "types": ["@openui5/ts-types"],
-        "lib": ["ES2015", "DOM"]
-    }
+        "strict": true,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false,
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "typeRoots": [
+            "./node_modules/@types",            
+            "./node_mdoules/@types/highlightjs",
+            "./node_mdoules/@types/marked",
+            "./node_modules/@openui5/ts-types-esm"
+        ],
+        "paths": {
+            "sapmarco/projectpages/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ]
 }

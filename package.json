@@ -11,38 +11,62 @@
                 "node": "16.x.x"
         },
         "scripts": {
+                "build": "npm-run-all build:ts build:ui5",
+                "build:opt": "npm-run-all build:ts build:ui5:opt",
+                "build:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files",
+                "build:ui5": "ui5 build --clean-dest",
+                "build:ui5:opt": "ui5 build self-contained --clean-dest --all",
+                "watch:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files --watch",
+                "start:ui5": "ui5 serve --port 8080 -o index.html",
+                "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
+                "ts-typecheck": "tsc --noEmit",
                 "start": "ui5 serve -o index.html",
                 "start-build": "ui5 serve -o index.html --config ui5-dist.yaml",
                 "serve-unit": "ui5 serve --port 8081 --open /test/unit/unitTests.qunit.html",
                 "test": "npm run lint && npm run karma",
                 "karma-ci": "karma start karma-ci.conf.js",
                 "karma": "rimraf coverage && npm run karma-ci",
-                "lint": "eslint webapp",
-                "build": "ui5 build self-contained --all --dest ./dist",
+                "lint": "eslint src",
+                "build-old": "ui5 build self-contained --all --dest ./dist",
                 "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
         },
         "dependencies": {
                 "@highlightjs/cdn-assets": "^11.3.1",
+                "highlight.js": "^11.3.1",
                 "marked": "^4.0.1",
                 "shx": "^0.3.3"
         },
         "devDependencies": {
-                "@openui5/ts-types": "^1.90.8",
+                "@babel/cli": "^7.16.0",
+                "@babel/core": "^7.16.0",
+                "@babel/preset-env": "^7.16.0",
+                "@babel/preset-typescript": "^7.16.0",
+                "@openui5/ts-types-esm": "1.90.8",
+                "@types/highlightjs": "^9.12.2",
+                "@types/jquery": "3.5.8",
+                "@types/marked": "^4.0.0",
+                "@typescript-eslint/eslint-plugin": "^5.3.1",
+                "@typescript-eslint/parser": "^5.3.1",
                 "@ui5/cli": "^2.14.0",
+                "babel-preset-transform-ui5": "^7.0.5",
                 "eslint": "^8.2.0",
                 "karma": "^6.3.8",
                 "karma-chrome-launcher": "^3.1.0",
                 "karma-coverage": "^2.0.3",
                 "karma-ui5": "^2.3.4",
+                "typescript": "^4.4.4",
                 "ui5-middleware-livereload": "^0.5.8",
-                "ui5-task-minifier": "^1.0.2"
+                "ui5-task-minifier": "^1.0.2",
+                "ui5-tooling-modules": "^0.1.0"
         },
         "ui5": {
                 "dependencies": [
                         "@highlightjs/cdn-assets",
+                        "highlight.js",
                         "marked",
                         "ui5-middleware-livereload",
-                        "ui5-task-minifier"
+                        "ui5-task-minifier",
+                        "ui5-tooling-modules"
                 ]
         }
 }
