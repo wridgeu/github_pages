@@ -15,8 +15,8 @@ export default class HomeController extends BaseController {
 		);
 	}
 
-	public onUI5IconPress(): void {
-		this._ownerComponent.openVersionDialog();
+	public async onUI5IconPress(): Promise<void> {
+		await this._ownerComponent.openVersionDialog();
 	}
 	/**
 	 * Event-handler for click on theme toggle
