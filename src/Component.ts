@@ -1,3 +1,4 @@
+import View from "sap/ui/core/mvc/View";
 import UIComponent from "sap/ui/core/UIComponent";
 import { support } from "sap/ui/Device";
 import VersionDialog from "./controller/VersionDialog";
@@ -22,7 +23,7 @@ export default class Component extends UIComponent {
 		super.init();
 
 		//set Dailog
-		this._versionDialog = new VersionDialog(this.getRootControl());
+		this._versionDialog = new VersionDialog((this.getRootControl() as View));
 
 		// enable routing
 		this.getRouter().initialize();

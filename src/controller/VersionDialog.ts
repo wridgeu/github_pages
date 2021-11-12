@@ -13,9 +13,9 @@ import Component from "../Component";
  */
 export default class VersionDialog extends Control {
 
-	private _oView: Control;
+	private _oView: View;
 
-	constructor(oView: Control){
+	constructor(oView: View){
 		super();
 		this._oView = oView;
 	}
@@ -24,7 +24,7 @@ export default class VersionDialog extends Control {
 		const oView = this._oView;
 
 		// create dialog lazily
-		if (!(oView as View).byId("VersionDialog")) {
+		if (!oView.byId("VersionDialog")) {
 			const oFragmentController = {
 				onCloseDialog(oEvt: Event) {
 					((oEvt.getSource() as Control).getParent() as Dialog).close();
@@ -41,16 +41,16 @@ export default class VersionDialog extends Control {
 				// connect dialog to the root view of this component (models, lifecycle)
 				oView.addDependent(oDialog);
 				sap.ui.require(["sap/ui/VersionInfo"], async function (oVersInfo: VersionInfo) {
-					return await oVersInfo.load().then(function (oVersion?: Promise<object>) {
+					return await oVersInfo.load(/* no args */).then(function (oVersion?: Promise<object>) {
 						oDialog.setModel(new JSONModel(oVersion, true), "versionInfo");
 					});
 				});
 				// forward compact/cozy style into dialog
-				syncStyleClass(((oView as View).getController().getOwnerComponent() as Component).getContentDensityClass(), oView, oDialog);
+				syncStyleClass((oView.getController().getOwnerComponent() as Component).getContentDensityClass(), oView, oDialog);
 				await (oDialog as VersionDialog).open();
 			});
 		} else {
-			await ((this._oView as View).byId("VersionDialog") as VersionDialog).open();
+			await (this._oView.byId("VersionDialog") as VersionDialog).open();
 		}
 	}
 
