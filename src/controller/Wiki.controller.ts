@@ -7,16 +7,27 @@ import { markdownService } from "../util/markdownService";
 import BaseController from "./Base.controller";
 import List from "sap/m/List";
 import ActionListItem from "sap/m/ActionListItem";
+import JSONModel from "sap/ui/model/json/JSONModel";
+import ResponsiveSplitter from "sap/ui/layout/ResponsiveSplitter";
 
 /**
  * @namespace sapmarco.projectpages.controller
  */
 export default class WikiController extends BaseController {
 
+	private _isPhone: boolean
+
+	private _jsonModel: JSONModel
+
 	public onInit(): void {
 		this.getView().addStyleClass(
 			(this.getOwnerComponent() as Component).getContentDensityClass()
 		);
+
+		// TODO: Add type definition for devicemodel system struct
+		this._isPhone = (this.getOwnerComponent() as Component).getModel("device").getData().system.phone;
+		this._jsonModel = (this.getView().setModel(new JSONModel(), "convertedmarkdown").getModel("convertedmarkdown") as JSONModel);
+
 		this.getRouter()
 			.getRoute("RouteWiki")
 			.attachMatched(this._onRouteMatched.bind(this), this);
@@ -60,7 +71,7 @@ export default class WikiController extends BaseController {
 			(this.byId("sidebar") as List).addItem(
 						new ActionListItem({
 							text: `${element[1]}`,
-							press: this.onSidebarSelection.bind(this, element[1]),
+							press: this.onSidebarSelection.bind(this, element[1], this._jsonModel, this._isPhone),
 						})
 			)
 		})				
@@ -69,15 +80,18 @@ export default class WikiController extends BaseController {
 	/**
 	 * @param  {string} sMarkdownFileName name of markdown file
 	 */
-	private async onSidebarSelection(sMarkdownFileName: string): Promise<void> {
+	private async onSidebarSelection(sMarkdownFileName: string, jsonModel: JSONModel, isOpenedOnPhone: boolean): Promise<void> {
 		//get markdown page and encode - to %20
 		const markdownPage = await getSelectedContent(sMarkdownFileName);
+		
 		//set title to currently selected page for better UX
 		(this.byId("wikiPage") as Page).setTitle(sMarkdownFileName);
-		//fill content with actual parsed markdown
-		this.byId("markdownContainer").getDomRef().innerHTML = markdownService.parse(markdownPage);
-		//improve UX by always starting at the top when opening up new content
-		(this.byId("markdownSection") as Page).scrollTo(0, 0);
+
+		jsonModel.setData({ markdown: `<div class="container">${markdownService.parse(markdownPage)}</div>`});
+
+		//improve UX by always starting at the top when opening up new content & jumping to new pane
+		if(isOpenedOnPhone) (this.byId("responsiveSplitter") as ResponsiveSplitter)._activatePage(1);
+		if(this.byId("markdownSection")) (this.byId("markdownSection") as Page).scrollTo(0, 0);		
 	}
 
 }
