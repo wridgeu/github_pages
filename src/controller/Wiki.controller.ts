@@ -25,10 +25,8 @@ export default class WikiController extends BaseController {
 		);
 
 		// TODO: Add type definition for devicemodel system struct
-		this._isPhone = (this.getOwnerComponent() as Component).getModel("device").getData().system.phone
-
-		this._jsonModel = new JSONModel({}, true);
-		this.getView().setModel(this._jsonModel, "convertedmarkdown")
+		this._isPhone = (this.getOwnerComponent() as Component).getModel("device").getData().system.phone;
+		this._jsonModel = (this.getView().setModel(new JSONModel(), "convertedmarkdown").getModel("convertedmarkdown") as JSONModel);
 
 		this.getRouter()
 			.getRoute("RouteWiki")
@@ -89,7 +87,7 @@ export default class WikiController extends BaseController {
 		//set title to currently selected page for better UX
 		(this.byId("wikiPage") as Page).setTitle(sMarkdownFileName);
 
-		jsonModel.setData({ markdown: `${markdownService.parse(markdownPage)}`});
+		jsonModel.setData({ markdown: `<div class="container">${markdownService.parse(markdownPage)}</div>`});
 
 		//improve UX by always starting at the top when opening up new content & jumping to new pane
 		if(isOpenedOnPhone) (this.byId("responsiveSplitter") as ResponsiveSplitter)._activatePage(1);
