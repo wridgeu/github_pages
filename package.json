@@ -41,7 +41,7 @@
                 "@babel/core": "^7.16.0",
                 "@babel/preset-env": "^7.16.4",
                 "@babel/preset-typescript": "^7.16.0",
-                "@openui5/ts-types-esm": "1.90.8",
+                "@openui5/ts-types-esm": "1.96.1",
                 "@types/highlightjs": "^9.12.2",
                 "@types/jquery": "3.5.9",
                 "@types/marked": "^4.0.1",
