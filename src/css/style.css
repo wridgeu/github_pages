@@ -98,7 +98,7 @@ html.sapUiTheme-sap_fiori_3 .sapUiBlockLayoutCellColor5C {
 
 .wiki-wrapper {
 	position: relative;
-	max-width: 300px;
+	height: 5rem;
 	left: 50%;
 	transform: translateX(-50%);
 }
