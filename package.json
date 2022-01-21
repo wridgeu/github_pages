@@ -1,72 +1,75 @@
 {
-        "name": "projectpages",
-        "version": "1.18.3",
-        "repository": {
-                "type": "git",
-                "url": "https://github.com/wridgeu/github_pages.git",
-                "directory": "webapp/"
-        },
-        "homepage": "https://wridgeu.github.io/",
-        "engines": {
-                "node": "16.x.x"
-        },
-        "scripts": {
-                "build": "npm-run-all build:ts build:ui5",
-                "build:opt": "npm-run-all build:ts build:ui5:opt",
-                "build:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files",
-                "build:ui5": "ui5 build --clean-dest",
-                "build:ui5:opt": "ui5 build self-contained --clean-dest --all",
-                "watch:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files --watch",
-                "start:ui5": "ui5 serve --port 8080 -o index.html",
-                "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
-                "ts-typecheck": "tsc --noEmit",
-                "start": "ui5 serve -o index.html",
-                "start-build": "ui5 serve -o index.html --config ui5-dist.yaml",
-                "serve-unit": "ui5 serve --port 8081 --open /test/unit/unitTests.qunit.html",
-                "test": "npm run lint && npm run karma",
-                "karma-ci": "karma start karma-ci.conf.js",
-                "karma": "rimraf coverage && npm run karma-ci",
-                "lint": "eslint src",
-                "build-old": "ui5 build self-contained --all --dest ./dist",
-                "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
-        },
-        "dependencies": {
-                "@highlightjs/cdn-assets": "^11.4.0",
-                "highlight.js": "^11.4.0",
-                "marked": "^4.0.10",
-                "shx": "^0.3.4"
-        },
-        "devDependencies": {
-                "@babel/cli": "^7.16.8",
-                "@babel/core": "^7.16.10",
-                "@babel/preset-env": "^7.16.11",
-                "@babel/preset-typescript": "^7.16.7",
-                "@openui5/ts-types-esm": "1.97.1",
-                "@types/highlightjs": "^9.12.2",
-                "@types/jquery": "3.5.13",
-                "@types/marked": "^4.0.1",
-                "@typescript-eslint/eslint-plugin": "^5.10.0",
-                "@typescript-eslint/parser": "^5.10.0",
-                "@ui5/cli": "^2.14.3",
-                "babel-preset-transform-ui5": "^7.0.5",
-                "eslint": "^8.7.0",
-                "karma": "^6.3.11",
-                "karma-chrome-launcher": "^3.1.0",
-                "karma-coverage": "^2.1.0",
-                "karma-ui5": "^2.4.0",
-                "typescript": "^4.5.4",
-                "ui5-middleware-livereload": "^0.5.8",
-                "ui5-task-minifier": "^1.0.2",
-                "ui5-tooling-modules": "^0.1.1"
-        },
-        "ui5": {
-                "dependencies": [
-                        "@highlightjs/cdn-assets",
-                        "highlight.js",
-                        "marked",
-                        "ui5-middleware-livereload",
-                        "ui5-task-minifier",
-                        "ui5-tooling-modules"
-                ]
-        }
+    "name": "projectpages",
+    "version": "1.18.3",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wridgeu/github_pages.git",
+        "directory": "webapp/"
+    },
+    "homepage": "https://wridgeu.github.io/",
+    "engines": {
+        "node": "16.x.x"
+    },
+    "scripts": {
+        "build": "npm-run-all build:ts build:ui5",
+        "build:opt": "npm-run-all build:ts build:ui5:opt",
+        "build:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files",
+        "build:ui5": "ui5 build --clean-dest",
+        "build:ui5:opt": "ui5 build self-contained --clean-dest --all",
+        "watch:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files --watch",
+        "start:ui5": "ui5 serve --port 8080 -o index.html",
+        "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
+        "ts-typecheck": "tsc --noEmit",
+        "start": "ui5 serve -o index.html",
+        "start-build": "ui5 serve -o index.html --config ui5-dist.yaml",
+        "serve-unit": "ui5 serve --port 8081 --open /test/unit/unitTests.qunit.html",
+        "test": "wdio",
+        "lint": "eslint src",
+        "build-old": "ui5 build self-contained --all --dest ./dist",
+        "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist",
+        "wdio": "wdio run wdio.conf.ts"
+    },
+    "dependencies": {
+        "@highlightjs/cdn-assets": "^11.4.0",
+        "highlight.js": "^11.4.0",
+        "marked": "^4.0.10",
+        "shx": "^0.3.4"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.16.8",
+        "@babel/core": "^7.16.10",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/preset-typescript": "^7.16.7",
+        "@openui5/ts-types-esm": "1.97.1",
+        "@types/highlightjs": "^9.12.2",
+        "@types/jquery": "3.5.13",
+        "@types/marked": "^4.0.1",
+        "@typescript-eslint/eslint-plugin": "^5.10.0",
+        "@typescript-eslint/parser": "^5.10.0",
+        "@ui5/cli": "^2.14.3",
+        "@wdio/cli": "^7.16.13",
+        "@wdio/local-runner": "^7.16.13",
+        "@wdio/mocha-framework": "^7.16.13",
+        "@wdio/spec-reporter": "^7.16.13",
+        "babel-preset-transform-ui5": "^7.0.5",
+        "chromedriver": "^97.0.0",
+        "eslint": "^8.7.0",
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.5",
+        "ui5-middleware-livereload": "^0.5.8",
+        "ui5-task-minifier": "^1.0.2",
+        "ui5-tooling-modules": "^0.1.1",
+        "wdio-chromedriver-service": "^7.2.6",
+        "wdio-ui5-service": "^0.8.1"
+    },
+    "ui5": {
+        "dependencies": [
+            "@highlightjs/cdn-assets",
+            "highlight.js",
+            "marked",
+            "ui5-middleware-livereload",
+            "ui5-task-minifier",
+            "ui5-tooling-modules"
+        ]
+    }
 }
