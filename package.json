@@ -1,6 +1,6 @@
 {
     "name": "projectpages",
-    "version": "1.18.6",
+    "version": "1.19.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/wridgeu/github_pages.git"
@@ -20,7 +20,8 @@
         "start:ui5:bg": "ui5 serve --port 8080",
         "ts-typecheck": "tsc --noEmit",
         "lint": "eslint src",
-        "test": "start-server-and-test start:ui5:bg http://localhost:8080 wdio",
+        "test": "set HEADLESS=true && start-server-and-test start:ui5:bg http://localhost:8080 wdio",
+        "test:bg": "HEADLESS=true start-server-and-test start:ui5:bg http://localhost:8080 wdio",
         "wdio": "wdio run wdio.conf.ts",
         "build:no:dbg": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
     },

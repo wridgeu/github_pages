@@ -1,13 +1,13 @@
-name: Deployment
+name: Build SPA & Deployment
 
 on: 
-  push
-    # branches:
-      # - master
-    # paths:
-      # - 'package.json'
+  push:
+    branches:
+      - master
+    paths:
+      - 'package.json'
 jobs:
-  test-build-and-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -15,26 +15,16 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - name: checkout for test
+    - name: checkout
       uses: actions/checkout@v2
     - name: setup node using ${{ matrix.node-version }} 
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: use chromedriver action
-      uses: nanasess/setup-chromedriver@v1
-    - name: setup chrome
-      run: |
-        export DISPLAY=:99
-        chromedriver --url-base=/wd/hub &
-        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
-    - name: run tests
+    - name: build
       run: |
         npm install
         npm run build:ts
-        npm run test
-    - name: build ui5 spa
-      run: |
         npm run build:no:dbg
       env:
         CI: true
