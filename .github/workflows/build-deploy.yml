@@ -1,4 +1,4 @@
-name: build and publish personal website
+name: Deployment
 
 on: 
   push:
@@ -7,8 +7,7 @@ on:
     paths:
       - 'package.json'
 jobs:
-  build:
-
+  run-e2e-test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,19 +15,41 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: use node ${{ matrix.node-version }}
+    - name: checkout for test
+      uses: actions/checkout@v2
+    - name: setup node using ${{ matrix.node-version }} 
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: build personal website
+    - name: run tests
       run: |
-        npm i
+        npm install
+        npm run build:ts
+        npm run start:ui5
+        npm run test
+
+  build-and-deploy:
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout fopr build & deploy
+      uses: actions/checkout@v2
+    - name: setup node using ${{ matrix.node-version }} 
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: build ui5 spa
+      run: |
+        npm install
         npm run build:ts
         npm run build-no-debug
       env:
         CI: true
-    - name: deploy
+    - name: deploy to github pages
       uses: peaceiris/actions-gh-pages@v2
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.actions_deploy_secret }}
