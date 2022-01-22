@@ -3,8 +3,7 @@
     "version": "1.18.3",
     "repository": {
         "type": "git",
-        "url": "https://github.com/wridgeu/github_pages.git",
-        "directory": "webapp/"
+        "url": "https://github.com/wridgeu/github_pages.git"
     },
     "homepage": "https://wridgeu.github.io/",
     "engines": {
@@ -12,22 +11,18 @@
     },
     "scripts": {
         "build": "npm-run-all build:ts build:ui5",
-        "build:opt": "npm-run-all build:ts build:ui5:opt",
         "build:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files",
         "build:ui5": "ui5 build --clean-dest",
-        "build:ui5:opt": "ui5 build self-contained --clean-dest --all",
         "watch:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files --watch",
         "start:ui5": "ui5 serve --port 8080 -o index.html",
         "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
-        "ts-typecheck": "tsc --noEmit",
-        "start": "ui5 serve -o index.html",
         "start-build": "ui5 serve -o index.html --config ui5-dist.yaml",
-        "serve-unit": "ui5 serve --port 8081 --open /test/unit/unitTests.qunit.html",
-        "test": "wdio",
+        "start:ui5:bg": "ui5 serve --port 8080",
+        "ts-typecheck": "tsc --noEmit",
         "lint": "eslint src",
-        "build-old": "ui5 build self-contained --all --dest ./dist",
-        "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist",
-        "wdio": "wdio run wdio.conf.ts"
+        "test": "npm run wdio",
+        "wdio": "wdio run wdio.conf.ts",
+        "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
     },
     "dependencies": {
         "@highlightjs/cdn-assets": "^11.4.0",

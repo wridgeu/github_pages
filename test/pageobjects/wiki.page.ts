@@ -4,15 +4,15 @@ import Page from './page';
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class MainPage extends Page {
+class WikiPage extends Page {
 
-    public get mainContainer(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
-        return $('div[id="container"]');
-    }
+    // public get mainContainer(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
+    //     return $('div[id="container"]');
+    // }
 
-	public get integrationcards(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
-		return $('#container-projectpages---Home--integrationcards-container > div > div')
-	}
+	// public get integrationcards(): ChainablePromiseElement<Promise<WebdriverIO.Element>> {
+	// 	return $('#container-projectpages---Home--integrationcards-container > div > div')
+	// }
 
     /**
      * a method to encapsule automation code to interact with the page
@@ -29,4 +29,4 @@ class MainPage extends Page {
     // }
 }
 
-export default new MainPage();
+export default new WikiPage();
