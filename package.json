@@ -16,13 +16,13 @@
         "watch:ts": "babel src --out-dir webapp --source-maps inline --extensions \".ts,.js\" --copy-files --watch",
         "start:ui5": "ui5 serve --port 8080 -o index.html",
         "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
-        "start-build": "ui5 serve -o index.html --config ui5-dist.yaml",
+        "start:build": "ui5 serve -o index.html --config ui5-dist.yaml",
         "start:ui5:bg": "ui5 serve --port 8080",
         "ts-typecheck": "tsc --noEmit",
         "lint": "eslint src",
         "test": "start-server-and-test start:ui5:bg http://localhost:8080 wdio",
         "wdio": "wdio run wdio.conf.ts",
-        "build-no-debug": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
+        "build:no:dbg": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
     },
     "dependencies": {
         "@highlightjs/cdn-assets": "^11.4.0",
