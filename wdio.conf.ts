@@ -18,6 +18,7 @@ export const config: WebdriverIO.Config = {
 			'wdio:devtoolsOptions': {
 				headless: true
 			},
+			path: '/wd/hub',
 			acceptInsecureCerts: true,
 		},
 	],
