@@ -15,6 +15,9 @@ export const config: WebdriverIO.Config = {
 		{
 			maxInstances: 5,
 			browserName: "chrome",
+			'wdio:devtoolsOptions': {
+				headless: true
+			},
 			acceptInsecureCerts: true,
 		},
 	],
