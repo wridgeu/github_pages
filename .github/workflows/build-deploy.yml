@@ -3,14 +3,13 @@
 
 name: Build SPA & Deployment
 
-on:
-  push
-# on: 
-#   push:
-#     branches:
-#       - master
-#     paths:
-#       - 'package.json'
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - 'package.json'
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -38,16 +37,16 @@ jobs:
         npm run build:ts
         npm run test:bg
         npm run build:no:dbg
-    #   env:
-    #     CI: true
-    # - name: deploy to github pages
-    #   uses: peaceiris/actions-gh-pages@v2
-    #   env:
-    #     ACTIONS_DEPLOY_KEY: ${{ secrets.actions_deploy_secret }}
-    #     EXTERNAL_REPOSITORY: wridgeu/wridgeu.github.io
-    #     PUBLISH_BRANCH: master
-    #     PUBLISH_DIR: ./dist
-    #   with:
-    #     commitMessage: "PersonalPage upd."
-    #     keepFiles: false #true
-    #     emptyCommits: false
+      env:
+        CI: true
+    - name: deploy to github pages
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.actions_deploy_secret }}
+        EXTERNAL_REPOSITORY: wridgeu/wridgeu.github.io
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: ./dist
+      with:
+        commitMessage: "PersonalPage upd."
+        keepFiles: false #true
+        emptyCommits: false
