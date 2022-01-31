@@ -94,9 +94,6 @@ export const config: WebdriverIO.Config = {
 				args: process.env.HEADLESS ? ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] : ["window-size=1440,800"],
 			},
 			acceptInsecureCerts: true,
-			// 'wdio:devtoolsOptions': {
-            //     headless: process.env.HEADLESS ? true : false,
-            // },
 		},
 	],
 	// Test runner services

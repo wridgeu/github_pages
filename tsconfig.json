@@ -1,31 +1,29 @@
 {
-    "compilerOptions": {
-        "target": "es2015",
-        "module": "CommonJS",
-        "skipLibCheck": true,
-        "preserveConstEnums": true,
-        "moduleResolution": "Node",
-        "sourceMap": false,
-        "allowJs": true,
-        "strict": true,
-        "strictNullChecks": false,
-        "strictPropertyInitialization": false,
-        "rootDir": "./src",
-        "outDir": "./dist",
-        "baseUrl": "./",
-        "typeRoots": [
-            "./node_modules/@types",            
-            "./node_mdoules/@types/highlightjs",
-            "./node_mdoules/@types/marked",
-            "./node_modules/@openui5/ts-types-esm"
-        ],
-        "paths": {
-            "sapmarco/projectpages/*": [
-                "./src/*"
-            ]
-        }
-    },
-    "include": [
-        "./src/**/*"
-    ]
+	"compilerOptions": {
+		"target": "es2015",
+		"module": "CommonJS",
+		"skipLibCheck": true,
+		"preserveConstEnums": true,
+		"moduleResolution": "Node",
+		"sourceMap": false,
+		"allowJs": true,
+		"strict": true,
+		"strictNullChecks": false,
+		"importHelpers": true,
+		"forceConsistentCasingInFileNames": true,
+		"strictPropertyInitialization": false,
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"baseUrl": "./",
+		"typeRoots": [
+			"./node_modules/@types",
+			"./node_mdoules/@types/highlightjs",
+			"./node_mdoules/@types/marked",
+			"./node_modules/@openui5/ts-types-esm"
+		],
+		"paths": {
+			"sapmarco/projectpages/*": ["./src/*"]
+		}
+	},
+	"include": ["./src/**/*"]
 }
