@@ -88,22 +88,17 @@ export const config: WebdriverIO.Config = {
 			// maxInstances: 1,
 			browserName: "chrome",
 			"goog:chromeOptions": {
-				args: process.env.HEADLESS ? ["--headless"] : ["window-size=1440,800"],
+				w3c: false,
+				// alternatively a second config i.e. `wdio-ci.conf.ts` could be created, in there we could spread the base conf and adjust it to use headless
+				// here we opt for setting the process env to HEADLESS via the `package.json`
+				args: process.env.HEADLESS ? ['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] : ["window-size=1440,800"],
 			},
+			acceptInsecureCerts: true,
+			// 'wdio:devtoolsOptions': {
+            //     headless: process.env.HEADLESS ? true : false,
+            // },
 		},
 	],
-
-	wdi5: {
-		// screenshotPath: require('path').join('test', 'report', 'screenshots'), // [optional] using the project root
-		screenshotsDisabled: true, // [optional] {Boolean}; if set to true screenshots won't be taken and not written to file system
-		logLevel: "verbose", // [optional] error | verbose | silent
-		platform: "browser", // [mandatory] browser | android | ios | electron
-		url: "index.html", // [mandatory, not empty] path to your bootstrap html file. If your server autoredirects to a 'domain:port/' like root url use empty string ''
-		deviceType: "web", // [mandatory] native | web
-		skipInjectUI5OnStart: false, // [optional] true when UI5 is not on the start page, you need to later call <wdioUI5service>.injectUI5(); manually
-		waitForUI5Timeout: 15000, // [optional] maximum waiting time while checking for UI5 availability
-	},
-
 	// Test runner services
 	// Services take over a specific job you don't want to take care of. They enhance
 	// your test setup with almost no effort. Unlike plugins, they don't add new
@@ -111,8 +106,8 @@ export const config: WebdriverIO.Config = {
 	// Use the Appium plugin for Webdriver. Without this, we would need to run appium
 	// separately on the command line.
 	services: [
-		"ui5", // service is officially registered "as a service" with webdriver.io
 		"chromedriver",
+		"ui5", // service is officially registered "as a service" with webdriver.io
 	],
 	//
 	// Additional list of node arguments to use when starting child processes
@@ -124,7 +119,7 @@ export const config: WebdriverIO.Config = {
 	// Define all options that are relevant for the WebdriverIO instance here
 	//
 	// Level of logging verbosity: trace | debug | info | warn | error | silent
-	logLevel: "error",
+	// logLevel: process.env.HEADLESS ? "silent" : "info",
 	//
 	// Set specific log levels per logger
 	// use 'silent' level to disable logger
@@ -142,10 +137,10 @@ export const config: WebdriverIO.Config = {
 	//
 	// If your `url` parameter starts without a scheme or `/` (like `some/path`), the `baseUrl`
 	// gets prepended directly.
-	baseUrl: "http://localhost:8080",
+	baseUrl: "http://localhost:8080/",
 	//
 	// Default timeout for all waitForUI5 commands. This is the timeout used for the `executeAsync`funciton
-	waitforTimeout: 10000,
+	waitforTimeout: 1000000,
 	//
 	// Add files to watch (e.g. application code or page objects) when running `wdio` command
 	// with `--watch` flag. Globbing is supported.
@@ -161,14 +156,14 @@ export const config: WebdriverIO.Config = {
 	// Make sure you have the wdio adapter package for the specific framework installed before running any tests.
 	framework: "mocha",
 	mochaOpts: {
-		timeout: 50000,
+		timeout: 5000000,
 	},
 	//
 	// The number of times to retry the entire specfile when it fails as a whole
 	// specFileRetries: 1,
 	// Default timeout in milliseconds for request
 	// if browser driver or grid doesn't send response
-	connectionRetryTimeout: 60000,
+	connectionRetryTimeout: 6000000,
 	//
 	// Default request retries count
 	connectionRetryCount: 3,
@@ -177,4 +172,15 @@ export const config: WebdriverIO.Config = {
 	// The only one supported by default is 'dot'
 	// See also: https://webdriver.io/docs/dot-reporter.html , and click on "Reporters" in left column
 	reporters: ["spec"],
+	
+	wdi5: {
+		// screenshotPath: require('path').join('test', 'report', 'screenshots'), // [optional] using the project root
+		screenshotsDisabled: true, // [optional] {Boolean}; if set to true screenshots won't be taken and not written to file system
+		logLevel: "verbose", // [optional] error | verbose | silent
+		platform: "browser", // [mandatory] browser | android | ios | electron
+		url: "index.html", // [mandatory, not empty] path to your bootstrap html file. If your server autoredirects to a 'domain:port/' like root url use empty string ''
+		deviceType: "web", // [mandatory] native | web
+		skipInjectUI5OnStart: false, // [optional] true when UI5 is not on the start page, you need to later call <wdioUI5service>.injectUI5(); manually
+		waitForUI5Timeout: 1500000, // [optional] maximum waiting time while checking for UI5 availability
+	},
 };

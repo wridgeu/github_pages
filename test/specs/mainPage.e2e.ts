@@ -1,12 +1,15 @@
 // import LoginPage from  '../pageobjects/login.page';
 // import SecurePage from '../pageobjects/secure.page';
 
+import _ui5Service from "wdio-ui5-service";
+
 import mainPage from "../pageobjects/main.page";
 
 describe("My Main Page", () => {
-	// before(async () => {
-	// 	await mainPage.open();
-	// });
+	before(async () => {
+		const wdioUI5Service = new _ui5Service();
+		await wdioUI5Service.injectUI5();
+	});
 
 	it("should render the container element", async () => {
 		await expect(mainPage.mainContainer).toBeDisplayed();
@@ -28,6 +31,6 @@ describe("My Main Page", () => {
 			},
 		};
 		const control = await browser.asControl(btnSelector);
-		expect(await control.getText()).toEqual('Visit');
+		expect(await control.getText()).toEqual("Visit");
 	});
 });

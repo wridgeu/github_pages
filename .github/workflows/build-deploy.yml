@@ -1,11 +1,16 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
 name: Build SPA & Deployment
 
-on: 
-  push:
-    branches:
-      - master
-    paths:
-      - 'package.json'
+on:
+  push
+# on: 
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - 'package.json'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -21,21 +26,28 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: install chrome
+      run: |
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+        sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+        sudo apt-get update
+        sudo apt-get install google-chrome-stable 
     - name: build
       run: |
         npm install
         npm run build:ts
+        npm run test:bg
         npm run build:no:dbg
-      env:
-        CI: true
-    - name: deploy to github pages
-      uses: peaceiris/actions-gh-pages@v2
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.actions_deploy_secret }}
-        EXTERNAL_REPOSITORY: wridgeu/wridgeu.github.io
-        PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./dist
-      with:
-        commitMessage: "PersonalPage upd."
-        keepFiles: false #true
-        emptyCommits: false
+    #   env:
+    #     CI: true
+    # - name: deploy to github pages
+    #   uses: peaceiris/actions-gh-pages@v2
+    #   env:
+    #     ACTIONS_DEPLOY_KEY: ${{ secrets.actions_deploy_secret }}
+    #     EXTERNAL_REPOSITORY: wridgeu/wridgeu.github.io
+    #     PUBLISH_BRANCH: master
+    #     PUBLISH_DIR: ./dist
+    #   with:
+    #     commitMessage: "PersonalPage upd."
+    #     keepFiles: false #true
+    #     emptyCommits: false
