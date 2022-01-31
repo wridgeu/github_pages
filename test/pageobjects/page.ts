@@ -8,7 +8,7 @@ export default class Page {
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     public open(path: string): Promise<string> {
-        //https://github.com/js-soft/wdi5/blob/main/wdio-ui5-service/README.md#navigation
+        // https://github.com/js-soft/wdi5/blob/main/wdio-ui5-service/README.md#navigation
         return browser.goTo(path);
     }
 }
