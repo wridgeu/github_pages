@@ -64,10 +64,7 @@
 				"sap.ui.layout": {
 					"lazy": true
 				},
-				"sap.tnt": {
-					"lazy": true
-				},
-				"sap.ui.table":{
+				"sap.ui.integration":{
 					"lazy": true
 				},
 				"sap.ui.support": {
