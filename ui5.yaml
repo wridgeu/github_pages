@@ -1,10 +1,10 @@
-specVersion: '2.6'
+specVersion: "2.6"
 type: application
 metadata:
   name: projectpages
 framework:
   name: OpenUI5
-  version: "1.97.0"
+  version: "1.100.0"
   libraries:
     - name: sap.m
     - name: sap.ui.core
@@ -25,12 +25,29 @@ builder:
         json: false
 server:
   customMiddleware:
-  - name: ui5-tooling-modules-middleware
-    afterMiddleware: compression
-  - name: ui5-middleware-livereload
-    afterMiddleware: compression
-    configuration:
-      debug: true
-      ext: "xml,json,properties"
-      port: 35729
-      path: "webapp"
+    - name: ui5-tooling-modules-middleware
+      afterMiddleware: compression
+    - name: ui5-middleware-livereload
+      afterMiddleware: compression
+      configuration:
+        debug: true
+        ext: "xml,json,properties"
+        port: 35729
+        path: "webapp"
+---
+specVersion: "2.6"
+kind: extension
+type: project-shim
+metadata:
+  name: sapmarco.projectpages.thirdparty
+shims:
+  configurations:
+    marked: # dependency name as defined in package.json
+      specVersion: "2.6"
+      type: module # module type
+      metadata:
+        name: marked
+      resources:
+        configuration:
+          paths:
+            "/resources/thirdparty/marked/": "" # map root directory of module into projects' thirdparty namespace

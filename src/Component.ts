@@ -4,26 +4,46 @@ import { support } from "sap/ui/Device";
 import VersionDialog from "./controller/VersionDialog";
 import deviceModelCreator from "./model/models";
 
+/**
+ * Configures the UI5 Module Loader to handle lodash
+ * and map lodash to the default namespace.
+ *
+ * https://openui5.hana.ondemand.com/#/api/sap.ui.loader/methods/sap.ui.loader.config
+ */
+sap.ui.loader.config({
+	map: {
+		"*": {
+			marked:
+				"sapmarco/projectpages/resources/thirdparty/marked/lib/marked.umd",
+		},
+	},
+	shim: {
+		"sapmarco/projectpages/resources/thirdparty/marked/lib/marked.umd": {
+			amd: false,
+			deps: [],
+			exports: "marked",
+		},
+	},
+});
 
 /**
  * @namespace sapmarco.projectpages
  */
 export default class Component extends UIComponent {
-	
 	private _contentDensityClass: string;
 
 	private _versionDialog: VersionDialog;
 
 	public static metadata = {
-		manifest: "json"
+		manifest: "json",
 	};
 
-	public init() : void {
+	public init(): void {
 		// call the base component's init function
 		super.init();
 
 		//set Dailog
-		this._versionDialog = new VersionDialog((this.getRootControl() as View));
+		this._versionDialog = new VersionDialog(this.getRootControl() as View);
 
 		// enable routing
 		this.getRouter().initialize();
@@ -39,12 +59,16 @@ export default class Component extends UIComponent {
 	 * @public
 	 * @return {string} css class, either 'sapUiSizeCompact' or 'sapUiSizeCozy' - or an empty string if no css class should be set
 	 */
-	public getContentDensityClass() : string {
+	public getContentDensityClass(): string {
 		if (this._contentDensityClass === undefined) {
 			// check whether FLP has already set the content density class; do nothing in this case
-			if (document.body.classList.contains("sapUiSizeCozy") || document.body.classList.contains("sapUiSizeCompact")) {
+			if (
+				document.body.classList.contains("sapUiSizeCozy") ||
+				document.body.classList.contains("sapUiSizeCompact")
+			) {
 				this._contentDensityClass = "";
-			} else if (!support.touch) { // apply "compact" mode if touch is not supported
+			} else if (!support.touch) {
+				// apply "compact" mode if touch is not supported
 				this._contentDensityClass = "sapUiSizeCompact";
 			} else {
 				// "cozy" in case of touch support; default for most sap.m controls, but needed for desktop-first controls like sap.ui.table.Table
