@@ -65,7 +65,8 @@ export default class WikiController extends BaseController {
 		//get sidebar from actual github-wiki
 		const wikiIndex = await getWikiIndex();
 		//parse markdown to html
-		const parsedMarkdown = markdownService.parse(wikiIndex);
+		
+		const parsedMarkdown = markdownService.render(wikiIndex);
 		const matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)\"/g)];
 		matches.forEach(element => {
 			(this.byId("sidebar") as List).addItem(
@@ -87,7 +88,7 @@ export default class WikiController extends BaseController {
 		//set title to currently selected page for better UX
 		(this.byId("wikiPage") as Page).setTitle(sMarkdownFileName);
 
-		jsonModel.setData({ markdown: `<div class="container">${markdownService.parse(markdownPage)}</div>`});
+		jsonModel.setData({ markdown: `<div class="container">${markdownService.render(markdownPage)}</div>`});
 
 		//improve UX by always starting at the top when opening up new content & jumping to new pane
 		if(isOpenedOnPhone) (this.byId("responsiveSplitter") as ResponsiveSplitter)._activatePage(1);

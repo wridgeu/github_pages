@@ -1,10 +1,10 @@
 {
 	"compilerOptions": {
 		"target": "es2015",
-		"module": "CommonJS",
+		"module": "es2015",
 		"skipLibCheck": true,
 		"preserveConstEnums": true,
-		"moduleResolution": "Node",
+		"esModuleInterop": true,
 		"sourceMap": false,
 		"allowJs": true,
 		"strict": true,
@@ -18,7 +18,7 @@
 		"typeRoots": [
 			"./node_modules/@types",
 			"./node_modules/@types/highlightjs",
-			"./node_modules/@types/marked",
+			"./node_modules/@types/markdown-it",
 			"./node_modules/@openui5/ts-types-esm"
 		],
 		"paths": {
