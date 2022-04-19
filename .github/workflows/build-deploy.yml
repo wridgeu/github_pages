@@ -35,8 +35,8 @@ jobs:
       run: |
         npm install
         npm run build:ts
-        npm run test:bg
         npm run build:no:dbg
+      # npm run test:bg
       env:
         CI: true
     - name: deploy to github pages
