@@ -7,8 +7,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'package.json'
+    # paths:
+    #   - 'package.json'
 
 jobs:
   build-and-deploy:
