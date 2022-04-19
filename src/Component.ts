@@ -5,8 +5,8 @@ import VersionDialog from "./controller/VersionDialog";
 import deviceModelCreator from "./model/models";
 
 /**
- * Configures the UI5 Module Loader to handle lodash
- * and map lodash to the default namespace.
+ * Configures the UI5 Module Loader to handle marked
+ * and map marked to the default namespace.
  *
  * https://openui5.hana.ondemand.com/#/api/sap.ui.loader/methods/sap.ui.loader.config
  */
