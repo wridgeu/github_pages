@@ -6,11 +6,10 @@ import { marked } from "marked";
  * @returns {string} highlighted code block
  */
 marked.setOptions({
-	highlight: function (code: string, lang?: string) {
-		// unsupported edge-cases
-		if (lang === "i18n" || lang === "" || lang === "url") return;
-		// eslint-disable-next-line consistent-return
-		return hljs.highlightAuto(code).value;
+	highlight: function (string: string, lang?: string): string|void {
+		if(lang && hljs.getLanguage(lang)) {
+			return hljs.highlight(string, { language: lang }).value;
+		}
 	},
 });
 
