@@ -8,15 +8,8 @@ import UIComponent from "sap/ui/core/UIComponent";
  * @namespace sapmarco.projectpages.controller
  */
 export default class BaseController extends Controller {
-
-	private _sDarkTheme = "sap_fiori_3_dark";
-	private _sLightTheme = "sap_fiori_3";
-
-	public onInit(): void {
-		if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-			Core.applyTheme(this._sDarkTheme);
-		}
-	}
+	private _sLightTheme = "sap_horizon";
+	private _sDarkTheme = "sap_horizon_dark";
 
 	public toggleTheme(): void {
 		if (Core.getConfiguration().getTheme() === this._sLightTheme) {
@@ -24,21 +17,26 @@ export default class BaseController extends Controller {
 		} else {
 			Core.applyTheme(this._sLightTheme);
 		}
-	}	
+	}
 
 	/**
 	 * @param  {string} psTarget Target
 	 * @param  {object} pmParameters Parameters
 	 * @param  {boolean} pbReplace Replace routing hash?
 	 */
-	public navTo(psTarget: string, pmParameters?: object, targetInfo?: object, pbReplace?: boolean): void {
-		this.getRouter().navTo(psTarget, pmParameters, targetInfo,  pbReplace);
+	public navTo(
+		psTarget: string,
+		pmParameters?: object,
+		targetInfo?: object,
+		pbReplace?: boolean
+	): void {
+		this.getRouter().navTo(psTarget, pmParameters, targetInfo, pbReplace);
 	}
 
 	/**
-	 * @returns {sap.ui.core.routing.Router} UIComponent router via context 
+	 * @returns {sap.ui.core.routing.Router} UIComponent router via context
 	 */
-	public getRouter(): Router  {
+	public getRouter(): Router {
 		return UIComponent.getRouterFor(this);
 	}
 

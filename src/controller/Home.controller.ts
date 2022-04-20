@@ -5,14 +5,11 @@ import BaseController from "./Base.controller";
  * @namespace sapmarco.projectpages.controller
  */
 export default class HomeController extends BaseController {
-
-	private _ownerComponent: Component
+	private _ownerComponent: Component;
 
 	public onInit(): void {
-		this._ownerComponent = (this.getOwnerComponent() as Component)
-		this.getView().addStyleClass(
-			this._ownerComponent.getContentDensityClass()
-		);
+		this._ownerComponent = this.getOwnerComponent() as Component;
+		this.getView().addStyleClass(this._ownerComponent.getContentDensityClass());
 	}
 
 	public async onUI5IconPress(): Promise<void> {

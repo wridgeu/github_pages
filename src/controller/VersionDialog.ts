@@ -12,10 +12,9 @@ import Component from "../Component";
  * @namespace sapmarco.projectpages.controller
  */
 export default class VersionDialog extends Control {
-
 	private _oView: View;
 
-	constructor(oView: View){
+	constructor(oView: View) {
 		super();
 		this._oView = oView;
 	}
@@ -28,8 +27,11 @@ export default class VersionDialog extends Control {
 			const oFragmentController = {
 				onCloseDialog(oEvt: Event) {
 					((oEvt.getSource() as Control).getParent() as Dialog).close();
-					(oEvt.getSource() as Control).getParent().getModel("versionInfo").destroy();
-				}
+					(oEvt.getSource() as Control)
+						.getParent()
+						.getModel("versionInfo")
+						.destroy();
+				},
 			};
 			// load asynchronous XML fragment
 			await Fragment.load({
@@ -40,13 +42,24 @@ export default class VersionDialog extends Control {
 			}).then(async function (oDialog: Control) {
 				// connect dialog to the root view of this component (models, lifecycle)
 				oView.addDependent(oDialog);
-				sap.ui.require(["sap/ui/VersionInfo"], async function (oVersInfo: VersionInfo) {
-					return await oVersInfo.load(/* no args */).then(function (oVersion?: Promise<object>) {
-						oDialog.setModel(new JSONModel(oVersion, true), "versionInfo");
-					});
-				});
+				sap.ui.require(
+					["sap/ui/VersionInfo"],
+					async function (oVersInfo: VersionInfo) {
+						return await oVersInfo
+							.load(/* no args */)
+							.then(function (oVersion?: Promise<object>) {
+								oDialog.setModel(new JSONModel(oVersion, true), "versionInfo");
+							});
+					}
+				);
 				// forward compact/cozy style into dialog
-				syncStyleClass((oView.getController().getOwnerComponent() as Component).getContentDensityClass(), oView, oDialog);
+				syncStyleClass(
+					(
+						oView.getController().getOwnerComponent() as Component
+					).getContentDensityClass(),
+					oView,
+					oDialog
+				);
 				await (oDialog as VersionDialog).open();
 			});
 		} else {

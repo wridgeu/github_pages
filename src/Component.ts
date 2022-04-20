@@ -4,6 +4,9 @@ import { support } from "sap/ui/Device";
 import VersionDialog from "./controller/VersionDialog";
 import deviceModelCreator from "./model/models";
 
+// import additional dependencies to bundle them properly (done by Peter in UI5 Community)
+import "sap/ui/core/ComponentSupport";
+
 /**
  * Configures the UI5 Module Loader to handle marked
  * and map marked to the default namespace.
@@ -42,11 +45,11 @@ export default class Component extends UIComponent {
 		// call the base component's init function
 		super.init();
 
-		//set Dailog
-		this._versionDialog = new VersionDialog(this.getRootControl() as View);
-
 		// enable routing
 		this.getRouter().initialize();
+		
+		//set Dailog
+		this._versionDialog = new VersionDialog(this.getRootControl() as View);
 
 		// set the device model
 		this.setModel(deviceModelCreator(), "device");

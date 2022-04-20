@@ -18,10 +18,21 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/img/blue_ui5.svg" />
 		<title>Marco Beier - Info</title>
 		<script async src="regsw.js"></script>
+		<script>
+			window["sap-ui-config"] = {};
+			// determine the proper theme for UI5 from users preferred color scheme (yoinked from Marian 🍻)
+			window["sap-ui-config"]["theme"] = (function () {
+				try {
+					return window.matchMedia("(prefers-color-scheme: dark)").matches ? "sap_horizon_dark" : "sap_horizon";
+				} catch (ex) {
+					console.warn("window.matchMedia not supported - keep default theme");
+					return "sap_horizon";
+				}
+			})();
+		</script>
 		<script  id="sap-ui-bootstrap"
 			src="/resources/sap-ui-core.js"
 			data-sap-ui-xx-waitForTheme="true"
-			data-sap-ui-theme="sap_fiori_3"			
 			data-sap-ui-compatVersion="edge"
 			data-sap-ui-async="true"
 			data-sap-ui-resourceroots='{
