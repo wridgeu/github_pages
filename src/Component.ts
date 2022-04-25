@@ -6,6 +6,7 @@ import deviceModelCreator from "./model/models";
 
 // import additional dependencies to bundle them properly (done by Peter in UI5 Community)
 import "sap/ui/core/ComponentSupport";
+import "sap/ui/core/date/Gregorian";
 
 /**
  * Configures the UI5 Module Loader to handle marked
