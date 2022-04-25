@@ -4,23 +4,36 @@
 }
 
 /* Socials Bar */
-.setOpacity {
-	opacity: 60%;	
+.socials {
+	opacity: 60%;
 	transition: 0.2s;
 }
-.setOpacity:hover {
+
+.socials:hover {
 	opacity: 100%;
 	transition: 0.2s;
 }
+
 .setMinSeperator {
 	margin: 1vw;
 }
 
+/* increase visibility of socials in dark mode */
+html.sapUiTheme-sap_horizon_dark .socials {
+	filter: invert()
+}
+
+/* enlarge socials on phone */
+html.sap-phone .socials {
+	width: 10vw !important;
+}
+
 /* Links & Links visited - in general*/
-a:link{
+a:link {
 	color: var(--link);
 }
-a:visited{
+
+a:visited {
 	color: var(--link-visited);
 }
 
@@ -30,49 +43,42 @@ a:visited{
 	margin: 0 auto;
 	max-width: 1140px;
 }
+
 .title {
 	font-weight: bold;
 	font-size: x-large;
 }
+
 .text {
 	font-size: 100%;
 	line-height: 24px;
 }
 
-/* Wiki */
-.container {
-    display: flex;
-    flex-direction: column;
-	align-items: flex-start;
-	padding-left: 15%;
-	padding-right: 15%;
-}
-.sidebar .sapMALIText {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	margin-left: 5%;
-}
-.wikiImage {
-	max-width: 100%; 
-	height: auto;
+.keepTileTextColor * span {
+	color: #1d2d3e !important;
 }
 
 .integrationcard {
 	margin: 25px 25px 25px 25px
 }
 
-.wiki-wrapper {
-	position: relative;
-	height: 5rem;
-	left: 50%;
-	transform: translateX(-50%);
+/* Wiki */
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding-left: 15%;
+	padding-right: 15%;
 }
 
-.visit-wiki-button {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
+.sidebar .sapMALIText {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: 5%;
+}
+
+.wikiImage {
+	max-width: 100%;
+	height: auto;
 }
