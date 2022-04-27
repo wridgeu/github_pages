@@ -2,11 +2,14 @@
  * Fetch the markdown content
  * @returns {Promise<string>} content of markdown file
  */
-function getSelectedContent(mdContent: string): Promise<string> {
+function getSelectedContent(requestedContent: string): Promise<string> {
 	//return markdown content & encode '-' with %20
 	return fetch(
-		`https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/${mdContent.replace(/[-*?]/g,"%20")}.md`
-	).then((response) => response.text())
+		`https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/${requestedContent.replace(
+			/[-*?]/g,
+			"%20"
+		)}.md`
+	).then((response) => response.text());
 }
 
 /**
@@ -21,7 +24,11 @@ function getWikiIndex(): Promise<string> {
 	).then((response) => response.text());
 }
 
+function  getContentEditLink(requestedContent: string): string {
+	return `https://github.com/wridgeu/wridgeu.github.io/wiki/${requestedContent}/_edit`
+}
+
 /**
  * @namespace sapmarco.projectpages.util
  */
-export {getWikiIndex, getSelectedContent};
+export { getWikiIndex, getSelectedContent, getContentEditLink };

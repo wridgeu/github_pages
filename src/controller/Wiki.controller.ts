@@ -1,8 +1,10 @@
-import ResourceBundle from "sap/base/i18n/ResourceBundle";
 import Page from "sap/m/Page";
-import ResourceModel from "sap/ui/model/resource/ResourceModel";
 import Component from "../Component";
-import { getSelectedContent, getWikiIndex } from "../util/githubService";
+import {
+	getSelectedContent,
+	getWikiIndex,
+	getContentEditLink,
+} from "../util/githubService";
 import { markdownService } from "../util/markdownService";
 import BaseController from "./Base.controller";
 import List from "sap/m/List";
@@ -16,7 +18,7 @@ import ResponsiveSplitter from "sap/ui/layout/ResponsiveSplitter";
 export default class WikiController extends BaseController {
 	private _isPhone: boolean;
 
-	private _markdownContentModel: JSONModel;
+	private _wikiContentModel: JSONModel;
 
 	public onInit(): void {
 		this.getView().addStyleClass(
@@ -27,7 +29,7 @@ export default class WikiController extends BaseController {
 		this._isPhone = (this.getOwnerComponent() as Component)
 			.getModel("device")
 			.getData().system.phone;
-		this._markdownContentModel = this.getView()
+		this._wikiContentModel = this.getView()
 			.setModel(new JSONModel(), "convertedmarkdown")
 			.getModel("convertedmarkdown") as JSONModel;
 
@@ -55,14 +57,6 @@ export default class WikiController extends BaseController {
 	 */
 	public onBackHome(): void {
 		this.onNavBack();
-		//Reset the header as we're not reloading the page when re-entering it
-		(this.byId("wikiPage") as Page).setTitle(
-			(
-				(
-					this.getView().getModel("i18n") as ResourceModel
-				).getResourceBundle() as ResourceBundle
-			).getText("wiki")
-		);
 	}
 
 	/**
@@ -81,7 +75,7 @@ export default class WikiController extends BaseController {
 					press: this.onSidebarSelection.bind(
 						this,
 						element[1],
-						this._markdownContentModel,
+						this._wikiContentModel,
 						this._isPhone
 					),
 				})
@@ -99,14 +93,14 @@ export default class WikiController extends BaseController {
 	): Promise<void> {
 		//get markdown page and encode - to %20
 		const markdownPage = await getSelectedContent(sMarkdownFileName);
-
-		//set title to currently selected page for better UX
-		(this.byId("wikiPage") as Page).setTitle(sMarkdownFileName);
+		const editLink = getContentEditLink(sMarkdownFileName);
 
 		jsonModel.setData({
 			markdown: `<div class="container">${markdownService.parse(
 				markdownPage
 			)}</div>`,
+			title: sMarkdownFileName,
+			edit: editLink,
 		});
 
 		//improve UX by always starting at the top when opening up new content & jumping to new pane
