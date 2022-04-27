@@ -82,3 +82,9 @@ a:visited {
 	max-width: 100%;
 	height: auto;
 }
+
+/* wrap the code on phone (try to make it more readable) */
+html.sap-phone code {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
