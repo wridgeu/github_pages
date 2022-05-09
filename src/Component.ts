@@ -39,7 +39,10 @@ export default class Component extends UIComponent {
 	private _versionDialog: VersionDialog;
 
 	public static metadata = {
-		manifest: "json",
+		// marker to identify async content creation
+		// makes async: true for rootView obsolete!
+		interfaces: ["sap.ui.core.IAsyncContentCreation"],
+		manifest: "json"
 	};
 
 	public init(): void {
