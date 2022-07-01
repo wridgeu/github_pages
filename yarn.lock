@@ -7841,10 +7841,10 @@ wdio-chromedriver-service@^7.3.2:
     split2 "^3.2.2"
     tcp-port-used "^1.0.1"
 
-wdio-ui5-service@^0.9.5:
-  version "0.9.5"
-  resolved "https://registry.yarnpkg.com/wdio-ui5-service/-/wdio-ui5-service-0.9.5.tgz#6013a7ded320ce2b965f2f74ebbff01f89ba8d31"
-  integrity sha512-dAWvoevdjibWooMysmVNiaEDNhMUmckM1NLzSNKEXvuVTrhTcKpB5PiWxRWLTPuZ2JdQ+Dclhka7R5w/lrrLlw==
+wdio-ui5-service@^0.9.6:
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/wdio-ui5-service/-/wdio-ui5-service-0.9.6.tgz#10bf923426e1f0b64bdcac7c48c9abe41c6aeedd"
+  integrity sha512-bi58fVNiJlBJ170J0JPk7oExu2feROFLCzJu6E1FKpdPfPJRTBWjOlOIavY1nNNDPrihwlA8ZMWFOF+FiwYCvg==
   dependencies:
     semver "^7.3.7"
 

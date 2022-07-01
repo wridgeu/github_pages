@@ -59,7 +59,7 @@
         "ui5-task-minifier": "^1.0.2",
         "ui5-tooling-modules": "^0.4.0",
         "wdio-chromedriver-service": "^7.3.2",
-        "wdio-ui5-service": "^0.9.5"
+        "wdio-ui5-service": "^0.9.6"
     },
     "ui5": {
         "dependencies": [
