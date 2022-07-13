@@ -54,8 +54,12 @@ a:visited {
 	line-height: 24px;
 }
 
-.keepTileTextColor * span {
+.tile-text-color * span {
 	color: #1d2d3e !important;
+}
+
+.tile-image-position {
+	background-position: right 5px;
 }
 
 .integrationcard {
