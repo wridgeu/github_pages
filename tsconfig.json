@@ -16,7 +16,6 @@
 		"outDir": "./dist",
 		"baseUrl": "./",
 		"typeRoots": [
-			"./node_modules/@types/node",
 			"./node_modules/@types/highlightjs",
 			"./node_modules/@types/marked",
 			"./node_modules/@openui5/ts-types-esm"
