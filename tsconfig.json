@@ -16,9 +16,10 @@
 		"outDir": "./dist",
 		"baseUrl": "./",
 		"typeRoots": [
-			"./node_modules/@types/highlightjs",
-			"./node_modules/@types/marked",
-			"./node_modules/@openui5/ts-types-esm"
+			"./node_modules/@types/"
+		],
+		"types": [
+			"@openui5/ts-types-esm"
 		],
 		"paths": {
 			"sapmarco/projectpages/*": [
