@@ -1,7 +1,5 @@
-import View from "sap/ui/core/mvc/View";
 import UIComponent from "sap/ui/core/UIComponent";
 import { support } from "sap/ui/Device";
-import VersionDialog from "./controller/VersionDialog";
 import deviceModelCreator from "./model/models";
 
 // import additional dependencies to bundle them properly (done by Peter in UI5 Community)
@@ -36,13 +34,11 @@ sap.ui.loader.config({
 export default class Component extends UIComponent {
 	private _contentDensityClass: string;
 
-	private _versionDialog: VersionDialog;
-
 	public static metadata = {
 		// marker to identify async content creation
 		// makes async: true for rootView obsolete!
 		interfaces: ["sap.ui.core.IAsyncContentCreation"],
-		manifest: "json"
+		manifest: "json",
 	};
 
 	public init(): void {
@@ -51,7 +47,7 @@ export default class Component extends UIComponent {
 
 		// enable routing
 		this.getRouter().initialize();
-		
+
 		// set the device model
 		this.setModel(deviceModelCreator(), "device");
 	}
