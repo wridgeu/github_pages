@@ -7,11 +7,12 @@ import syncStyleClass from "sap/ui/core/syncStyleClass";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import VersionInfo from "sap/ui/VersionInfo";
 import Component from "../Component";
+import Object from "sap/ui/base/Object";
 
 /**
  * @namespace sapmarco.projectpages.classes
  */
-export default class VersionDialog extends Control {
+export default class VersionDialog extends Object {
 	private _view: View;
 
 	constructor(oView: View) {
