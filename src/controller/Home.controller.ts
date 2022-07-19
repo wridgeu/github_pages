@@ -13,7 +13,7 @@ export default class HomeController extends BaseController {
 	}
 
 	public async onUI5IconPress(): Promise<void> {
-		await this._ownerComponent.openVersionDialog();
+		await this.openVersionDialog(this.getView());
 	}
 	/**
 	 * Event-handler for click on theme toggle

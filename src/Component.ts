@@ -52,9 +52,6 @@ export default class Component extends UIComponent {
 		// enable routing
 		this.getRouter().initialize();
 		
-		//set Dailog
-		this._versionDialog = new VersionDialog(this.getRootControl() as View);
-
 		// set the device model
 		this.setModel(deviceModelCreator(), "device");
 	}
@@ -83,14 +80,5 @@ export default class Component extends UIComponent {
 			}
 		}
 		return this._contentDensityClass;
-	}
-
-	public async openVersionDialog(): Promise<void> {
-		await this._versionDialog.open();
-	}
-
-	public exit(): void {
-		this._versionDialog.destroy();
-		delete this._versionDialog;
 	}
 }
