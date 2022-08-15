@@ -15,17 +15,16 @@ export default class HomeController extends BaseController {
 	public async onUI5IconPress(): Promise<void> {
 		await this.openVersionDialog(this.getView());
 	}
-	/**
-	 * Event-handler for click on theme toggle
-	 */
-	public onThemeSwap(): void {
-		this.toggleTheme();
-	}
+
 	/**
 	 * Event-handler for navigation
 	 * to the Wiki-Page
 	 */
 	public onWiki(): void {
 		this.navTo("RouteWiki");
+	}
+
+	public onUI5con(): void {
+		this.navTo("RouteUI5Con");
 	}
 }

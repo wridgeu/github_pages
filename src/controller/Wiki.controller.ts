@@ -52,13 +52,6 @@ export default class WikiController extends BaseController {
 	}
 
 	/**
-	 * Event-handler for backwards navigation
-	 */
-	public onBackHome(): void {
-		this.onNavBack();
-	}
-
-	/**
 	 * Initialization of sidebar
 	 */
 	private async _initializeSidebar(): Promise<void> {
