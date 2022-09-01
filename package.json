@@ -40,7 +40,7 @@
         "@types/highlightjs": "^9.12.2",
         "@types/jquery": "3.5.14",
         "@types/marked": "^4.0.3",
-        "@types/node": "^18.7.4",
+        "@types/node": "^18.7.14",
         "@typescript-eslint/eslint-plugin": "^5.33.0",
         "@typescript-eslint/parser": "^5.33.0",
         "@ui5/cli": "^2.14.10",
