@@ -1275,10 +1275,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@openui5/ts-types-esm@1.108.0":
-  version "1.108.0"
-  resolved "https://registry.yarnpkg.com/@openui5/ts-types-esm/-/ts-types-esm-1.108.0.tgz#f313182d082f953954be4277dc327a8ed1a714b1"
-  integrity sha512-PnOSl14qGEUKtDFV9mQPOGl5E2jkuzqQ7C98rZMIBS0qQc8Q+BGtFK5QF9MF3E1BpdsVNK0tlTfjovpLXLwcxA==
+"@openui5/ts-types-esm@1.109.0":
+  version "1.109.0"
+  resolved "https://registry.yarnpkg.com/@openui5/ts-types-esm/-/ts-types-esm-1.109.0.tgz#e0538ecbce428075bfb0155a78dd8cff78a6d3fd"
+  integrity sha512-KDWqh2M/xxOEf5rD+O/kWJzwOEsOG6N3Dpqe+aQ+ss8bMS3ekRzGDGVQXDEyX7n8EGcfeNEccX3wJbvMlsM4KA==
   dependencies:
     "@types/jquery" "3.5.13"
     "@types/qunit" "2.5.4"
