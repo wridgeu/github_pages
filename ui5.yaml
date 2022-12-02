@@ -4,7 +4,7 @@ metadata:
   name: projectpages
 framework:
   name: OpenUI5
-  version: "1.107.0"
+  version: "1.109.0"
   libraries:
     - name: sap.m
     - name: sap.ui.core
@@ -21,6 +21,13 @@ builder:
         html: true
         css: true
         json: false
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: false
+        removeConsoleStatements: true
+        transpileAsync: true
+        transpileTypeScript: true
 server:
   customMiddleware:
     - name: ui5-tooling-modules-middleware
@@ -28,10 +35,16 @@ server:
     - name: ui5-middleware-livereload
       afterMiddleware: compression
       configuration:
-        debug: true
+        debug: false
         ext: "xml,json,properties"
         port: 35729
         path: "webapp"
+    - name: ui5-tooling-transpile-middleware
+      afterMiddleware: compression
+      configuration:
+        debug: false
+        transpileAsync: true
+        transpileTypeScript: true
 ---
 specVersion: "2.6"
 kind: extension
