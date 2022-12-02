@@ -15,7 +15,7 @@
     "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
     "start:build": "ui5 serve -o index.html --config ui5-dist.yaml",
     "ts-typecheck": "tsc --noEmit",
-    "lint": "eslint src",
+    "lint": "eslint webapp",
     "test": "start-server-and-test start:ui5:bg http://localhost:8080 wdio",
     "test:bg": "HEADLESS=true start-server-and-test start:ui5:bg http://localhost:8080 wdio",
     "wdio": "wdio run wdio.conf.ts",

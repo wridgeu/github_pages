@@ -12,7 +12,7 @@
 		"importHelpers": true,
 		"forceConsistentCasingInFileNames": true,
 		"strictPropertyInitialization": false,
-		"rootDir": "./src",
+		"rootDir": "./webapp",
 		"outDir": "./dist",
 		"baseUrl": "./",
 		"typeRoots": [
@@ -23,11 +23,11 @@
 		],
 		"paths": {
 			"sapmarco/projectpages/*": [
-				"./src/*"
+				"./webapp/*"
 			]
 		}
 	},
 	"include": [
-		"./src/**/*"
+		"./webapp/**/*"
 	]
 }
