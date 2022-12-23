@@ -1,6 +1,6 @@
 {
   "name": "projectpages",
-  "version": "1.24.0",
+  "version": "1.24.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/wridgeu/github_pages.git"
@@ -10,7 +10,7 @@
     "node": "18.x.x"
   },
   "scripts": {
-    "build": "ui5 build self-contained --all --clean-dest",
+    "build": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest",
     "start": "ui5 serve --port 8080 -o index.html",
     "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
     "start:build": "ui5 serve -o index.html --config ui5-dist.yaml",
@@ -19,7 +19,7 @@
     "test": "start-server-and-test start:ui5:bg http://localhost:8080 wdio",
     "test:bg": "HEADLESS=true start-server-and-test start:ui5:bg http://localhost:8080 wdio",
     "wdio": "wdio run wdio.conf.ts",
-    "build:no-dbg": "ui5 build self-contained --all --clean-dest true --dest ./dist"
+    "build:deploy": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest --dest ./dist"
   },
   "dependencies": {
     "highlight.js": "^11.7.0",
