@@ -16,7 +16,7 @@ builder:
     - name: ui5-tooling-modules-task
       afterTask: replaceVersion
     - name: ui5-task-minifier
-      afterTask: uglify
+      afterTask: minify
       configuration:
         html: true
         css: true

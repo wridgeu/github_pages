@@ -1,13 +1,13 @@
 {
   "name": "projectpages",
-  "version": "1.23.0",
+  "version": "1.24.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/wridgeu/github_pages.git"
   },
   "homepage": "https://wridgeu.github.io/",
   "engines": {
-    "node": "16.x.x"
+    "node": "18.x.x"
   },
   "scripts": {
     "build": "ui5 build self-contained --all --clean-dest",
@@ -19,46 +19,37 @@
     "test": "start-server-and-test start:ui5:bg http://localhost:8080 wdio",
     "test:bg": "HEADLESS=true start-server-and-test start:ui5:bg http://localhost:8080 wdio",
     "wdio": "wdio run wdio.conf.ts",
-    "build:no-dbg": "ui5 build self-contained --all --exclude-task=createDebugFiles --clean-dest true --dest ./dist"
+    "build:no-dbg": "ui5 build self-contained --all --clean-dest true --dest ./dist"
   },
   "dependencies": {
     "highlight.js": "^11.7.0",
-    "marked": "^4.2.3",
+    "marked": "^4.2.5",
     "shx": "^0.3.4"
   },
   "devDependencies": {
     "@openui5/ts-types-esm": "1.109.0",
     "@types/highlightjs": "^9.12.2",
     "@types/jquery": "3.5.14",
-    "@types/marked": "^4.0.7",
-    "@types/node": "^18.11.10",
-    "@typescript-eslint/eslint-plugin": "^5.45.0",
-    "@typescript-eslint/parser": "^5.45.0",
-    "@ui5/cli": "^2.14.16",
-    "@wdio/cli": "^8.0.4",
-    "@wdio/local-runner": "^8.0.4",
-    "@wdio/mocha-framework": "^8.0.2",
-    "@wdio/spec-reporter": "^8.0.0",
+    "@types/marked": "^4.0.8",
+    "@types/node": "^18.11.17",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "@ui5/cli": "^3.0.0-rc.0",
+    "@wdio/cli": "^8.0.13",
+    "@wdio/local-runner": "^8.0.13",
+    "@wdio/mocha-framework": "^8.0.13",
+    "@wdio/spec-reporter": "^8.0.13",
     "chromedriver": "^108.0.0",
-    "eslint": "^8.28.0",
+    "eslint": "^8.30.0",
     "npm-run-all": "^4.1.5",
-    "start-server-and-test": "^1.14.0",
+    "start-server-and-test": "^1.15.2",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3",
-    "ui5-middleware-livereload": "^0.7.0",
+    "typescript": "^4.9.4",
+    "ui5-middleware-livereload": "^0.7.1",
     "ui5-task-minifier": "^1.0.2",
     "ui5-tooling-modules": "^0.7.0",
-    "ui5-tooling-transpile": "^0.2.1",
-    "wdio-chromedriver-service": "^8.0.0",
-    "wdio-ui5-service": "^1.0.2"
-  },
-  "ui5": {
-    "dependencies": [
-      "marked",
-      "ui5-middleware-livereload",
-      "ui5-task-minifier",
-      "ui5-tooling-modules",
-      "ui5-tooling-transpile"
-    ]
+    "ui5-tooling-transpile": "^0.3.1",
+    "wdio-chromedriver-service": "^8.0.1",
+    "wdio-ui5-service": "^1.0.3"
   }
 }
