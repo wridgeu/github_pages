@@ -6570,7 +6570,7 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-portfinder@^1.0.28:
+portfinder@^1.0.32:
   version "1.0.32"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.32.tgz#2fe1b9e58389712429dc2bea5beb2146146c7f81"
   integrity sha512-on2ZJVVDXRADWE6jnQaX0ioEylzgBpQk8r55NE4wjXW1ZxO+BgDlY6DXwj20i0V8eB4SenDQ00WEaxfiIQPcxg==
@@ -7887,16 +7887,16 @@ uc.micro@^1.0.1, uc.micro@^1.0.5:
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
   integrity sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==
 
-ui5-middleware-livereload@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/ui5-middleware-livereload/-/ui5-middleware-livereload-0.7.1.tgz#121a935beb54496e11472d2bec40a77f777a04bd"
-  integrity sha512-gSyiPsgkA7FUIkhEDEVDtAlsGxMF3BA8KNuANorX8ognW7K0DgtC8jERoDAHjTVCGESDebnbXHtvNcy2vGyBAA==
+ui5-middleware-livereload@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/ui5-middleware-livereload/-/ui5-middleware-livereload-0.7.2.tgz#c8493415486ccd6b650be838d5a145fd20447270"
+  integrity sha512-42E+cQqDcZjAcrscn+TvywukzW0txDS2uNQLrKGEqu3pyPMPjcTtElJrVDOVt62kirIZ8TophFjE0kc5XgI+pA==
   dependencies:
     "@ui5/logger" "^2.0.1"
     connect-livereload "^0.6.1"
     livereload "^0.9.3"
-    portfinder "^1.0.28"
-    yargs "^17.5.1"
+    portfinder "^1.0.32"
+    yargs "^17.6.2"
 
 ui5-task-minifier@^1.0.2:
   version "1.0.2"
