@@ -3706,7 +3706,7 @@ eslint@^8.30.0:
     strip-json-comments "^3.1.0"
     text-table "^0.2.0"
 
-espree@^9.3.2, espree@^9.4.0, espree@^9.4.1:
+espree@^9.4.0, espree@^9.4.1:
   version "9.4.1"
   resolved "https://registry.yarnpkg.com/espree/-/espree-9.4.1.tgz#51d6092615567a2c2cff7833445e37c28c0065bd"
   integrity sha512-XwctdmTO6SIvCzd9810yyNzIrOrqNYV9Koizx4C/mRhf9uq0o4yHoCEU/670pOxOL/MSraektvSAji79kX90Vg==
@@ -3927,7 +3927,7 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
-fast-xml-parser@^4.0.7:
+fast-xml-parser@^4.0.12:
   version "4.0.12"
   resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-4.0.12.tgz#9e3117d76523d20dfbd30482c1621fb9b03a7817"
   integrity sha512-/Nmo3823Rfx7UTJosQNz6hBVbszfv1Unb7A4iNJZhvCGCgtIHv/uODmrYIH8vc05+XKZ4hNIOv6SlBejvJgATw==
@@ -7906,10 +7906,10 @@ ui5-task-minifier@^1.0.2:
     clean-css "^4.2.3"
     html-minifier-terser "^5.1.1"
 
-ui5-tooling-modules@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/ui5-tooling-modules/-/ui5-tooling-modules-0.7.0.tgz#df357597ffcbfe5150fe19ec5a4567e1b2b87997"
-  integrity sha512-LX9Zf4l3os46dnXVYxjjD39eaywkfe4Kc29abQpfiN/Kif8HL9rc6fqv5lf3GU7Vcx4u/Rrev9nMsQt8sTmFCg==
+ui5-tooling-modules@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/ui5-tooling-modules/-/ui5-tooling-modules-0.7.1.tgz#dcfd310c2b9827564c88e34dee39e58ba0b810ea"
+  integrity sha512-iHfVAKZR6+Yhp8wYB6mfDSQ5CNLMw1CD6eqpiV4I1NOh4R243bqqb97/blzuK+bqB3WBxKeR0R8H0k8fViT6XA==
   dependencies:
     "@buxlabs/amd-to-es6" "^0.16.3"
     "@rollup/plugin-commonjs" "^22.0.1"
@@ -7919,9 +7919,9 @@ ui5-tooling-modules@^0.7.0:
     "@ui5/fs" "^2.0.6"
     "@ui5/logger" "^2.0.1"
     escodegen "^2.0.0"
-    espree "^9.3.2"
+    espree "^9.4.1"
     estraverse "^5.3.0"
-    fast-xml-parser "^4.0.7"
+    fast-xml-parser "^4.0.12"
     rollup "^2.75.7"
     rollup-plugin-inject-process-env "^1.3.1"
     rollup-plugin-polyfill-node "^0.9.0"
