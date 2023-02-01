@@ -39,7 +39,7 @@
     "@wdio/local-runner": "^8.0.15",
     "@wdio/mocha-framework": "^8.0.14",
     "@wdio/spec-reporter": "^8.0.14",
-    "chromedriver": "^108.0.0",
+    "chromedriver": "^109.0.0",
     "eslint": "^8.31.0",
     "pnpm": "^7.24.3",
     "start-server-and-test": "^1.15.2",
