@@ -30,7 +30,7 @@
     "@openui5/ts-types-esm": "1.113.0",
     "@types/highlightjs": "^9.12.2",
     "@types/jquery": "3.5.16",
-    "@types/marked": "^4.0.8",
+    "@types/marked": "^5.0.0",
     "@types/node": "^18.16.3",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
