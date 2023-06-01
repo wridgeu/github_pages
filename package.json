@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "highlight.js": "^11.8.0",
-    "marked": "^4.3.0",
+    "marked": "^5.0.4",
     "shx": "^0.3.4"
   },
   "devDependencies": {
