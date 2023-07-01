@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   highlight.js:
     specifier: ^11.8.0
@@ -13,8 +17,8 @@ dependencies:
 
 devDependencies:
   '@openui5/ts-types-esm':
-    specifier: 1.112.2
-    version: 1.112.2
+    specifier: 1.115.1
+    version: 1.115.1
   '@types/highlightjs':
     specifier: ^9.12.2
     version: 9.12.2
@@ -1585,8 +1589,8 @@ packages:
       - supports-color
     dev: true
 
-  /@openui5/ts-types-esm@1.112.2:
-    resolution: {integrity: sha512-r5cHtBjmwfFhi+qa/tGjF3coy+fSC1lTS5NRSy/NGrYTvhdR7ZcMZ4ADioV2fZiPQwp5MHQG7tkmkVFrSVCeWg==}
+  /@openui5/ts-types-esm@1.115.1:
+    resolution: {integrity: sha512-Vob7YYkCFEza1xQ7frKtCf6gn9W/oio970FklKG87z33vpR6BEXlVgC1YqKAICHk+cnA43a+czF9WzZMsBVGtw==}
     dependencies:
       '@types/jquery': 3.5.13
       '@types/qunit': 2.5.4
