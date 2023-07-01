@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   highlight.js:
     specifier: ^11.8.0
@@ -13,8 +17,8 @@ dependencies:
 
 devDependencies:
   '@openui5/ts-types-esm':
-    specifier: 1.112.2
-    version: 1.112.2
+    specifier: 1.113.0
+    version: 1.113.0
   '@types/highlightjs':
     specifier: ^9.12.2
     version: 9.12.2
@@ -70,8 +74,8 @@ devDependencies:
     specifier: ^0.8.2
     version: 0.8.2
   ui5-task-minifier:
-    specifier: ^1.0.2
-    version: 1.0.2
+    specifier: ^2.0.0
+    version: 2.0.0
   ui5-tooling-modules:
     specifier: ^0.9.7
     version: 0.9.7
@@ -1478,7 +1482,7 @@ packages:
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
-      '@jridgewell/sourcemap-codec': 1.4.14
+      '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
   /@jsdoc/salty@0.2.3:
@@ -1585,8 +1589,9 @@ packages:
       - supports-color
     dev: true
 
-  /@openui5/ts-types-esm@1.112.2:
-    resolution: {integrity: sha512-r5cHtBjmwfFhi+qa/tGjF3coy+fSC1lTS5NRSy/NGrYTvhdR7ZcMZ4ADioV2fZiPQwp5MHQG7tkmkVFrSVCeWg==}
+  /@openui5/ts-types-esm@1.113.0:
+    resolution: {integrity: sha512-8xri2F3+ZJqvb0DZNFpukgWWf3/6iOUoQYc1nA4sXEq9wm1H0W9foj0qpLRx4kkIKuPNd9c8jXd8S0cbFktr9g==}
+    deprecated: Starting with release 1.113, please use the identical package @openui5/types instead
     dependencies:
       '@types/jquery': 3.5.13
       '@types/qunit': 2.5.4
@@ -3181,9 +3186,9 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /clean-css@4.2.4:
-    resolution: {integrity: sha512-EJUDT7nDVFDvaQgAo2G/PJvxmp1o/c6iXLbswsBbUFXi1Nr+AjA2cKmfbKDMjMvzEe75g3P6JkaDDAKk96A85A==}
-    engines: {node: '>= 4.0'}
+  /clean-css@5.3.2:
+    resolution: {integrity: sha512-JVJbM+f3d3Q704rF4bqQ5UUyTtuJ0JRKNbTKVEeujCCBoMdkEi+V+e8oktO9qGQNSvHrFTM6JZRXrUvGR1czww==}
+    engines: {node: '>= 10.0'}
     dependencies:
       source-map: 0.6.1
     dev: true
@@ -3291,13 +3296,13 @@ packages:
     resolution: {integrity: sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==}
     dev: true
 
-  /commander@2.20.3:
-    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
+  /commander@10.0.1:
+    resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
+    engines: {node: '>=14'}
     dev: true
 
-  /commander@4.1.1:
-    resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
-    engines: {node: '>= 6'}
+  /commander@2.20.3:
+    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: true
 
   /commander@8.3.0:
@@ -4767,18 +4772,18 @@ packages:
       wbuf: 1.7.3
     dev: true
 
-  /html-minifier-terser@5.1.1:
-    resolution: {integrity: sha512-ZPr5MNObqnV/T9akshPKbVgyOqLmy+Bxo7juKCfTfnjNniTAMdy4hz21YQqoofMBJD2kdREaqPPdThoR78Tgxg==}
-    engines: {node: '>=6'}
+  /html-minifier-terser@7.2.0:
+    resolution: {integrity: sha512-tXgn3QfqPIpGl9o+K5tpcj3/MN4SfLtsx2GWwBC3SSd0tXQGyF3gsSqad8loJgKZGM3ZxbYDd5yhiBIdWpmvLA==}
+    engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
       camel-case: 4.1.2
-      clean-css: 4.2.4
-      commander: 4.1.1
-      he: 1.2.0
+      clean-css: 5.3.2
+      commander: 10.0.1
+      entities: 4.4.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 4.8.1
+      terser: 5.17.1
     dev: true
 
   /htmlparser2@8.0.1:
@@ -7899,17 +7904,6 @@ packages:
       - supports-color
     dev: true
 
-  /terser@4.8.1:
-    resolution: {integrity: sha512-4GnLC0x667eJG0ewJTa6z/yXrbLGv80D9Ru6HIpCQmO+Q4PfEtBFi0ObSckqwL6VyQv/7ENJieXHo2ANmdQwgw==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      acorn: 8.8.1
-      commander: 2.20.3
-      source-map: 0.6.1
-      source-map-support: 0.5.21
-    dev: true
-
   /terser@5.17.1:
     resolution: {integrity: sha512-hVl35zClmpisy6oaoKALOpS0rDYLxRFLHhRuDlEGTKey9qHjS1w9GMORjuwIMt70Wan4lwsLYyWDVnWgF+KUEw==}
     engines: {node: '>=10'}
@@ -8098,11 +8092,11 @@ packages:
       - utf-8-validate
     dev: true
 
-  /ui5-task-minifier@1.0.2:
-    resolution: {integrity: sha512-jdq+F9VA5SNPWzYwFtDsd2VM0gsO5F9IhO6b8QlOImhZFwWKWgQyyX+HW1WaEVaCfC/ofTLRTuss+oXfBOZ81g==}
+  /ui5-task-minifier@2.0.0:
+    resolution: {integrity: sha512-J0yXX48sRw5HsvgeW6Mdhxf2dSIMtNrxHNEdnbCHMPWit2sj7hdJ6XqpzeScGYYnrCfFHH4y0vJmv0J35RwFow==}
     dependencies:
-      clean-css: 4.2.4
-      html-minifier-terser: 5.1.1
+      clean-css: 5.3.2
+      html-minifier-terser: 7.2.0
     dev: true
 
   /ui5-tooling-modules@0.9.7:
