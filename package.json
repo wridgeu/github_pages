@@ -45,7 +45,7 @@
     "start-server-and-test": "^2.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
-    "ui5-middleware-livereload": "^0.8.2",
+    "ui5-middleware-livereload": "^0.8.3",
     "ui5-task-minifier": "^1.0.2",
     "ui5-tooling-modules": "^0.9.7",
     "ui5-tooling-transpile": "^0.7.8",

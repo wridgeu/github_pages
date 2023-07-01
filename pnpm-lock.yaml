@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   highlight.js:
     specifier: ^11.8.0
@@ -13,8 +17,8 @@ dependencies:
 
 devDependencies:
   '@openui5/ts-types-esm':
-    specifier: 1.112.2
-    version: 1.112.2
+    specifier: 1.113.0
+    version: 1.113.0
   '@types/highlightjs':
     specifier: ^9.12.2
     version: 9.12.2
@@ -67,8 +71,8 @@ devDependencies:
     specifier: ^5.0.4
     version: 5.0.4
   ui5-middleware-livereload:
-    specifier: ^0.8.2
-    version: 0.8.2
+    specifier: ^0.8.3
+    version: 0.8.3
   ui5-task-minifier:
     specifier: ^1.0.2
     version: 1.0.2
@@ -1585,8 +1589,9 @@ packages:
       - supports-color
     dev: true
 
-  /@openui5/ts-types-esm@1.112.2:
-    resolution: {integrity: sha512-r5cHtBjmwfFhi+qa/tGjF3coy+fSC1lTS5NRSy/NGrYTvhdR7ZcMZ4ADioV2fZiPQwp5MHQG7tkmkVFrSVCeWg==}
+  /@openui5/ts-types-esm@1.113.0:
+    resolution: {integrity: sha512-8xri2F3+ZJqvb0DZNFpukgWWf3/6iOUoQYc1nA4sXEq9wm1H0W9foj0qpLRx4kkIKuPNd9c8jXd8S0cbFktr9g==}
+    deprecated: Starting with release 1.113, please use the identical package @openui5/types instead
     dependencies:
       '@types/jquery': 3.5.13
       '@types/qunit': 2.5.4
@@ -2121,6 +2126,7 @@ packages:
   /@ui5/logger@2.0.1:
     resolution: {integrity: sha512-FU5moQF9HATZEIJVQxXWRsUKMveIRJNPSmH3Mptcuc05f6gKu1BWcamDaDHXmMSyoKRounY9Aok94NTQMi7eDw==}
     engines: {node: '>= 10', npm: '>= 5'}
+    deprecated: 'UI5 Tooling version 2 is out of maintenance. Migrate your project to the latest version: https://sap.github.io/ui5-tooling/stable/'
     dependencies:
       npmlog: 4.1.2
     dev: true
@@ -8084,14 +8090,14 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: true
 
-  /ui5-middleware-livereload@0.8.2:
-    resolution: {integrity: sha512-22yS6kiVRvMjXrhOXP9D8NoU41NQx6YV/6SYQzB7GrFcHF5zIH2ceEKx2TNmRNaEWwbK/bBP3D+PrD4EpWwcjQ==}
+  /ui5-middleware-livereload@0.8.3:
+    resolution: {integrity: sha512-oL1ITKTPctAqw6sMLtMbfBuFtN0C+e5gKlJy1f/NorpnkDqnzpkLrdqOWaHP4gn4aikVg6df2H4wa7EnHBXm8g==}
     dependencies:
       '@ui5/logger': 2.0.1
       connect-livereload: 0.6.1
       livereload: 0.9.3
       portfinder: 1.0.32
-      yargs: 17.7.1
+      yargs: 17.7.2
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -8640,6 +8646,19 @@ packages:
 
   /yargs@17.7.1:
     resolution: {integrity: sha512-cwiTb08Xuv5fqF4AovYacTFNxk62th7LKJ6BL9IGUpTJrWoU7/7WdQGTP2SjKf1dUNBGzDd28p/Yfs/GI6JrLw==}
+    engines: {node: '>=12'}
+    dependencies:
+      cliui: 8.0.1
+      escalade: 3.1.1
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      string-width: 4.2.3
+      y18n: 5.0.8
+      yargs-parser: 21.1.1
+    dev: true
+
+  /yargs@17.7.2:
+    resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 8.0.1
