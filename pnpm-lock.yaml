@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   highlight.js:
     specifier: ^11.8.0
@@ -13,8 +17,8 @@ dependencies:
 
 devDependencies:
   '@openui5/ts-types-esm':
-    specifier: 1.112.2
-    version: 1.112.2
+    specifier: 1.113.0
+    version: 1.113.0
   '@types/highlightjs':
     specifier: ^9.12.2
     version: 9.12.2
@@ -55,8 +59,8 @@ devDependencies:
     specifier: ^8.39.0
     version: 8.39.0
   pnpm:
-    specifier: ^8.3.1
-    version: 8.3.1
+    specifier: ^8.6.5
+    version: 8.6.5
   start-server-and-test:
     specifier: ^2.0.0
     version: 2.0.0
@@ -1585,8 +1589,9 @@ packages:
       - supports-color
     dev: true
 
-  /@openui5/ts-types-esm@1.112.2:
-    resolution: {integrity: sha512-r5cHtBjmwfFhi+qa/tGjF3coy+fSC1lTS5NRSy/NGrYTvhdR7ZcMZ4ADioV2fZiPQwp5MHQG7tkmkVFrSVCeWg==}
+  /@openui5/ts-types-esm@1.113.0:
+    resolution: {integrity: sha512-8xri2F3+ZJqvb0DZNFpukgWWf3/6iOUoQYc1nA4sXEq9wm1H0W9foj0qpLRx4kkIKuPNd9c8jXd8S0cbFktr9g==}
+    deprecated: Starting with release 1.113, please use the identical package @openui5/types instead
     dependencies:
       '@types/jquery': 3.5.13
       '@types/qunit': 2.5.4
@@ -6783,8 +6788,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm@8.3.1:
-    resolution: {integrity: sha512-0mT2ZAv08J3nz8xUdWhRW88GE89IWgPo/xZhb6acQXK2+aCikl7kT7Bg31ZcnJqOrwYXSed68xjLd/ZoSnBR8w==}
+  /pnpm@8.6.5:
+    resolution: {integrity: sha512-mztfvneJl4o9gCWfQlFKio6gVYhJbFazWUVBcomJ9u/yspwScHUxMyWvxOed1a543roo+aeIjp5VQkHOoTWFAg==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: true

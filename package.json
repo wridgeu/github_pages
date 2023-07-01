@@ -41,7 +41,7 @@
     "@wdio/spec-reporter": "^8.8.7",
     "chromedriver": "^112.0.0",
     "eslint": "^8.39.0",
-    "pnpm": "^8.3.1",
+    "pnpm": "^8.6.5",
     "start-server-and-test": "^2.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
