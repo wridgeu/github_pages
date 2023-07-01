@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   highlight.js:
     specifier: ^11.8.0
@@ -13,8 +17,8 @@ dependencies:
 
 devDependencies:
   '@openui5/ts-types-esm':
-    specifier: 1.112.2
-    version: 1.112.2
+    specifier: 1.113.0
+    version: 1.113.0
   '@types/highlightjs':
     specifier: ^9.12.2
     version: 9.12.2
@@ -46,8 +50,8 @@ devDependencies:
     specifier: ^8.8.7
     version: 8.8.7
   '@wdio/spec-reporter':
-    specifier: ^8.8.7
-    version: 8.8.7
+    specifier: ^8.11.2
+    version: 8.11.2
   chromedriver:
     specifier: ^112.0.0
     version: 112.0.0
@@ -1585,8 +1589,9 @@ packages:
       - supports-color
     dev: true
 
-  /@openui5/ts-types-esm@1.112.2:
-    resolution: {integrity: sha512-r5cHtBjmwfFhi+qa/tGjF3coy+fSC1lTS5NRSy/NGrYTvhdR7ZcMZ4ADioV2fZiPQwp5MHQG7tkmkVFrSVCeWg==}
+  /@openui5/ts-types-esm@1.113.0:
+    resolution: {integrity: sha512-8xri2F3+ZJqvb0DZNFpukgWWf3/6iOUoQYc1nA4sXEq9wm1H0W9foj0qpLRx4kkIKuPNd9c8jXd8S0cbFktr9g==}
+    deprecated: Starting with release 1.113, please use the identical package @openui5/types instead
     dependencies:
       '@types/jquery': 3.5.13
       '@types/qunit': 2.5.4
@@ -1858,6 +1863,10 @@ packages:
 
   /@types/node@18.16.3:
     resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
+    dev: true
+
+  /@types/node@20.3.3:
+    resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -2277,6 +2286,16 @@ packages:
       - utf-8-validate
     dev: true
 
+  /@wdio/logger@8.11.0:
+    resolution: {integrity: sha512-IsuKSaYi7NKEdgA57h8muzlN/MVp1dQG+V4C//7g4m03YJUnNQLvDhJzLjdeNTfvZy61U7foQSyt+3ktNzZkXA==}
+    engines: {node: ^16.13 || >=18}
+    dependencies:
+      chalk: 5.2.0
+      loglevel: 1.8.1
+      loglevel-plugin-prefix: 0.8.4
+      strip-ansi: 7.1.0
+    dev: true
+
   /@wdio/logger@8.6.6:
     resolution: {integrity: sha512-MS+Y5yqFGx2zVXMOfuBQAVdFsP4DuYz+/hM552xwiDWjGg6EZHoccqUYgH3J5zpu3JFpYV3R/a5jExFiGGck6g==}
     engines: {node: ^16.13 || >=18}
@@ -2310,13 +2329,13 @@ packages:
       '@types/node': 18.16.3
     dev: true
 
-  /@wdio/reporter@8.8.7:
-    resolution: {integrity: sha512-pnZ1ZvoEOVr69zR9YrDhiwEM7M3fiqi/8mMyIUZ0J/bVWYIV2aACbgn/TfJ5R2mUoyZIRFHgN3wZK5Y5QYLQ/A==}
+  /@wdio/reporter@8.11.0:
+    resolution: {integrity: sha512-eNQxzaTzouyCGRT8ljSzdOf5oJnQxgiKwOs9Cw/j4r5eqd5JQs+GCFP6tFVNjGtPpVIbfsfTb7yI+xmvjNRXhw==}
     engines: {node: ^16.13 || >=18}
     dependencies:
-      '@types/node': 18.16.3
-      '@wdio/logger': 8.6.6
-      '@wdio/types': 8.8.7
+      '@types/node': 20.3.3
+      '@wdio/logger': 8.11.0
+      '@wdio/types': 8.10.4
       diff: 5.1.0
       object-inspect: 1.12.2
       supports-color: 9.3.1
@@ -2345,15 +2364,22 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@wdio/spec-reporter@8.8.7:
-    resolution: {integrity: sha512-lyx46r0FHJlNLy2wRj7RtaWdfRVuQeiv8AeQomAj0kxvS1myyxWUnOWjPBXjTBbbiSCtNGgWVUtmNMpeZRDNgg==}
+  /@wdio/spec-reporter@8.11.2:
+    resolution: {integrity: sha512-ylhxICgen4eEMXgGBEAN6lYs/UnQ4WUYy2ld/4978vRObXy7pGINz96pIPZHAMn01ENU0+gWr8edwawfZyrqLw==}
     engines: {node: ^16.13 || >=18}
     dependencies:
-      '@wdio/reporter': 8.8.7
-      '@wdio/types': 8.8.7
+      '@wdio/reporter': 8.11.0
+      '@wdio/types': 8.10.4
       chalk: 5.2.0
       easy-table: 1.2.0
       pretty-ms: 7.0.1
+    dev: true
+
+  /@wdio/types@8.10.4:
+    resolution: {integrity: sha512-aLJ1QQW+hhALeRK3bvMLjIrlUVyhOs3Od+91pR4Z4pLwyeNG1bJZCJRD5bAJK/mm7CnFa0NsdixPS9jJxZcRrw==}
+    engines: {node: ^16.13 || >=18}
+    dependencies:
+      '@types/node': 20.3.3
     dev: true
 
   /@wdio/types@8.8.7:
@@ -4968,7 +4994,7 @@ packages:
       run-async: 2.4.1
       rxjs: 7.8.0
       string-width: 5.1.2
-      strip-ansi: 7.0.1
+      strip-ansi: 7.1.0
       through: 2.3.8
       wrap-ansi: 8.1.0
     dev: true
@@ -6485,7 +6511,7 @@ packages:
       is-interactive: 2.0.0
       is-unicode-supported: 1.3.0
       log-symbols: 5.1.0
-      strip-ansi: 7.0.1
+      strip-ansi: 7.1.0
       wcwidth: 1.0.1
     dev: true
 
@@ -7751,7 +7777,7 @@ packages:
     dependencies:
       eastasianwidth: 0.2.0
       emoji-regex: 9.2.2
-      strip-ansi: 7.0.1
+      strip-ansi: 7.1.0
     dev: true
 
   /string_decoder@1.1.1:
@@ -7780,8 +7806,8 @@ packages:
       ansi-regex: 5.0.1
     dev: true
 
-  /strip-ansi@7.0.1:
-    resolution: {integrity: sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==}
+  /strip-ansi@7.1.0:
+    resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
     engines: {node: '>=12'}
     dependencies:
       ansi-regex: 6.0.1
@@ -8521,7 +8547,7 @@ packages:
     dependencies:
       ansi-styles: 6.2.1
       string-width: 5.1.2
-      strip-ansi: 7.0.1
+      strip-ansi: 7.1.0
     dev: true
 
   /wrappy@1.0.2:
