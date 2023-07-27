@@ -1,5 +1,5 @@
 import UIComponent from "sap/ui/core/UIComponent";
-import { support } from "sap/ui/Device";
+import Device from "sap/ui/Device";
 import deviceModelCreator from "./model/models";
 
 // import additional dependencies to bundle them properly
@@ -67,7 +67,7 @@ export default class Component extends UIComponent {
 				document.body.classList.contains("sapUiSizeCompact")
 			) {
 				this._contentDensityClass = "";
-			} else if (!support.touch) {
+			} else if (!Device.support.touch) {
 				// apply "compact" mode if touch is not supported
 				this._contentDensityClass = "sapUiSizeCompact";
 			} else {

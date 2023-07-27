@@ -15,11 +15,8 @@
 		"rootDir": "./webapp",
 		"outDir": "./dist",
 		"baseUrl": "./",
-		"typeRoots": [
-			"./node_modules/@types/"
-		],
 		"types": [
-			"@openui5/ts-types-esm"
+			"@openui5/types"
 		],
 		"paths": {
 			"sapmarco/projectpages/*": [

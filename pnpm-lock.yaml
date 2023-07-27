@@ -12,8 +12,8 @@ dependencies:
     version: 0.3.4
 
 devDependencies:
-  '@openui5/ts-types-esm':
-    specifier: 1.116.0
+  '@openui5/types':
+    specifier: ^1.116.0
     version: 1.116.0
   '@types/highlightjs':
     specifier: ^9.12.2
@@ -1681,8 +1681,8 @@ packages:
       - supports-color
     dev: true
 
-  /@openui5/ts-types-esm@1.116.0:
-    resolution: {integrity: sha512-rHhyYytSYX9wzOBfM6V6j+XxLboFJVmRnfZNepgsCEj7CORan1dtwNNKgG/4BSOGF+IJlTNLCL/NrrZW76sagw==}
+  /@openui5/types@1.116.0:
+    resolution: {integrity: sha512-cxLmX0jvty2iAh6m0laix/Hscvri0IXxZ1OQ8Rsho5GO7ocK0Of128yeZ5AB1y9m/EUXtabCJUbwfxkeHzjlag==}
     dependencies:
       '@types/jquery': 3.5.13
       '@types/qunit': 2.5.4
