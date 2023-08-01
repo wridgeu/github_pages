@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   highlight.js:
     specifier: ^11.8.0
@@ -67,8 +71,8 @@ devDependencies:
     specifier: ^5.1.6
     version: 5.1.6
   ui5-middleware-livereload:
-    specifier: ^0.8.4
-    version: 0.8.4
+    specifier: ^3.0.0
+    version: 3.0.0
   ui5-task-minifier:
     specifier: ^2.0.0
     version: 2.0.0
@@ -8179,10 +8183,9 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: true
 
-  /ui5-middleware-livereload@0.8.4:
-    resolution: {integrity: sha512-Ky1y/9N02Y5vg7omn+BQS4HB4Fw1cWM86uKhlJV4kjMMexbP+tWa0F3iPPytTRrZAI55izbeMPRtMsp+O0LCaA==}
+  /ui5-middleware-livereload@3.0.0:
+    resolution: {integrity: sha512-2KgJWX7kgRDgGRsVua0rfwHCkpoXo7GqwzdkacocRlGX0I6xgXAvkZ/1rLZIYx2XVFJd9+9M+3teAZivySKSuQ==}
     dependencies:
-      '@ui5/logger': 2.0.1
       connect-livereload: 0.6.1
       livereload: 0.9.3
       portfinder: 1.0.32
@@ -8816,7 +8819,3 @@ packages:
       compress-commons: 4.1.1
       readable-stream: 3.6.0
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
