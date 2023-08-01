@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   highlight.js:
     specifier: ^11.8.0
@@ -73,8 +77,8 @@ devDependencies:
     specifier: ^2.0.0
     version: 2.0.0
   ui5-tooling-modules:
-    specifier: ^0.9.13
-    version: 0.9.13
+    specifier: ^3.0.0
+    version: 3.0.0
   ui5-tooling-transpile:
     specifier: ^0.7.20
     version: 0.7.20
@@ -1734,8 +1738,8 @@ packages:
       - supports-color
     dev: true
 
-  /@rollup/plugin-commonjs@25.0.2(rollup@3.26.0):
-    resolution: {integrity: sha512-NGTwaJxIO0klMs+WSFFtBP7b9TdTJ3K76HZkewT8/+yHzMiUGVQgaPtLQxNVYIgT5F7lxkEyVID+yS3K7bhCow==}
+  /@rollup/plugin-commonjs@25.0.3(rollup@3.27.0):
+    resolution: {integrity: sha512-uBdtWr/H3BVcgm97MUdq2oJmqBR23ny1hOrWe2PKo9FTbjsGqg32jfasJUKYAI5ouqacjRnj65mBB/S79F+GQA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
@@ -1743,16 +1747,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.0.3
       is-reference: 1.2.1
       magic-string: 0.27.0
-      rollup: 3.26.0
+      rollup: 3.27.0
     dev: true
 
-  /@rollup/plugin-inject@5.0.3(rollup@3.26.0):
+  /@rollup/plugin-inject@5.0.3(rollup@3.27.0):
     resolution: {integrity: sha512-411QlbL+z2yXpRWFXSmw/teQRMkXcAAC8aYTemc15gwJRpvEVDQwoe+N/HTFD8RFG8+88Bme9DK2V9CVm7hJdA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1761,13 +1765,13 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
       estree-walker: 2.0.2
       magic-string: 0.27.0
-      rollup: 3.26.0
+      rollup: 3.27.0
     dev: true
 
-  /@rollup/plugin-json@6.0.0(rollup@3.26.0):
+  /@rollup/plugin-json@6.0.0(rollup@3.27.0):
     resolution: {integrity: sha512-i/4C5Jrdr1XUarRhVu27EEwjt4GObltD7c+MkCIpO2QIbojw8MUs+CCTqOphQi3Qtg1FLmYt+l+6YeoIf51J7w==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1776,11 +1780,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.0)
-      rollup: 3.26.0
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
+      rollup: 3.27.0
     dev: true
 
-  /@rollup/plugin-node-resolve@15.1.0(rollup@3.26.0):
+  /@rollup/plugin-node-resolve@15.1.0(rollup@3.27.0):
     resolution: {integrity: sha512-xeZHCgsiZ9pzYVgAo9580eCGqwh/XCEUM9q6iQfGNocjgkufHAqC3exA+45URvhiYV8sBF9RlBai650eNs7AsA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1789,16 +1793,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
       '@types/resolve': 1.20.2
       deepmerge: 4.2.2
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.3
-      rollup: 3.26.0
+      rollup: 3.27.0
     dev: true
 
-  /@rollup/plugin-replace@5.0.2(rollup@3.26.0):
+  /@rollup/plugin-replace@5.0.2(rollup@3.27.0):
     resolution: {integrity: sha512-M9YXNekv/C/iHHK+cvORzfRYfPbq0RDD8r0G+bMiTXjNGKulPnCT9O3Ss46WfhI6ZOCgApOP7xAdmCQJ+U2LAA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1807,12 +1811,12 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
       magic-string: 0.27.0
-      rollup: 3.26.0
+      rollup: 3.27.0
     dev: true
 
-  /@rollup/pluginutils@5.0.2(rollup@3.26.0):
+  /@rollup/pluginutils@5.0.2(rollup@3.27.0):
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1824,7 +1828,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.26.0
+      rollup: 3.27.0
     dev: true
 
   /@sideway/address@4.1.4:
@@ -4362,8 +4366,8 @@ packages:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
     dev: true
 
-  /fast-xml-parser@4.2.5:
-    resolution: {integrity: sha512-B9/wizE4WngqQftFPmdaMYlXoJlJOYxGQOanC77fq9k8+Z0v5dDSVh+3glErdIROP//s/jgb7ZuxKfB8nVyo0g==}
+  /fast-xml-parser@4.2.7:
+    resolution: {integrity: sha512-J8r6BriSLO1uj2miOk1NW0YVm8AGOOu3Si2HQp/cSmo6EA4m3fcwu2WKjJ4RK9wMLBtg69y1kS8baDiQBR41Ig==}
     hasBin: true
     dependencies:
       strnum: 1.0.5
@@ -7423,17 +7427,17 @@ packages:
       glob: 10.3.1
     dev: true
 
-  /rollup-plugin-polyfill-node@0.12.0(rollup@3.26.0):
+  /rollup-plugin-polyfill-node@0.12.0(rollup@3.27.0):
     resolution: {integrity: sha512-PWEVfDxLEKt8JX1nZ0NkUAgXpkZMTb85rO/Ru9AQ69wYW8VUCfDgP4CGRXXWYni5wDF0vIeR1UoF3Jmw/Lt3Ug==}
     peerDependencies:
       rollup: ^1.20.0 || ^2.0.0 || ^3.0.0
     dependencies:
-      '@rollup/plugin-inject': 5.0.3(rollup@3.26.0)
-      rollup: 3.26.0
+      '@rollup/plugin-inject': 5.0.3(rollup@3.27.0)
+      rollup: 3.27.0
     dev: true
 
-  /rollup@3.26.0:
-    resolution: {integrity: sha512-YzJH0eunH2hr3knvF3i6IkLO/jTjAEwU4HoMUbQl4//Tnl3ou0e7P5SjxdDr8HQJdeUJShlbEHXrrnEHy1l7Yg==}
+  /rollup@3.27.0:
+    resolution: {integrity: sha512-aOltLCrYZ0FhJDm7fCqwTjIUEVjWjcydKBV/Zeid6Mn8BWgDCUBBWT5beM5ieForYNo/1ZHuGJdka26kvQ3Gzg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -8200,25 +8204,23 @@ packages:
       html-minifier-terser: 7.2.0
     dev: true
 
-  /ui5-tooling-modules@0.9.13:
-    resolution: {integrity: sha512-1p72TEPmlGnWXbY/k8Vmnc43e9VgOnbmcXEzgtQ7L9M5x4Cqsnha0oFHp+DNq7hdELSWKrylX9omqDYR1jVE5g==}
+  /ui5-tooling-modules@3.0.0:
+    resolution: {integrity: sha512-87gEZwAlc9O22vnP0DOWLoPSDpq83FQ+OMD7GZUSYc8CJbvbr/IniBDOMtt8MQP/hLtwEEuLeL4XB/pSWU/eNg==}
     dependencies:
       '@buxlabs/amd-to-es6': 0.16.3
       '@javascript-obfuscator/escodegen': 2.3.0
-      '@rollup/plugin-commonjs': 25.0.2(rollup@3.26.0)
-      '@rollup/plugin-json': 6.0.0(rollup@3.26.0)
-      '@rollup/plugin-node-resolve': 15.1.0(rollup@3.26.0)
-      '@rollup/plugin-replace': 5.0.2(rollup@3.26.0)
-      '@rollup/pluginutils': 5.0.2(rollup@3.26.0)
-      '@ui5/fs': 2.0.6
-      '@ui5/logger': 2.0.1
-      espree: 9.6.0
+      '@rollup/plugin-commonjs': 25.0.3(rollup@3.27.0)
+      '@rollup/plugin-json': 6.0.0(rollup@3.27.0)
+      '@rollup/plugin-node-resolve': 15.1.0(rollup@3.27.0)
+      '@rollup/plugin-replace': 5.0.2(rollup@3.27.0)
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
+      espree: 9.6.1
       estraverse: 5.3.0
-      fast-xml-parser: 4.2.5
+      fast-xml-parser: 4.2.7
       ignore-walk: 6.0.3
       minimatch: 7.4.6
-      rollup: 3.26.0
-      rollup-plugin-polyfill-node: 0.12.0(rollup@3.26.0)
+      rollup: 3.27.0
+      rollup-plugin-polyfill-node: 0.12.0(rollup@3.27.0)
     dev: true
 
   /ui5-tooling-transpile@0.7.20:
@@ -8816,7 +8818,3 @@ packages:
       compress-commons: 4.1.1
       readable-stream: 3.6.0
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
