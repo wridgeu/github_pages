@@ -46,10 +46,10 @@ jobs:
     - name: deploy to github pages
       uses: peaceiris/actions-gh-pages@v3
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.actions_deploy_secret }}
-        EXTERNAL_REPOSITORY: wridgeu/wridgeu.github.io
-        PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./dist
+        deploy_key: ${{ secrets.actions_deploy_secret }}
+        external_repository: wridgeu/wridgeu.github.io
+        publish_branch: master
+        publish_dir: ./dist
       with:
         commitMessage: "PersonalPage upd."
         keepFiles: false #true
