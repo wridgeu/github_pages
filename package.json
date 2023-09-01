@@ -31,7 +31,7 @@
     "@types/highlightjs": "^9.12.2",
     "@types/jquery": "3.5.16",
     "@types/marked": "^5.0.1",
-    "@types/node": "^20.4.5",
+    "@types/node": "^20.5.7",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "@ui5/cli": "^3.3.4",
