@@ -1,10 +1,10 @@
-specVersion: "3.0"
+specVersion: "3.1"
 type: application
 metadata:
   name: projectpages
 framework:
   name: OpenUI5
-  version: "1.116.0"
+  version: "1.119.0"
   libraries:
     - name: sap.m
     - name: sap.ui.core
@@ -45,20 +45,3 @@ server:
         debug: false
         transpileAsync: true
         transpileTypeScript: true
----
-specVersion: "2.6"
-kind: extension
-type: project-shim
-metadata:
-  name: sapmarco.projectpages.thirdparty
-shims:
-  configurations:
-    marked: # dependency name as defined in package.json
-      specVersion: "2.6"
-      type: module # module type
-      metadata:
-        name: marked
-      resources:
-        configuration:
-          paths:
-            "/resources/thirdparty/marked/": "" # map root directory of module into projects' thirdparty namespace
