@@ -20,8 +20,8 @@ dependencies:
 
 devDependencies:
   '@openui5/types':
-    specifier: ^1.119.1
-    version: 1.119.1
+    specifier: ^1.120.0
+    version: 1.120.0
   '@types/highlightjs':
     specifier: ^9.12.4
     version: 9.12.4
@@ -1766,8 +1766,8 @@ packages:
       - supports-color
     dev: true
 
-  /@openui5/types@1.119.1:
-    resolution: {integrity: sha512-CNn+wU/r5Efl4G9RzUPo0DyDAJAQWjFurUOPMSsLAqYEyFMdKjdHuRSJ/35BW/0qmgpIkU7ufO5hSjK4PUv/zw==}
+  /@openui5/types@1.120.0:
+    resolution: {integrity: sha512-/nci8MPu1n73SK8VA4vbfi2tacSxYpsghSKGmiwOKvzsEhSrzdajenI1Z536ivYaEjndWNrGdIs3AO5yDGtvYg==}
     dependencies:
       '@types/jquery': 3.5.13
       '@types/qunit': 2.5.4

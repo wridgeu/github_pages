@@ -28,7 +28,7 @@
     "shx": "^0.3.4"
   },
   "devDependencies": {
-    "@openui5/types": "^1.119.1",
+    "@openui5/types": "^1.120.0",
     "@types/highlightjs": "^9.12.4",
     "@types/jquery": "3.5.25",
     "@types/marked": "^5.0.2",
