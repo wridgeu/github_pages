@@ -32,7 +32,7 @@
     "@types/highlightjs": "^9.12.4",
     "@types/jquery": "3.5.25",
     "@types/marked": "^5.0.2",
-    "@types/node": "^20.8.9",
+    "@types/node": "^20.8.10",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "@ui5/cli": "^3.7.1",
