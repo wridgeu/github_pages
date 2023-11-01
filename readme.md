@@ -1,4 +1,4 @@
-![Deployment Task](https://github.com/SAPMarco/github_pages/workflows/build%20and%20publish%20personal%20website/badge.svg)
+[![Build SPA & Deployment](https://github.com/wridgeu/github_pages/actions/workflows/build-deploy.yml/badge.svg?branch=master)](https://github.com/wridgeu/github_pages/actions/workflows/build-deploy.yml)
 ![OpenUI5 logo](http://openui5.org/images/OpenUI5_new_big_side.png)
 
 # Name: "projectpages"
