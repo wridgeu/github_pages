@@ -40,7 +40,6 @@ jobs:
       run: |
         pnpm install --frozen-lockfile
         pnpm run build:deploy
-      # pnpm run test:bg
       env:
         CI: true
     - name: deploy to github pages
