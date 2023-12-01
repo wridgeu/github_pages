@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^8.20.5
     version: 8.20.5(typescript@5.2.2)
   '@wdio/mocha-framework':
-    specifier: ^8.20.3
-    version: 8.20.3
+    specifier: ^8.24.6
+    version: 8.24.6
   '@wdio/spec-reporter':
     specifier: ^8.20.0
     version: 8.20.0
@@ -90,7 +90,7 @@ devDependencies:
     version: 8.1.1(@wdio/types@8.20.0)(chromedriver@119.0.0)(webdriverio@8.20.4)
   wdio-ui5-service:
     specifier: ^2.0.2
-    version: 2.0.2(@wdio/cli@8.20.5)(@wdio/local-runner@8.20.5)(@wdio/mocha-framework@8.20.3)(@wdio/spec-reporter@8.20.0)(@wdio/types@8.20.0)(typescript@5.2.2)(webdriverio@8.20.4)
+    version: 2.0.2(@wdio/cli@8.20.5)(@wdio/local-runner@8.20.5)(@wdio/mocha-framework@8.24.6)(@wdio/spec-reporter@8.20.0)(@wdio/types@8.20.0)(typescript@5.2.2)(webdriverio@8.20.4)
 
 packages:
 
@@ -1655,9 +1655,9 @@ packages:
     dependencies:
       agent-base: 7.1.0
       http-proxy-agent: 7.0.0
-      https-proxy-agent: 7.0.1
+      https-proxy-agent: 7.0.2
       lru-cache: 10.0.1
-      socks-proxy-agent: 8.0.1
+      socks-proxy-agent: 8.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1721,8 +1721,8 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       '@npmcli/name-from-folder': 2.0.0
-      glob: 10.3.1
-      minimatch: 9.0.2
+      glob: 10.3.10
+      minimatch: 9.0.3
       read-package-json-fast: 3.0.2
     dev: true
 
@@ -2498,7 +2498,7 @@ packages:
       '@wdio/utils': 8.20.3
       decamelize: 6.0.0
       deepmerge-ts: 5.1.0
-      glob: 10.3.1
+      glob: 10.3.10
       import-meta-resolve: 3.0.0
       read-pkg-up: 10.1.0
     transitivePeerDependencies:
@@ -2561,15 +2561,15 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /@wdio/mocha-framework@8.20.3:
-    resolution: {integrity: sha512-AF27tW2ToQ4+fzuBwI71ABjPhmPoESj+UtJYx4ahZjHQUyCCEhkiYIeh8T6UEFFpbIQeQV1Fz12UEK/18EGbzw==}
+  /@wdio/mocha-framework@8.24.6:
+    resolution: {integrity: sha512-qTRU7trzPJKjdlO6r4+YnyauEQ/cTvCJYRl5t2jqsG8y2OoCRsw4qUydzGTxX3YEkmgZjSN845hMNtyWuZUjcg==}
     engines: {node: ^16.13 || >=18}
     dependencies:
       '@types/mocha': 10.0.1
       '@types/node': 20.8.10
       '@wdio/logger': 8.16.17
-      '@wdio/types': 8.20.0
-      '@wdio/utils': 8.20.3
+      '@wdio/types': 8.24.2
+      '@wdio/utils': 8.24.6
       mocha: 10.2.0
     transitivePeerDependencies:
       - supports-color
@@ -2639,6 +2639,13 @@ packages:
       '@types/node': 20.8.10
     dev: true
 
+  /@wdio/types@8.24.2:
+    resolution: {integrity: sha512-x7iWF5NM8NfVxziGwLdQ+3sstgSxRoqfmmFEDTDps0oFrN5CgkqcoLkqXJ5u166gvpxpEq0gxZwxkbPC/Lp0cw==}
+    engines: {node: ^16.13 || >=18}
+    dependencies:
+      '@types/node': 20.8.10
+    dev: true
+
   /@wdio/utils@8.20.3:
     resolution: {integrity: sha512-McGS9TFNfjS3cGJkF8hXyajGE5LKFJnPg/fbdXTIBzYohiAzQ1rUMyllPdxxHslnpQPkflBHI6XSYBxU7yB9Lw==}
     engines: {node: ^16.13 || >=18}
@@ -2646,6 +2653,28 @@ packages:
       '@puppeteer/browsers': 1.8.0
       '@wdio/logger': 8.16.17
       '@wdio/types': 8.20.0
+      decamelize: 6.0.0
+      deepmerge-ts: 5.1.0
+      edgedriver: 5.3.8
+      geckodriver: 4.2.1
+      get-port: 7.0.0
+      got: 13.0.0
+      import-meta-resolve: 3.0.0
+      locate-app: 2.1.0
+      safaridriver: 0.1.0
+      split2: 4.2.0
+      wait-port: 1.0.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@wdio/utils@8.24.6:
+    resolution: {integrity: sha512-qwcshLH9iKnhK0jXoXjPw3G02UhyShT0I+ljC0hMybJEBsra92TYFa47Cp6n1fdvM3+/BTuhsgtzRz0anObicQ==}
+    engines: {node: ^16.13 || >=18}
+    dependencies:
+      '@puppeteer/browsers': 1.8.0
+      '@wdio/logger': 8.16.17
+      '@wdio/types': 8.24.2
       decamelize: 6.0.0
       deepmerge-ts: 5.1.0
       edgedriver: 5.3.8
@@ -3257,7 +3286,7 @@ packages:
     dependencies:
       '@npmcli/fs': 3.1.0
       fs-minipass: 3.0.0
-      glob: 10.3.1
+      glob: 10.3.10
       lru-cache: 10.0.1
       minipass: 7.0.4
       minipass-collect: 1.0.2
@@ -4955,18 +4984,6 @@ packages:
       is-glob: 4.0.3
     dev: true
 
-  /glob@10.3.1:
-    resolution: {integrity: sha512-9BKYcEeIs7QwlCYs+Y3GBvqAMISufUS0i2ELd11zpZjxI5V9iyRj0HgzB5/cLf2NY4vcYBTYzJ7GIui7j/4DOw==}
-    engines: {node: '>=16 || 14 >=14.17'}
-    hasBin: true
-    dependencies:
-      foreground-child: 3.1.1
-      jackspeak: 2.1.1
-      minimatch: 9.0.2
-      minipass: 5.0.0
-      path-scurry: 1.10.0
-    dev: true
-
   /glob@10.3.10:
     resolution: {integrity: sha512-fa46+tv1Ak0UPK1TOy/pZrIybNNt4HCv7SDzwyfiOZkvZLEbjsZkJBPtDHVshZjbecAoAGSC20MjLDG/qr679g==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -4974,7 +4991,7 @@ packages:
     dependencies:
       foreground-child: 3.1.1
       jackspeak: 2.3.6
-      minimatch: 9.0.2
+      minimatch: 9.0.3
       minipass: 5.0.0
       path-scurry: 1.10.1
     dev: true
@@ -5294,16 +5311,6 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4(supports-color@8.1.1)
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /https-proxy-agent@7.0.1:
-    resolution: {integrity: sha512-Eun8zV0kcYS1g19r78osiQLEFIRspRUDd9tIfBCTBPBeMieF/EsJNL8VI3xOIdYRDEkjQnqOYPsZ2DsWsVsFwQ==}
-    engines: {node: '>= 14'}
-    dependencies:
-      agent-base: 7.1.0
       debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
@@ -5792,15 +5799,6 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /jackspeak@2.1.1:
-    resolution: {integrity: sha512-juf9stUEwUaILepraGOWIJTLwg48bUnBmRqd2ln2Os1sW987zeoj/hzhbvRB95oMuS2ZTpjULmdwHNX4rzZIZw==}
-    engines: {node: '>=14'}
-    dependencies:
-      cliui: 8.0.1
-    optionalDependencies:
-      '@pkgjs/parseargs': 0.11.0
-    dev: true
-
   /jackspeak@2.3.6:
     resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
@@ -6205,11 +6203,6 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /lru-cache@9.1.1:
-    resolution: {integrity: sha512-65/Jky17UwSb0BuB9V+MyDpsOtXKmYwzhyl+cOa9XUiI4uV2Ouy/2voFP3+al0BjZbJgMBD8FojMpAf+Z+qn4A==}
-    engines: {node: 14 || >=16.14}
-    dev: true
-
   /magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
@@ -6431,13 +6424,6 @@ packages:
   /minimatch@7.4.6:
     resolution: {integrity: sha512-sBz8G/YjVniEz6lKPNpKxXwazJe4c19fEfV2GDMX6AjFz+MX9uDWIZW8XreVhkFW3fkIdTv/gxWr/Kks5FFAVw==}
     engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: 2.0.1
-    dev: true
-
-  /minimatch@9.0.2:
-    resolution: {integrity: sha512-PZOT9g5v2ojiTL7r1xF6plNHLtOeTpSlDI007As2NlA2aYBMfVom17yqa6QzhmDP8QOhn7LjHTg7DFCVSSa6yg==}
-    engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
     dev: true
@@ -7007,22 +6993,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /pac-proxy-agent@7.0.0:
-    resolution: {integrity: sha512-t4tRAMx0uphnZrio0S0Jw9zg3oDbz1zVhQ/Vy18FjLfP1XOLNUEjaVxYCYRI6NS+BsMBXKIzV6cTLOkO9AtywA==}
-    engines: {node: '>= 14'}
-    dependencies:
-      '@tootallnate/quickjs-emscripten': 0.23.0
-      agent-base: 7.1.0
-      debug: 4.3.4(supports-color@8.1.1)
-      get-uri: 6.0.1
-      http-proxy-agent: 7.0.0
-      https-proxy-agent: 7.0.2
-      pac-resolver: 7.0.0
-      socks-proxy-agent: 8.0.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /pac-proxy-agent@7.0.1:
     resolution: {integrity: sha512-ASV8yU4LLKBAjqIPMbrgtaKIvxQri/yh2OpI+S6hVa9JRkUI3Y3NPFbfngDtY7oFtSMD3w31Xns89mDa3Feo5A==}
     engines: {node: '>= 14'}
@@ -7168,20 +7138,12 @@ packages:
   /path-parse@1.0.7:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
-  /path-scurry@1.10.0:
-    resolution: {integrity: sha512-tZFEaRQbMLjwrsmidsGJ6wDMv0iazJWk6SfIKnY4Xru8auXgmJkOBa5DUbYFcFD2Rzk2+KDlIiF0GVXNCbgC7g==}
-    engines: {node: '>=16 || 14 >=14.17'}
-    dependencies:
-      lru-cache: 9.1.1
-      minipass: 5.0.0
-    dev: true
-
   /path-scurry@1.10.1:
     resolution: {integrity: sha512-MkhCqzzBEpPvxxQ71Md0b1Kk51W01lrYvlMzSUaIzNsODdd7mqhiimSZlr+VegAz5Z6Vzt9Xg2ttE//XBhH3EQ==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
-      lru-cache: 9.1.1
-      minipass: 5.0.0
+      lru-cache: 10.0.1
+      minipass: 7.0.4
     dev: true
 
   /path-to-regexp@0.1.7:
@@ -7332,9 +7294,9 @@ packages:
       http-proxy-agent: 7.0.0
       https-proxy-agent: 7.0.2
       lru-cache: 7.14.1
-      pac-proxy-agent: 7.0.0
+      pac-proxy-agent: 7.0.1
       proxy-from-env: 1.1.0
-      socks-proxy-agent: 8.0.1
+      socks-proxy-agent: 8.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7524,7 +7486,7 @@ packages:
     resolution: {integrity: sha512-uL4Z10OKV4p6vbdvIXB+OzhInYtIozl/VxUBPgNkBuUi2DeRonnuspmaVAMcrkmfjKGNmRndyQAbE7/AmzGwFg==}
     engines: {node: ^16.14.0 || >=18.0.0}
     dependencies:
-      glob: 10.3.1
+      glob: 10.3.10
       json-parse-even-better-errors: 3.0.0
       normalize-package-data: 6.0.0
       npm-normalize-package-bin: 3.0.0
@@ -8027,17 +7989,6 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4(supports-color@8.1.1)
-      socks: 2.7.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /socks-proxy-agent@8.0.1:
-    resolution: {integrity: sha512-59EjPbbgg8U3x62hhKOFVAmySQUcfRQ4C7Q/D5sEHnZTQRrQlNKINks44DMR1gwXp0p4LaVIeccX2KHTTcHVqQ==}
-    engines: {node: '>= 14'}
-    dependencies:
-      agent-base: 7.1.0
       debug: 4.3.4(supports-color@8.1.1)
       socks: 2.7.1
     transitivePeerDependencies:
@@ -8867,7 +8818,7 @@ packages:
       - supports-color
     dev: true
 
-  /wdio-ui5-service@2.0.2(@wdio/cli@8.20.5)(@wdio/local-runner@8.20.5)(@wdio/mocha-framework@8.20.3)(@wdio/spec-reporter@8.20.0)(@wdio/types@8.20.0)(typescript@5.2.2)(webdriverio@8.20.4):
+  /wdio-ui5-service@2.0.2(@wdio/cli@8.20.5)(@wdio/local-runner@8.20.5)(@wdio/mocha-framework@8.24.6)(@wdio/spec-reporter@8.20.0)(@wdio/types@8.20.0)(typescript@5.2.2)(webdriverio@8.20.4):
     resolution: {integrity: sha512-Fl257uwcSgKJNZk3jSWmq1Szz/mb5f8RZPM0edy4mtLtKuUgk1tTpLBxAa1QnqDrzo8mvOWZt8tCEqL3zcB9IA==}
     engines: {node: '>=18', npm: '>=7'}
     peerDependencies:
@@ -8880,7 +8831,7 @@ packages:
     dependencies:
       '@wdio/cli': 8.20.5(typescript@5.2.2)
       '@wdio/local-runner': 8.20.5(typescript@5.2.2)
-      '@wdio/mocha-framework': 8.20.3
+      '@wdio/mocha-framework': 8.24.6
       '@wdio/spec-reporter': 8.20.0
       '@wdio/types': 8.20.0
       devtools: 8.20.5(typescript@5.2.2)
@@ -8947,7 +8898,7 @@ packages:
       is-plain-obj: 4.1.0
       lodash.clonedeep: 4.5.0
       lodash.zip: 4.2.0
-      minimatch: 9.0.2
+      minimatch: 9.0.3
       puppeteer-core: 20.9.0(typescript@5.2.2)
       query-selector-shadow-dom: 1.0.1
       resq: 1.11.0
