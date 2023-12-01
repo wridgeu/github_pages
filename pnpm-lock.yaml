@@ -23,8 +23,8 @@ devDependencies:
     specifier: ^1.120.0
     version: 1.120.0
   '@types/highlightjs':
-    specifier: ^9.12.4
-    version: 9.12.4
+    specifier: ^9.12.6
+    version: 9.12.6
   '@types/jquery':
     specifier: 3.5.25
     version: 3.5.25
@@ -2060,8 +2060,8 @@ packages:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
-  /@types/highlightjs@9.12.4:
-    resolution: {integrity: sha512-1ur6XlwXQLcYnOmJgluvwF/S6eAcFnemhzl65MhXqu84OB9IbGMXMq1E9mJFYVaxeV8kCcQUBjG41blBAkGbPQ==}
+  /@types/highlightjs@9.12.6:
+    resolution: {integrity: sha512-Qfd1DUrwE851Hc3tExADJY4qY8yeZMt06Xw9AJm/UtpneepJS3MZY29c33BY0wP899veaaHD4gZzYiSuQm84Fg==}
     dev: true
 
   /@types/http-cache-semantics@4.0.1:
