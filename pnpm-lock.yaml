@@ -99,8 +99,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /@adobe/css-tools@4.1.0:
-    resolution: {integrity: sha512-mMVJ/j/GbZ/De4ZHWbQAQO1J6iVnjtZLc9WEdkUQb8S/Bu2cAF2bETXUgMAdvMG3/ngtKmcNBe+Zms9bg6jnQQ==}
+  /@adobe/css-tools@4.3.2:
+    resolution: {integrity: sha512-DA5a1C0gD/pLOvhv33YMrbf2FK3oUzwNl9oOJqE4XVjuEtt6XIakRcsd7eLiOSPkp1kTRQGICTA8cKra/vFbjw==}
     dev: true
 
   /@ampproject/remapping@2.2.0:
@@ -6020,7 +6020,7 @@ packages:
     resolution: {integrity: sha512-sQmU+G2pJjFfzRI+XtXkk+T9G0s6UmWWUfOW0utPR46C9lfhNr4DH1lNJuImj64reXYi+vOwyNxPRkj0F3mofA==}
     engines: {node: '>= 10', npm: '>= 5'}
     dependencies:
-      '@adobe/css-tools': 4.1.0
+      '@adobe/css-tools': 4.3.2
       clone: 2.1.2
       mime: 1.6.0
     dev: true
