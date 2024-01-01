@@ -12,8 +12,8 @@ dependencies:
     specifier: ^9.1.4
     version: 9.1.4
   marked-highlight:
-    specifier: ^2.0.6
-    version: 2.0.6(marked@9.1.4)
+    specifier: ^2.1.0
+    version: 2.1.0(marked@9.1.4)
   shx:
     specifier: ^0.3.4
     version: 0.3.4
@@ -6297,10 +6297,10 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
-  /marked-highlight@2.0.6(marked@9.1.4):
-    resolution: {integrity: sha512-xjA/C6xgXAfkkYg+YHnxdjmgFyTDtqqu8KbZiqh+COJ7PuzR15kqa+rPrs6pf/2jExXtG1jyCFUHmv9s0Bi/dQ==}
+  /marked-highlight@2.1.0(marked@9.1.4):
+    resolution: {integrity: sha512-peBvgGZZqUw074Vy/N8Y7/6JQhSnR54/T0Ozq2/fAIBzcYfVfExFdQJptIhQxreR1elpwvJRrqhp6S/Prk8prA==}
     peerDependencies:
-      marked: '>=4 <10'
+      marked: '>=4 <12'
     dependencies:
       marked: 9.1.4
     dev: false

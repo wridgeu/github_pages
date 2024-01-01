@@ -24,7 +24,7 @@
   "dependencies": {
     "highlight.js": "^11.9.0",
     "marked": "^9.1.4",
-    "marked-highlight": "^2.0.6",
+    "marked-highlight": "^2.1.0",
     "shx": "^0.3.4"
   },
   "devDependencies": {
