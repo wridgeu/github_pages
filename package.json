@@ -44,7 +44,7 @@
     "eslint": "^8.52.0",
     "pnpm": "^8.10.0",
     "start-server-and-test": "^2.0.1",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
     "ui5-middleware-livereload": "^3.0.2",
     "ui5-task-minifier": "^2.0.0",
