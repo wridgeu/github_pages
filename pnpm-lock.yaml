@@ -26,8 +26,8 @@ devDependencies:
     specifier: ^9.12.4
     version: 9.12.4
   '@types/jquery':
-    specifier: 3.5.25
-    version: 3.5.25
+    specifier: 3.5.29
+    version: 3.5.29
   '@types/marked':
     specifier: ^5.0.2
     version: 5.0.2
@@ -2093,8 +2093,8 @@ packages:
       '@types/sizzle': 2.3.3
     dev: true
 
-  /@types/jquery@3.5.25:
-    resolution: {integrity: sha512-gykx2c+OZf5nx2tv/5fDQqmvGgTiXshELy5jf9IgXPtVfSBl57IUYByN4osbwMXwJijWGOEYQABzGaFZE79A0Q==}
+  /@types/jquery@3.5.29:
+    resolution: {integrity: sha512-oXQQC9X9MOPRrMhPHHOsXqeQDnWeCDT3PelUIg/Oy8FAbzSZtFHRjc7IpbfFVmpLtJ+UOoywpRsuO5Jxjybyeg==}
     dependencies:
       '@types/sizzle': 2.3.3
     dev: true

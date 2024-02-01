@@ -30,7 +30,7 @@
   "devDependencies": {
     "@openui5/types": "^1.120.0",
     "@types/highlightjs": "^9.12.4",
-    "@types/jquery": "3.5.25",
+    "@types/jquery": "3.5.29",
     "@types/marked": "^5.0.2",
     "@types/node": "^20.8.10",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
