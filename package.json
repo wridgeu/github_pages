@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "highlight.js": "^11.9.0",
-    "marked": "^9.1.4",
+    "marked": "^9.1.6",
     "marked-highlight": "^2.0.6",
     "shx": "^0.3.4"
   },

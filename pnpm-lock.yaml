@@ -9,11 +9,11 @@ dependencies:
     specifier: ^11.9.0
     version: 11.9.0
   marked:
-    specifier: ^9.1.4
-    version: 9.1.4
+    specifier: ^9.1.6
+    version: 9.1.6
   marked-highlight:
     specifier: ^2.0.6
-    version: 2.0.6(marked@9.1.4)
+    version: 2.0.6(marked@9.1.6)
   shx:
     specifier: ^0.3.4
     version: 0.3.4
@@ -6297,12 +6297,12 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
-  /marked-highlight@2.0.6(marked@9.1.4):
+  /marked-highlight@2.0.6(marked@9.1.6):
     resolution: {integrity: sha512-xjA/C6xgXAfkkYg+YHnxdjmgFyTDtqqu8KbZiqh+COJ7PuzR15kqa+rPrs6pf/2jExXtG1jyCFUHmv9s0Bi/dQ==}
     peerDependencies:
       marked: '>=4 <10'
     dependencies:
-      marked: 9.1.4
+      marked: 9.1.6
     dev: false
 
   /marked@4.3.0:
@@ -6311,8 +6311,8 @@ packages:
     hasBin: true
     dev: true
 
-  /marked@9.1.4:
-    resolution: {integrity: sha512-Mq83CCaClhXqhf8sLQ57c1unNelHEuFadK36ga+GeXR4FeT/5ssaC5PaCRVqMA74VYorzYRqdAaxxteIanh3Kw==}
+  /marked@9.1.6:
+    resolution: {integrity: sha512-jcByLnIFkd5gSXZmjNvS1TlmRhCXZjIzHYlaGkPlLIekG55JDR2Z4va9tZwCiP+/RDERiNhMOFu01xd6O5ct1Q==}
     engines: {node: '>= 16'}
     hasBin: true
     dev: false
