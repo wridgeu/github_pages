@@ -41,7 +41,7 @@
     "@wdio/mocha-framework": "^8.20.3",
     "@wdio/spec-reporter": "^8.20.0",
     "chromedriver": "^119.0.0",
-    "eslint": "^8.52.0",
+    "eslint": "^8.56.0",
     "pnpm": "^8.10.0",
     "start-server-and-test": "^2.0.1",
     "ts-node": "^10.9.1",
