@@ -74,8 +74,8 @@ devDependencies:
     specifier: ^5.2.2
     version: 5.2.2
   ui5-middleware-livereload:
-    specifier: ^3.0.2
-    version: 3.0.2
+    specifier: ^3.0.3
+    version: 3.0.3
   ui5-task-minifier:
     specifier: ^2.0.0
     version: 2.0.0
@@ -8555,8 +8555,8 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: true
 
-  /ui5-middleware-livereload@3.0.2:
-    resolution: {integrity: sha512-abEZUodRS7bVmN4p2wJM/v36wbrHmw3Twkpwn2HmKBpCEc1yCeEnd6aikM6A/BW/2Mndng9hW8Cp3bzoWCWUTQ==}
+  /ui5-middleware-livereload@3.0.3:
+    resolution: {integrity: sha512-A0p3n16EL/8u/oR2YY3hiGSxayArEYbn5zzo0/uGZ3RE+hYdlEPtRdN4UM5AG/P2FaLvku7flnf3FnDRM7YnfA==}
     dependencies:
       connect-livereload: 0.6.1
       livereload: 0.9.3
