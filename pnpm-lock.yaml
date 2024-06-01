@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^8.52.0
     version: 8.52.0
   pnpm:
-    specifier: ^8.10.0
-    version: 8.10.0
+    specifier: ^9.1.4
+    version: 9.1.4
   start-server-and-test:
     specifier: ^2.0.1
     version: 2.0.1
@@ -7219,9 +7219,9 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /pnpm@8.10.0:
-    resolution: {integrity: sha512-nCy4Pyts9qJdjFgwC/mRl8fvO+hM8+dm8pBUtAuDtC+Kq6b8wxSp7PJ8APfOgKdXu0xgiADnrb4tKdxccFb1vg==}
-    engines: {node: '>=16.14'}
+  /pnpm@9.1.4:
+    resolution: {integrity: sha512-nfnPJ8kXFWRsfWddHJyOQfb86IJG8TGMGqah7RrrPE8DL830umPMacT+bWNCeRdrU1hyfY8sweZbZfQ84vi/sA==}
+    engines: {node: '>=18.12'}
     hasBin: true
     dev: true
 
