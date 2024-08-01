@@ -22,7 +22,7 @@
     "build:deploy": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest --dest ./dist"
   },
   "dependencies": {
-    "highlight.js": "^11.9.0",
+    "highlight.js": "^11.10.0",
     "marked": "^9.1.4",
     "marked-highlight": "^2.0.6",
     "shx": "^0.3.4"
