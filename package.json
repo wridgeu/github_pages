@@ -22,9 +22,10 @@
     "build:deploy": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest --dest ./dist"
   },
   "dependencies": {
+    "dompurify": "^3.4.12",
     "highlight.js": "^11.9.0",
-    "marked": "^9.1.4",
-    "marked-highlight": "^2.0.6"
+    "marked": "^18.0.6",
+    "marked-highlight": "^2.2.4"
   },
   "devDependencies": {
     "@openui5/types": "~1.150.0",

@@ -1,4 +1,4 @@
-import { Marked } from "marked";
+import { Marked, type Tokens, type RendererThis } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js/lib/core";
 import js from "highlight.js/lib/languages/javascript";
@@ -7,43 +7,47 @@ import css from "highlight.js/lib/languages/css";
 import shell from "highlight.js/lib/languages/shell";
 import bash from "highlight.js/lib/languages/bash";
 import json from "highlight.js/lib/languages/json";
+import plaintext from "highlight.js/lib/languages/plaintext";
 
-// Prevent Rollup "Unexpected token Error", some tokens within certain language definitions (i.e. arduino) throw rollup off
-// Err: "rollup-plugin-inject: failed to parse '<path-to-file.js>' Consider restricting the plugin to particular files via options.include"
+// Register only the languages in use, keeping the self-contained bundle small.
+// 'plaintext' is the fallback for code blocks with an unknown/absent language.
 hljs.registerLanguage("javascript", js);
 hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("css", css);
 hljs.registerLanguage("shell", shell);
 hljs.registerLanguage("bash", bash);
 hljs.registerLanguage("json", json);
+hljs.registerLanguage("plaintext", plaintext);
 
 const marked = new Marked(
 	markedHighlight({
+		emptyLangClass: "hljs",
+		langPrefix: "hljs language-",
 		highlight(code, lang) {
-			if (lang && hljs.getLanguage(lang)) {
-				return hljs.highlight(code, { language: lang }).value;
-			}
-		},
+			const language = hljs.getLanguage(lang) ? lang : "plaintext";
+			return hljs.highlight(code, { language }).value;
+		}
 	})
 );
 
-/**
- * Image Rendering
- * @returns {HTMLImageElement|string} Dynamic image HTML-Tag
- */
 const renderer = {
-	paragraph(text: string) {
-		// transform <p>-tags that match the regex to <img>-tags
-		const regEx = /\[\[.+?\.(?:jpg|gif|png)\]\]/g;
-		// doesn't match our [[<something>.jpg]]-pattern
-		if (!text.match(regEx)) return false;
-		// remove whitespace (edge case) && remove '[[' and ']]'
-		const image = text.trim() && text.substring(2, text.length - 2);
-		// rebuild image path for raw github
+	// Render a paragraph that is solely the wiki '[[<file>.jpg]]' syntax as an
+	// <img>; return false to fall back to marked's default paragraph renderer.
+	paragraph(token: Tokens.Paragraph) {
+		const imageSyntax = /\[\[.+?\.(?:jpg|gif|png)\]\]/;
+		if (!imageSyntax.test(token.text)) {
+			return false;
+		}
+		const image = token.text.trim().slice(2, -2);
 		const imagePath = `https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/${image}`;
-
-		return `<img class="wikiImage" src="${imagePath}"></img>`;
+		return `<img class="wikiImage" src="${imagePath}">`;
 	},
+	// Open links in a new tab without leaking the opener, keeping the SPA intact.
+	link(this: RendererThis, token: Tokens.Link) {
+		const text = this.parser.parseInline(token.tokens);
+		const title = token.title ? ` title="${token.title}"` : "";
+		return `<a target="_blank" rel="noopener noreferrer" href="${token.href}"${title}>${text}</a>`;
+	}
 };
 
 marked.use({ renderer });
