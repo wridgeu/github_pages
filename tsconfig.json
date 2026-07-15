@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
 		"target": "ES2022",
-		"module": "ES2022",
-		"moduleResolution": "node",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
 		"skipLibCheck": true,
 		"preserveConstEnums": true,
 		"sourceMap": false,
@@ -14,7 +14,6 @@
 		"strictPropertyInitialization": false,
 		"rootDir": "./webapp",
 		"outDir": "./dist",
-		"baseUrl": "./",
 		"types": [
 			"@openui5/types"
 		],
