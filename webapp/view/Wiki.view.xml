@@ -29,7 +29,7 @@
                         <l:SplitPane requiredParentWidth="800">
                             <Page id="markdownSection" showHeader="false">
                                 <content>
-                                    <control:MarkdownText content="{convertedmarkdown>/markdown}" />
+                                    <control:Markdown content="{convertedmarkdown>/markdown}" />
                                 </content>
                             </Page>
                         </l:SplitPane>

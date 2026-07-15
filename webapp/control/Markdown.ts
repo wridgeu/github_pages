@@ -12,7 +12,7 @@ import DOMPurify from "dompurify";
  *
  * @namespace sapmarco.projectpages.control
  */
-export default class MarkdownText extends Control {
+export default class Markdown extends Control {
 	static readonly metadata: MetadataOptions = {
 		properties: {
 			content: { type: "string", defaultValue: "" },
@@ -27,7 +27,7 @@ export default class MarkdownText extends Control {
 
 	static renderer = {
 		apiVersion: 4,
-		render(rm: RenderManager, control: MarkdownText): void {
+		render(rm: RenderManager, control: Markdown): void {
 			const content = control.getContent();
 			rm.openStart("div", control);
 			rm.class("wikiMarkdown");
