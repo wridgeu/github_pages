@@ -10,7 +10,6 @@ import BaseController from "./Base.controller";
 import List from "sap/m/List";
 import ActionListItem from "sap/m/ActionListItem";
 import JSONModel from "sap/ui/model/json/JSONModel";
-import ResponsiveSplitter from "sap/ui/layout/ResponsiveSplitter";
 import Device from "sap/ui/Device";
 
 /**
@@ -58,8 +57,8 @@ export default class WikiController extends BaseController {
 		//get sidebar from actual github-wiki
 		const wikiIndex = await getWikiIndex();
 		//parse markdown to html
-		const parsedMarkdown = markdownService.parse(wikiIndex);
-		const matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)\"/g)];
+		const parsedMarkdown = markdownService.parse(wikiIndex) as string;
+		const matches = [...parsedMarkdown.matchAll(/\wiki\/(.*?)"/g)];
 		matches.forEach(element => {
 			(this.byId("sidebar") as List).addItem(
 				new ActionListItem({
@@ -102,9 +101,11 @@ export default class WikiController extends BaseController {
 			//improve UX by always starting at the top when opening up new content & jumping to new pane
 			if (isOpenedOnPhone)
 				setTimeout(() => {
-					(this.byId("responsiveSplitter") as ResponsiveSplitter)._activatePage(
-						1
-					);
+					(
+						this.byId("responsiveSplitter") as unknown as {
+							_activatePage: (page: number) => void;
+						}
+					)._activatePage(1);
 				}, 0);
 			if (this.byId("markdownSection"))
 				(this.byId("markdownSection") as Page).scrollTo(0, 0);

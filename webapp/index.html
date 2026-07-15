@@ -16,32 +16,20 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/img/svg/blue_ui5.svg" />
 		<title>Marco Beier - Info</title>
 		<script defer src="regsw.js"></script>
-		<script>
-			window["sap-ui-config"] = {};
-			// determine the proper theme for UI5 from users preferred color scheme (yoinked from Marian 🍻)
-			window["sap-ui-config"]["theme"] = (function () {
-				try {
-					return window.matchMedia("(prefers-color-scheme: dark)").matches ? "sap_horizon_dark" : "sap_horizon";
-				} catch (ex) {
-					console.warn("window.matchMedia not supported - keep default theme");
-					return "sap_horizon";
-				}
-			})();
-		</script>
+		<script src="theme-init.js"></script>
 		<script id="sap-ui-bootstrap"
 			type="text/javascript"
-			src="/resources/sap-ui-core-nojQuery.js"
-			data-sap-ui-xx-waitForTheme="true"
-			data-sap-ui-compatVersion="edge"
+			src="/resources/sap-ui-core.js"
+			data-sap-ui-compat-version="edge"
+			data-sap-ui-xx-wait-for-theme="true"
 			data-sap-ui-async="true"
-			data-sap-ui-resourceroots='{
+			data-sap-ui-resource-roots='{
 				"sapmarco.projectpages": "./"
 			}'
-			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
-			data-sap-ui-frameOptions="deny"
-			data-sap-ui-xx-bindingSyntax="complex"
-			data-sap-ui-xx-supportedLanguages="de,en"
-			data-sap-ui-logLevel="NONE">
+			data-sap-ui-on-init="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-frame-options="deny"
+			data-sap-ui-xx-supported-languages="de,en"
+			data-sap-ui-log-level="NONE">
 		</script>
 	</head>
 	<body class="sapUiBody" role="application" id="content" data-sap-ui-component data-name="sapmarco.projectpages" data-id="container" data-settings='{"id" : "projectpages"}'>

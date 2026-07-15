@@ -3,7 +3,8 @@ node_modules/
 .mta/
 *.mtar
 dist/
-package-lock.json
 mta_archives/
 ui_deployer/resources/
 docs/
+test-results/
+playwright-report/
