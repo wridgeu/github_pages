@@ -2,7 +2,11 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
 	testDir: "./test",
-	fullyParallel: true,
+	// A single `ui5 serve` (on-the-fly TS transpile + npm-module bundling) backs
+	// every test; concurrent cold app loads starve it and flake the smoke
+	// assertions, so run this small suite serially.
+	fullyParallel: false,
+	workers: 1,
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
 	reporter: "list",

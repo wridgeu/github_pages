@@ -52,7 +52,27 @@ const renderer = {
 
 marked.use({ renderer });
 
+// Re-selecting a wiki page re-parses identical markdown, re-running marked and
+// highlight.js from scratch. parse is pure and synchronous, so memoize it keyed
+// by the raw markdown string. Both call sites (the sidebar index and each page
+// body) share the cache; the wiki serves a small, fixed set of pages, so the map
+// stays naturally bounded. Sanitization still runs downstream in the Markdown
+// control on every render, so the security contract is unchanged.
+const parseCache = new Map<string, string>();
+
+const markdownService = {
+	parse(markdown: string): string {
+		const cached = parseCache.get(markdown);
+		if (cached !== undefined) {
+			return cached;
+		}
+		const html = marked.parse(markdown) as string;
+		parseCache.set(markdown, html);
+		return html;
+	}
+};
+
 /**
  * @namespace sapmarco.projectpages.util
  */
-export { marked as markdownService };
+export { markdownService };
