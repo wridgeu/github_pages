@@ -6,11 +6,31 @@ test.describe("Home page smoke test", () => {
 	});
 
 	test("renders the home page", async ({ page }) => {
-		await expect(page.locator(".socials")).toHaveCount(5);
+		await expect(page.locator(".socials")).toHaveCount(6);
 	});
 
 	test("renders the three integration cards", async ({ page }) => {
 		await expect(page.locator(".integrationcard")).toHaveCount(3);
+	});
+
+	// Middle-click, ctrl-click and "open in new tab" are browser behaviour on a
+	// real anchor. A press handler on an <img> gets none of them, so assert the
+	// markup that earns them rather than the interaction itself.
+	test("renders each social as a real link", async ({ page }) => {
+		const socials = page.locator(".socials");
+		// toHaveCount retries until the view has rendered; count() does not.
+		await expect(socials).toHaveCount(6);
+		const count = await socials.count();
+
+		for (let i = 0; i < count; i++) {
+			const social = socials.nth(i);
+			expect(await social.evaluate((el) => el.tagName)).toBe("A");
+			expect(await social.getAttribute("href")).toBeTruthy();
+			expect(await social.getAttribute("target")).toBe("_blank");
+			expect(await social.getAttribute("rel")).toContain("noopener");
+		}
+
+		await expect(page.locator('.socials[href*="bsky.app"]')).toHaveCount(1);
 	});
 
 	test("keeps the experience tree the same width when expanded", async ({ page }) => {
