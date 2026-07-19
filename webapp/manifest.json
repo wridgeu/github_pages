@@ -16,7 +16,7 @@
 				},
 				{
 					"url": "https://raw.githubusercontent.com/wiki/wridgeu",
-					"type": "static"
+					"type": "networkupdate"
 				}
 			]
 		},
