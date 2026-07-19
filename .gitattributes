@@ -1,0 +1,21 @@
+# Keep the repository canonical in LF and check LF out everywhere, so the
+# working tree stops churning under core.autocrlf on Windows.
+* text=auto eol=lf
+
+# Binary assets: never normalize, never diff.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Vendored and generated bundles: excluded from the formatter, and collapsed
+# in review diffs.
+webapp/util/serviceworker/ui5swlib.js linguist-generated
+webapp/css/ocean.minified.css linguist-generated
+package-lock.json linguist-generated
