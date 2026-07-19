@@ -13,6 +13,21 @@ test.describe("Home page smoke test", () => {
 		await expect(page.locator(".integrationcard")).toHaveCount(3);
 	});
 
+	// Cards default to CardDataMode.Auto, which defers manifest processing until
+	// the card enters the viewport. Below the fold that leaves them ~2px tall, so
+	// they snap to full height as the user scrolls past. Assert they have real
+	// height without anything having scrolled them into view.
+	test("gives the integration cards their height before they are scrolled to", async ({ page }) => {
+		const cards = page.locator(".integrationcard");
+		await expect(cards).toHaveCount(3);
+
+		for (let i = 0; i < 3; i++) {
+			await expect
+				.poll(async () => (await cards.nth(i).boundingBox())?.height ?? 0, { timeout: 10000 })
+				.toBeGreaterThan(100);
+		}
+	});
+
 	// Middle-click, ctrl-click and "open in new tab" are browser behaviour on a
 	// real anchor. A press handler on an <img> gets none of them, so assert the
 	// markup that earns them rather than the interaction itself.
