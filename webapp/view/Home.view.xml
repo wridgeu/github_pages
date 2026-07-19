@@ -35,13 +35,16 @@
 						</FlexBox>
 					</l:BlockLayoutCell>
 					<l:BlockLayoutCell>
-						<FlexBox direction="Column">
-							<FlexBox justifyContent="Center">
-								<Tree items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">
+						<FlexBox direction="Column" width="100%">
+							<FlexBox justifyContent="Center" width="100%">
+								<Tree width="100%" items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">
+									<layoutData>
+										<FlexItemData growFactor="1" />
+									</layoutData>
 									<CustomTreeItem>
 										<Text renderWhitespace="true" text="{cv>description}" />
 										<Link href="{cv>website}" text="{cv>company}" target="_blank" />
-										<Label text="{cv>position}" />
+										<Label wrapping="true" text="{cv>position}" />
 										<FlexBox direction="Column">
 											<FlexBox>
 												<Text renderWhitespace="true" text="{cv>textTo}" />
