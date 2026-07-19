@@ -10,18 +10,20 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest",
     "start": "ui5 serve --port 8080 -o index.html",
     "serve": "ui5 serve --port 8080",
-    "start:dist": "ui5 serve  --port 8080 -o index.html --config ui5-dist.yaml",
-    "start:build": "ui5 serve -o index.html --config ui5-dist.yaml",
-    "ts-typecheck": "tsc --noEmit",
-    "lint": "oxlint webapp",
-    "ui5lint": "ui5lint",
-    "test": "playwright test",
+    "start:dist": "ui5 serve --port 8080 -o index.html --config ui5-dist.yaml",
+    "build": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest",
     "build:deploy": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest --dest ./dist",
     "format": "oxfmt .",
-    "format:check": "oxfmt --check ."
+    "format:check": "oxfmt --check .",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "typecheck": "tsc --noEmit",
+    "ui5lint": "ui5lint",
+    "test": "playwright test",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run ui5lint",
+    "fix": "npm run format && npm run lint:fix"
   },
   "dependencies": {
     "dompurify": "^3.4.12",
