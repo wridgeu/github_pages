@@ -3,10 +3,22 @@
 	--link: #91c8f6;
 }
 
-/* Socials Bar */
+/* Socials Bar
+
+   Each social is a real anchor, so middle-click, ctrl-click and the context
+   menu open it in a new tab natively. The brand mark is painted as a mask
+   rather than an <img>, which lets it take the theme's icon colour and keeps
+   the link's own text available to screen readers. */
 .socials {
+	display: inline-block;
+	width: 5vw;
+	height: 5vh;
 	opacity: 60%;
 	transition: 0.2s;
+	background-color: var(--sapContent_IconColor);
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
 }
 
 .socials:hover {
@@ -14,13 +26,43 @@
 	transition: 0.2s;
 }
 
-.setMinSeperator {
-	margin: 1vw;
+/* The accessible name stays in the DOM for assistive technology; the mark
+   above carries the visuals. */
+.socials .sapMLnkText {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
 }
 
-/* increase visibility of socials in dark mode */
-html.sapUiTheme-sap_horizon_dark .socials {
-	filter: invert()
+.socials-linkedin {
+	mask-image: url("../resources/img/svg/Logo_LinkedIn.svg");
+}
+
+.socials-xing {
+	mask-image: url("../resources/img/svg/Logo_Xing.svg");
+}
+
+.socials-github {
+	mask-image: url("../resources/img/svg/Logo_Github_New.svg");
+}
+
+.socials-twitter {
+	mask-image: url("../resources/img/svg/Logo_Twitter.svg");
+}
+
+.socials-bluesky {
+	mask-image: url("../resources/img/svg/Logo_Bluesky.svg");
+}
+
+.socials-sap {
+	mask-image: url("../resources/img/svg/Logo_SAP_1.svg");
+}
+
+.setMinSeperator {
+	margin: 1vw;
 }
 
 /* enlarge socials on phone */
@@ -63,7 +105,7 @@ a:visited {
 }
 
 .integrationcard {
-	margin: 25px 25px 25px 25px
+	margin: 25px 25px 25px 25px;
 }
 
 /* Wiki */

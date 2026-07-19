@@ -3,7 +3,7 @@
 
 # Name: "projectpages"
 
-Repository for development purposes only. It is used for development and adding changes to the [main repository](https://github.com/SAPMarco/SAPMarco.github.io). Hosting is done via [Github Pages](https://pages.github.com/). 
+Repository for development purposes only. It is used for development and adding changes to the [main repository](https://github.com/SAPMarco/SAPMarco.github.io). Hosting is done via [Github Pages](https://pages.github.com/).
 
 ## CI/CD
 

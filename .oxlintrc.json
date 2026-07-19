@@ -1,0 +1,13 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["typescript", "oxc", "unicorn"],
+	"env": {
+		"browser": true,
+		"es2022": true,
+		"serviceworker": true
+	},
+	"categories": {
+		"correctness": "error"
+	},
+	"ignorePatterns": ["dist/**", "webapp/css/**", "webapp/resources/**", "webapp/util/serviceworker/**"]
+}

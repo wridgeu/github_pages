@@ -1,0 +1,54 @@
+/* Styling for the Markdown custom control: its rendered code blocks and the
+   copy-to-clipboard button. The control includes this itself via
+   includeStylesheet, so it travels with the control wherever it is used.
+
+   Appearance (colours, hover, rounding, the copied/Accept state) comes from the
+   standard theme + the sapContrastPlus marker on the wrapper; only layout that
+   the theme cannot express lives here. */
+
+.wikiCodeBlock {
+	position: relative;
+	/* fill the content pane and let long lines scroll inside the code box */
+	width: 100%;
+	/* the vertical spacing the <pre> used to carry via its default margin */
+	margin: 1em 0;
+}
+
+/* The <pre> sits in a flex item (a new block-formatting context), so its default
+   top margin stays inside the wrapper and the absolutely-positioned button would
+   land in that gap. Zero it (spacing lives on the wrapper) and cap the width so
+   the block stays responsive. */
+.wikiCodeBlock > pre {
+	margin: 0;
+	max-width: 100%;
+}
+
+.wikiCopyButton {
+	position: absolute;
+	/* clear the <pre> padding (~1%) so the button sits on the dark code box */
+	top: 0.75rem;
+	right: 0.75rem;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+/* In its resting (transparent) state the button sits on the fixed dark hljs
+   code surface (#2b303b in both themes), where the theme's own button-icon
+   colour — which tracks the page background, not the code box — is unreliable
+   (the horizon light blue lands at ~2.4:1, below the 3:1 WCAG non-text
+   minimum). Pin a legible colour for that state. The copied confirmation flips
+   the button to the Accept type, which the theme already renders as an inverted
+   (filled) button with its own legible icon colour, so exclude that state. */
+.wikiMarkdown .wikiCopyButton:not(.sapMBtnInverted) .sapUiIcon {
+	color: #c0c5ce; /* hljs foreground */
+}
+
+.wikiCodeBlock:hover .wikiCopyButton,
+.wikiCopyButton:focus-within {
+	opacity: 1;
+}
+
+/* touch devices have no hover, so keep the button reachable */
+html.sap-phone .wikiCopyButton {
+	opacity: 1;
+}
