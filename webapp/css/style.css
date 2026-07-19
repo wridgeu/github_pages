@@ -20,7 +20,7 @@
 
 /* increase visibility of socials in dark mode */
 html.sapUiTheme-sap_horizon_dark .socials {
-	filter: invert()
+	filter: invert();
 }
 
 /* enlarge socials on phone */
@@ -63,7 +63,7 @@ a:visited {
 }
 
 .integrationcard {
-	margin: 25px 25px 25px 25px
+	margin: 25px 25px 25px 25px;
 }
 
 /* Wiki */

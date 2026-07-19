@@ -1,10 +1,6 @@
 import Page from "sap/m/Page";
 import Component from "../Component";
-import {
-	getSelectedContent,
-	getWikiIndex,
-	getContentEditLink
-} from "../util/githubService";
+import { getSelectedContent, getWikiIndex, getContentEditLink } from "../util/githubService";
 import { markdownService } from "../util/markdownService";
 import BaseController from "./Base.controller";
 import List from "sap/m/List";
@@ -22,14 +18,12 @@ export default class WikiController extends BaseController {
 	private _selectionToken = 0;
 
 	public onInit(): void {
-		this.getView().addStyleClass(
-			(this.getOwnerComponent() as Component).getContentDensityClass()
-		);
+		this.getView().addStyleClass((this.getOwnerComponent() as Component).getContentDensityClass());
 
 		this._wikiContentModel = new JSONModel({
 			markdown: "",
 			title: "",
-			edit: ""
+			edit: "",
 		});
 
 		this.getView().setModel(this._wikiContentModel, "convertedmarkdown");
@@ -37,9 +31,7 @@ export default class WikiController extends BaseController {
 		this._viewStateModel = new JSONModel({ busy: false });
 		this.getView().setModel(this._viewStateModel, "viewState");
 
-		this.getRouter()
-			.getRoute("RouteWiki")
-			.attachMatched(this._onRouteMatched.bind(this), this);
+		this.getRouter().getRoute("RouteWiki").attachMatched(this._onRouteMatched.bind(this), this);
 	}
 
 	/**
@@ -86,17 +78,12 @@ export default class WikiController extends BaseController {
 			// sidebar List is cached across visits, so clear it first — otherwise
 			// the entries are appended again on each re-navigation.
 			(this.byId("sidebar") as List).destroyItems();
-			matches.forEach(element => {
+			matches.forEach((element) => {
 				(this.byId("sidebar") as List).addItem(
 					new ActionListItem({
 						text: `${element[1]}`,
-						press: this.onSidebarSelection.bind(
-							this,
-							element[1],
-							this._wikiContentModel,
-							Device.system.phone
-						)
-					})
+						press: this.onSidebarSelection.bind(this, element[1], this._wikiContentModel, Device.system.phone),
+					}),
 				);
 			});
 		} finally {
@@ -107,11 +94,7 @@ export default class WikiController extends BaseController {
 	/**
 	 * @param  {string} sMarkdownFileName name of markdown file
 	 */
-	private onSidebarSelection(
-		sMarkdownFileName: string,
-		jsonModel: JSONModel,
-		isOpenedOnPhone: boolean
-	): void {
+	private onSidebarSelection(sMarkdownFileName: string, jsonModel: JSONModel, isOpenedOnPhone: boolean): void {
 		// Each tap supersedes the previous one; a later tap bumps the token so a
 		// slower earlier fetch cannot overwrite the newer pane or clear its busy.
 		const token = ++this._selectionToken;
@@ -135,19 +118,15 @@ export default class WikiController extends BaseController {
 				jsonModel.setData({
 					markdown: `<div class="container">${parsedMarkdown}</div>`,
 					title: sMarkdownFileName,
-					edit: editLink
+					edit: editLink,
 				});
 
 				//improve UX by always starting at the top when opening up new content & jumping to new pane
 				if (isOpenedOnPhone)
 					// On phone the SplitContainer collapses to a single column; reveal
 					// the detail (content) page after a sidebar tap via its public API.
-					(this.byId("wikiSplit") as SplitContainer).toDetail(
-						(this.byId("markdownSection") as Page).getId(),
-						"show"
-					);
-				if (this.byId("markdownSection"))
-					(this.byId("markdownSection") as Page).scrollTo(0, 0);
+					(this.byId("wikiSplit") as SplitContainer).toDetail((this.byId("markdownSection") as Page).getId(), "show");
+				if (this.byId("markdownSection")) (this.byId("markdownSection") as Page).scrollTo(0, 0);
 			} finally {
 				// Only the latest tap owns the busy state; an out-of-order earlier
 				// tap must not clear the newer tap's indicator.

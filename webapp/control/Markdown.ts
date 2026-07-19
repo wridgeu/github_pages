@@ -10,7 +10,7 @@ import DOMPurify from "dompurify";
 // register it; the id dedupes if the module is loaded more than once.
 includeStylesheet(
 	sap.ui.require.toUrl("sapmarco/projectpages/control/Markdown.css"),
-	"sapmarco-projectpages-control-Markdown"
+	"sapmarco-projectpages-control-Markdown",
 );
 
 /**
@@ -30,7 +30,7 @@ export default class Markdown extends Control {
 			content: { type: "string", defaultValue: "" },
 			sanitize: { type: "boolean", defaultValue: true },
 			copyCodeTooltip: { type: "string", defaultValue: "Copy to clipboard" },
-			copyCodeCopiedText: { type: "string", defaultValue: "Copied!" }
+			copyCodeCopiedText: { type: "string", defaultValue: "Copied!" },
 		},
 		aggregations: {
 			// The per-code-block copy buttons. Hidden: they are an implementation
@@ -40,9 +40,9 @@ export default class Markdown extends Control {
 			_copyButtons: {
 				type: "sap.m.Button",
 				multiple: true,
-				visibility: "hidden"
-			}
-		}
+				visibility: "hidden",
+			},
+		},
 	};
 
 	declare getContent: () => string;
@@ -68,13 +68,13 @@ export default class Markdown extends Control {
 			rm.openEnd();
 			rm.unsafeHtml(
 				control.getSanitize()
-					// keep the new-tab links emitted by the markdown service; their
-					// rel="noopener noreferrer" already neutralises tab-nabbing
-					? DOMPurify.sanitize(content, { ADD_ATTR: ["target"] })
-					: content
+					? // keep the new-tab links emitted by the markdown service; their
+						// rel="noopener noreferrer" already neutralises tab-nabbing
+						DOMPurify.sanitize(content, { ADD_ATTR: ["target"] })
+					: content,
 			);
 			rm.close("div");
-		}
+		},
 	};
 
 	// Destroy the previous buttons (and cancel their timers) before the renderer
@@ -112,12 +112,10 @@ export default class Markdown extends Control {
 			const button = new Button(`${this.getId()}-copy-${index}`, {
 				icon: "sap-icon://copy",
 				type: ButtonType.Transparent,
-				tooltip: copyLabel
+				tooltip: copyLabel,
 			});
 			button.addStyleClass("wikiCopyButton");
-			button.attachPress(() =>
-				this._copyCode(pre, button, copyLabel, copiedLabel)
-			);
+			button.attachPress(() => this._copyCode(pre, button, copyLabel, copiedLabel));
 			this.addAggregation("_copyButtons", button, true);
 			rm.render(button, wrapper);
 		});
@@ -130,19 +128,10 @@ export default class Markdown extends Control {
 		this._clearRevertTimers();
 	}
 
-	private _copyCode(
-		pre: HTMLElement,
-		button: Button,
-		copyLabel: string,
-		copiedLabel: string
-	): void {
+	private _copyCode(pre: HTMLElement, button: Button, copyLabel: string, copiedLabel: string): void {
 		// Drop the single trailing newline marked appends to every code block, so
 		// pasting does not add a spurious blank line.
-		const code = (
-			pre.querySelector("code")?.textContent ??
-			pre.textContent ??
-			""
-		).replace(/\n$/, "");
+		const code = (pre.querySelector("code")?.textContent ?? pre.textContent ?? "").replace(/\n$/, "");
 		void navigator.clipboard.writeText(code).then(
 			() => {
 				// The write can resolve after a re-render destroyed this button;
@@ -166,12 +155,12 @@ export default class Markdown extends Control {
 						button.setIcon("sap-icon://copy");
 						button.setTooltip(copyLabel);
 						this._revertTimers.delete(button);
-					}, 1500)
+					}, 1500),
 				);
 			},
 			() => {
 				/* clipboard write rejected (e.g. denied permission) — no-op */
-			}
+			},
 		);
 	}
 

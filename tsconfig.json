@@ -14,16 +14,10 @@
 		"strictPropertyInitialization": false,
 		"rootDir": "./webapp",
 		"outDir": "./dist",
-		"types": [
-			"@openui5/types"
-		],
+		"types": ["@openui5/types"],
 		"paths": {
-			"sapmarco/projectpages/*": [
-				"./webapp/*"
-			]
+			"sapmarco/projectpages/*": ["./webapp/*"]
 		}
 	},
-	"include": [
-		"./webapp/**/*"
-	]
+	"include": ["./webapp/**/*"]
 }

@@ -26,8 +26,8 @@ const marked = new Marked(
 		highlight(code, lang) {
 			const language = hljs.getLanguage(lang) ? lang : "plaintext";
 			return hljs.highlight(code, { language }).value;
-		}
-	})
+		},
+	}),
 );
 
 const renderer = {
@@ -47,7 +47,7 @@ const renderer = {
 		const text = this.parser.parseInline(token.tokens);
 		const title = token.title ? ` title="${token.title}"` : "";
 		return `<a target="_blank" rel="noopener noreferrer" href="${token.href}"${title}>${text}</a>`;
-	}
+	},
 };
 
 marked.use({ renderer });
@@ -69,7 +69,7 @@ const markdownService = {
 		const html = marked.parse(markdown) as string;
 		parseCache.set(markdown, html);
 		return html;
-	}
+	},
 };
 
 /**

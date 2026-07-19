@@ -12,18 +12,18 @@ export default defineConfig({
 	reporter: "list",
 	use: {
 		baseURL: "http://localhost:8080",
-		trace: "on-first-retry"
+		trace: "on-first-retry",
 	},
 	projects: [
 		{
 			name: "chromium",
-			use: { ...devices["Desktop Chrome"] }
-		}
+			use: { ...devices["Desktop Chrome"] },
+		},
 	],
 	webServer: {
 		command: "npm run serve",
 		url: "http://localhost:8080/index.html",
 		reuseExistingServer: !process.env.CI,
-		timeout: 120_000
-	}
+		timeout: 120_000,
+	},
 });

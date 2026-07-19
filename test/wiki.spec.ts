@@ -8,8 +8,7 @@ test.use({ serviceWorkers: "block" });
 
 // One markdown link whose rendered href matches the controller's `wiki/(.*?)"`
 // sidebar regex, yielding a single ActionListItem labelled "TestPage".
-const SIDEBAR_MD =
-	"[TestPage](https://github.com/wridgeu/wridgeu.github.io/wiki/TestPage)\n";
+const SIDEBAR_MD = "[TestPage](https://github.com/wridgeu/wridgeu.github.io/wiki/TestPage)\n";
 
 // A safe link, a fenced code block (for the copy-button affordance) plus two
 // XSS vectors marked passes through as raw HTML for the Markdown control to
@@ -27,22 +26,18 @@ const PAGE_MD = [
 	"<script>window.__xssExecuted = true;</script>",
 	"",
 	'<img src="x" onerror="window.__xssExecuted = true;">',
-	""
+	"",
 ].join("\n");
 
 async function mockWikiAndOpen(page: Page): Promise<void> {
 	await page.route("**/raw.githubusercontent.com/**", (route) => {
 		const url = route.request().url();
-		const body = url.endsWith("_Sidebar.md")
-			? SIDEBAR_MD
-			: url.endsWith("TestPage.md")
-				? PAGE_MD
-				: "";
+		const body = url.endsWith("_Sidebar.md") ? SIDEBAR_MD : url.endsWith("TestPage.md") ? PAGE_MD : "";
 		return route.fulfill({
 			status: 200,
 			contentType: "text/plain; charset=utf-8",
 			headers: { "access-control-allow-origin": "*" },
-			body
+			body,
 		});
 	});
 	await page.goto("/index.html#/wiki");
@@ -57,20 +52,14 @@ test.describe("Wiki page", () => {
 		await mockWikiAndOpen(page);
 	});
 
-	test("renders selected markdown through the Markdown control", async ({
-		page
-	}) => {
+	test("renders selected markdown through the Markdown control", async ({ page }) => {
 		await selectSidebarPage(page);
 		await expect(page.locator(".wikiMarkdown")).toContainText("Test Wiki Page");
 	});
 
-	test("keeps the safe new-tab link the markdown service emits", async ({
-		page
-	}) => {
+	test("keeps the safe new-tab link the markdown service emits", async ({ page }) => {
 		await selectSidebarPage(page);
-		const safeLink = page.locator(
-			'.wikiMarkdown a[target="_blank"][rel="noopener noreferrer"]'
-		);
+		const safeLink = page.locator('.wikiMarkdown a[target="_blank"][rel="noopener noreferrer"]');
 		await expect(safeLink).toHaveCount(1);
 		await expect(safeLink).toHaveAttribute("href", "https://example.com/");
 	});
@@ -81,17 +70,10 @@ test.describe("Wiki page", () => {
 
 		// No <script> survives sanitization and no inline handler ever fired.
 		await expect(page.locator(".wikiMarkdown script")).toHaveCount(0);
-		expect(
-			await page.evaluate(
-				() => (window as unknown as { __xssExecuted?: boolean }).__xssExecuted
-			)
-		).toBeFalsy();
+		expect(await page.evaluate(() => (window as unknown as { __xssExecuted?: boolean }).__xssExecuted)).toBeFalsy();
 	});
 
-	test("copies a code block to the clipboard via the copy button", async ({
-		page,
-		context
-	}) => {
+	test("copies a code block to the clipboard via the copy button", async ({ page, context }) => {
 		await context.grantPermissions(["clipboard-read", "clipboard-write"]);
 		await selectSidebarPage(page);
 
@@ -105,16 +87,12 @@ test.describe("Wiki page", () => {
 		// otherwise the read can race ahead of writeText resolving.
 		await expect(copyButton).toHaveAttribute("title", "Copied!");
 		// The code lands on the clipboard with the trailing newline trimmed.
-		expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
-			CODE_SNIPPET
-		);
+		expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(CODE_SNIPPET);
 		// ...and the confirmation reverts on its own.
 		await expect(copyButton).toHaveAttribute("title", "Copy to clipboard");
 	});
 
-	test("does not duplicate sidebar entries across re-navigation", async ({
-		page
-	}) => {
+	test("does not duplicate sidebar entries across re-navigation", async ({ page }) => {
 		// RouteWiki's matched handler rebuilds the sidebar on every entry, and the
 		// List is cached across visits, so a leaving-and-returning must not append
 		// the same entry again.
@@ -134,13 +112,9 @@ test.describe("Wiki page", () => {
 		await expect(entry).toHaveCount(1);
 	});
 
-	test("does not leak a UIArea when the Markdown control re-renders", async ({
-		page
-	}) => {
+	test("does not leak a UIArea when the Markdown control re-renders", async ({ page }) => {
 		await selectSidebarPage(page);
-		const copyButton = page.locator(
-			".wikiMarkdown .wikiCodeBlock .wikiCopyButton"
-		);
+		const copyButton = page.locator(".wikiMarkdown .wikiCodeBlock .wikiCopyButton");
 		await expect(copyButton).toHaveCount(1);
 
 		const uiAreaCount = () =>
@@ -150,7 +124,7 @@ test.describe("Wiki page", () => {
 						sap.ui.require("sap/ui/core/UIArea") as {
 							registry: { size: number };
 						}
-					).registry.size
+					).registry.size,
 			);
 
 		const before = await uiAreaCount();
@@ -163,9 +137,7 @@ test.describe("Wiki page", () => {
 					}[];
 				};
 			};
-			const markdown = Element.registry.filter((e) =>
-				e.isA("sapmarco.projectpages.control.Markdown")
-			)[0];
+			const markdown = Element.registry.filter((e) => e.isA("sapmarco.projectpages.control.Markdown"))[0];
 			for (let i = 0; i < 3; i++) {
 				markdown.invalidate();
 				await new Promise((resolve) => setTimeout(resolve, 60));
@@ -187,7 +159,7 @@ test.describe("Wiki page on phone", () => {
 		isMobile: true,
 		hasTouch: true,
 		userAgent:
-			"Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1"
+			"Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
 	});
 
 	test.beforeEach(async ({ page }) => {
@@ -223,7 +195,7 @@ test.describe("Wiki page rapid selection", () => {
 	const RACE_SIDEBAR_MD = [
 		"[SlowPage](https://github.com/wridgeu/wridgeu.github.io/wiki/SlowPage)",
 		"[FastPage](https://github.com/wridgeu/wridgeu.github.io/wiki/FastPage)",
-		""
+		"",
 	].join("\n");
 
 	test.beforeEach(async ({ page }) => {
@@ -247,15 +219,13 @@ test.describe("Wiki page rapid selection", () => {
 				status: 200,
 				contentType: "text/plain; charset=utf-8",
 				headers: { "access-control-allow-origin": "*" },
-				body
+				body,
 			});
 		});
 		await page.goto("/index.html#/wiki");
 	});
 
-	test("keeps the latest selection when an earlier fetch resolves last", async ({
-		page
-	}) => {
+	test("keeps the latest selection when an earlier fetch resolves last", async ({ page }) => {
 		const sidebar = page.locator(".sidebar");
 		// Tap the slow page, then the fast one before the slow fetch resolves.
 		await sidebar.getByText("SlowPage", { exact: true }).click();

@@ -19,7 +19,9 @@
     "lint": "oxlint webapp",
     "ui5lint": "ui5lint",
     "test": "playwright test",
-    "build:deploy": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest --dest ./dist"
+    "build:deploy": "ui5 build self-contained --all --include-task=generateVersionInfo --clean-dest --dest ./dist",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check ."
   },
   "dependencies": {
     "dompurify": "^3.4.12",
@@ -33,6 +35,7 @@
     "@types/node": "^26.1.1",
     "@ui5/cli": "^4.0.57",
     "@ui5/linter": "^1.23.1",
+    "oxfmt": "0.59.0",
     "oxlint": "^1.74.0",
     "typescript": "~6.0.3",
     "ui5-middleware-livereload": "^3.3.1",

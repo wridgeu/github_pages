@@ -1,0 +1,13 @@
+{
+	"useTabs": true,
+	"printWidth": 120,
+	"ignorePatterns": [
+		"dist/**",
+		"package.json",
+		"package-lock.json",
+		"webapp/css/ocean.minified.css",
+		"webapp/resources/**",
+		"webapp/util/serviceworker/**",
+		"wridgeu.github.io.wiki/**"
+	]
+}

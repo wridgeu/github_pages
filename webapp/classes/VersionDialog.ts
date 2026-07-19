@@ -36,11 +36,9 @@ export default class VersionDialog extends BaseObject {
 			fragment.setModel(new JSONModel(oVersion, true), "versionInfo");
 
 			syncStyleClass(
-				(
-					this._view.getController().getOwnerComponent() as Component
-				).getContentDensityClass(),
+				(this._view.getController().getOwnerComponent() as Component).getContentDensityClass(),
 				this._view,
-				fragment
+				fragment,
 			);
 
 			await (fragment as Dialog).open();

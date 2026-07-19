@@ -34,7 +34,7 @@ export default class BaseController extends Controller {
 		psTarget: string,
 		pmParameters?: object,
 		targetInfo?: Record<string, ComponentTargetParameters>,
-		pbReplace?: boolean
+		pbReplace?: boolean,
 	): void {
 		this.getRouter().navTo(psTarget, pmParameters, targetInfo, pbReplace);
 	}
