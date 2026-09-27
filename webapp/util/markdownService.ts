@@ -1,4 +1,4 @@
-import { Marked, type Tokens, type RendererThis } from "marked";
+import { Marked, Renderer, type Tokens, type RendererThis } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js/lib/core";
 import js from "highlight.js/lib/languages/javascript";
@@ -40,11 +40,9 @@ const renderer = {
 		const imagePath = `https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/${image}`;
 		return `<img class="wikiImage" src="${imagePath}">`;
 	},
-	// open links in a new tab so the SPA stays put
+	// open links in a new tab so the SPA stays put; the stock renderer escapes href/title
 	link(this: RendererThis, token: Tokens.Link) {
-		const text = this.parser.parseInline(token.tokens);
-		const title = token.title ? ` title="${token.title}"` : "";
-		return `<a target="_blank" rel="noopener noreferrer" href="${token.href}"${title}>${text}</a>`;
+		return Renderer.prototype.link.call(this, token).replace("<a ", '<a target="_blank" rel="noopener noreferrer" ');
 	},
 };
 

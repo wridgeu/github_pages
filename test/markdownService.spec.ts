@@ -28,3 +28,12 @@ test.describe("markdownService parse cache", () => {
 		}
 	});
 });
+
+test.describe("markdownService links", () => {
+	test("opens links in a new tab with an escaped title and encoded href", () => {
+		const html = markdownService.parse('[x](<https://a.b/c d> "say \\"hi\\"")');
+		expect(html).toContain(
+			'<a target="_blank" rel="noopener noreferrer" href="https://a.b/c%20d" title="say &quot;hi&quot;">x</a>',
+		);
+	});
+});
