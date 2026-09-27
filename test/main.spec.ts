@@ -5,18 +5,7 @@ test.describe("Home page smoke test", () => {
 		await page.goto("/index.html");
 	});
 
-	test("renders the home page", async ({ page }) => {
-		await expect(page.locator(".socials")).toHaveCount(6);
-	});
-
-	test("renders the three integration cards", async ({ page }) => {
-		await expect(page.locator(".integrationcard")).toHaveCount(3);
-	});
-
-	// Cards default to CardDataMode.Auto, which defers manifest processing until
-	// the card enters the viewport. Below the fold that leaves them ~2px tall, so
-	// they snap to full height as the user scrolls past. Assert they have real
-	// height without anything having scrolled them into view.
+	// CardDataMode.Auto leaves below-the-fold cards ~2px tall until scrolled to.
 	test("gives the integration cards their height before they are scrolled to", async ({ page }) => {
 		const cards = page.locator(".integrationcard");
 		await expect(cards).toHaveCount(3);
@@ -28,9 +17,7 @@ test.describe("Home page smoke test", () => {
 		}
 	});
 
-	// Middle-click, ctrl-click and "open in new tab" are browser behaviour on a
-	// real anchor. A press handler on an <img> gets none of them, so assert the
-	// markup that earns them rather than the interaction itself.
+	// An <img> press handler loses middle-click / open-in-new-tab; a real anchor keeps them.
 	test("renders each social as a real link", async ({ page }) => {
 		const socials = page.locator(".socials");
 		// toHaveCount retries until the view has rendered; count() does not.
@@ -48,36 +35,37 @@ test.describe("Home page smoke test", () => {
 		await expect(page.locator('.socials[href*="bsky.app"]')).toHaveCount(1);
 	});
 
-	test("keeps the experience tree the same width when expanded", async ({ page }) => {
-		const tree = page.locator(".sapMList").first();
-		await expect(tree).toBeVisible();
+	// narrow viewports only stay stable because the role labels wrap
+	for (const width of [1280, 900, 420]) {
+		test(`keeps the experience tree the same width when expanded at ${width}px`, async ({ page }) => {
+			await page.setViewportSize({ width, height: 900 });
+			const tree = page.locator(".sapMList").first();
+			await expect(tree).toBeVisible();
 
-		// Toggle every node whose current state differs from the one we want, a
-		// few times over, so nested levels that only appear once their parent is
-		// open are reached too.
-		const toggleAll = async (expand: boolean) => {
-			for (let pass = 0; pass < 4; pass++) {
-				const expanders = page.locator(
-					`li.sapMTreeItemBase[aria-expanded="${expand ? "false" : "true"}"] .sapMTreeItemBaseExpander`,
-				);
-				const count = await expanders.count();
-				if (count === 0) break;
-				for (let i = count - 1; i >= 0; i--) {
-					await expanders.nth(i).click();
+			// several passes, so nested levels revealed by their parent are reached too
+			const toggleAll = async (expand: boolean) => {
+				for (let pass = 0; pass < 4; pass++) {
+					const expanders = page.locator(
+						`li.sapMTreeItemBase[aria-expanded="${expand ? "false" : "true"}"] .sapMTreeItemBaseExpander`,
+					);
+					const count = await expanders.count();
+					if (count === 0) break;
+					for (let i = count - 1; i >= 0; i--) {
+						await expanders.nth(i).click();
+					}
+					await page.waitForTimeout(150);
 				}
-				await page.waitForTimeout(150);
-			}
-		};
+			};
 
-		await toggleAll(false);
-		const collapsed = await tree.boundingBox();
+			await toggleAll(false);
+			const collapsed = await tree.boundingBox();
 
-		await toggleAll(true);
-		const expanded = await tree.boundingBox();
+			await toggleAll(true);
+			const expanded = await tree.boundingBox();
 
-		// The tree is centred, so a content-driven width change also shifts its
-		// left edge and makes the whole column jump between clicks.
-		expect(Math.round(expanded!.width)).toBe(Math.round(collapsed!.width));
-		expect(Math.round(expanded!.x)).toBe(Math.round(collapsed!.x));
-	});
+			// the tree is centred, so a width change also moves its left edge
+			expect(Math.round(expanded!.width)).toBe(Math.round(collapsed!.width));
+			expect(Math.round(expanded!.x)).toBe(Math.round(collapsed!.x));
+		});
+	}
 });

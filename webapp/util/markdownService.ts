@@ -9,8 +9,7 @@ import bash from "highlight.js/lib/languages/bash";
 import json from "highlight.js/lib/languages/json";
 import plaintext from "highlight.js/lib/languages/plaintext";
 
-// Register only the languages in use, keeping the self-contained bundle small.
-// 'plaintext' is the fallback for code blocks with an unknown/absent language.
+// Register only the languages in use; 'plaintext' is the fallback.
 hljs.registerLanguage("javascript", js);
 hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("css", css);
@@ -31,8 +30,7 @@ const marked = new Marked(
 );
 
 const renderer = {
-	// Render a paragraph that is solely the wiki '[[<file>.jpg]]' syntax as an
-	// <img>; return false to fall back to marked's default paragraph renderer.
+	// wiki '[[<file>.jpg]]' syntax -> <img>; false falls back to the default renderer
 	paragraph(token: Tokens.Paragraph) {
 		const imageSyntax = /\[\[.+?\.(?:jpg|gif|png)\]\]/;
 		if (!imageSyntax.test(token.text)) {
@@ -42,7 +40,7 @@ const renderer = {
 		const imagePath = `https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/${image}`;
 		return `<img class="wikiImage" src="${imagePath}">`;
 	},
-	// Open links in a new tab without leaking the opener, keeping the SPA intact.
+	// open links in a new tab so the SPA stays put
 	link(this: RendererThis, token: Tokens.Link) {
 		const text = this.parser.parseInline(token.tokens);
 		const title = token.title ? ` title="${token.title}"` : "";
@@ -52,12 +50,7 @@ const renderer = {
 
 marked.use({ renderer });
 
-// Re-selecting a wiki page re-parses identical markdown, re-running marked and
-// highlight.js from scratch. parse is pure and synchronous, so memoize it keyed
-// by the raw markdown string. Both call sites (the sidebar index and each page
-// body) share the cache; the wiki serves a small, fixed set of pages, so the map
-// stays naturally bounded. Sanitization still runs downstream in the Markdown
-// control on every render, so the security contract is unchanged.
+// ponytail: unbounded memo, fine for the wiki's small fixed page set
 const parseCache = new Map<string, string>();
 
 const markdownService = {

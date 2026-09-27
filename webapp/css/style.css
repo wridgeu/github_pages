@@ -3,12 +3,7 @@
 	--link: #91c8f6;
 }
 
-/* Socials Bar
-
-   Each social is a real anchor, so middle-click, ctrl-click and the context
-   menu open it in a new tab natively. The brand mark is painted as a mask
-   rather than an <img>, which lets it take the theme's icon colour and keeps
-   the link's own text available to screen readers. */
+/* Socials Bar: logos are masks so they take the theme's icon colour */
 .socials {
 	display: inline-block;
 	width: 5vw;
@@ -26,8 +21,7 @@
 	transition: 0.2s;
 }
 
-/* The accessible name stays in the DOM for assistive technology; the mark
-   above carries the visuals. */
+/* visually hidden, kept for screen readers */
 .socials .sapMLnkText {
 	position: absolute;
 	width: 1px;

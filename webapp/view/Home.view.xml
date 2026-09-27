@@ -36,9 +36,9 @@
 						</FlexBox>
 					</l:BlockLayoutCell>
 					<l:BlockLayoutCell>
-						<FlexBox direction="Column" width="100%">
-							<FlexBox justifyContent="Center" width="100%">
-								<Tree width="100%" items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">
+						<FlexBox direction="Column">
+							<FlexBox justifyContent="Center">
+								<Tree items="{path: 'cv>/', parameters:{arrayNames: ['nodes']}}">
 									<layoutData>
 										<FlexItemData growFactor="1" />
 									</layoutData>
