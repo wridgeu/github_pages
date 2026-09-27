@@ -6,3 +6,7 @@ updates:
       interval: monthly
       time: "04:00"
     open-pull-requests-limit: 10
+    ignore:
+      # TS 7 drops the JS compiler API that ui5-tooling-modules loads, breaking the build
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
