@@ -34,6 +34,6 @@ jobs:
           external_repository: wridgeu/wridgeu.github.io
           publish_branch: master
           publish_dir: ./dist
-          commitMessage: "PersonalPage upd."
-          keepFiles: false
-          emptyCommits: false
+          commit_message: "PersonalPage upd."
+          keep_files: false
+          allow_empty_commit: false
