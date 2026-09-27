@@ -1,0 +1,38 @@
+/* Layout for the Markdown control's code blocks and copy button; colours come
+   from the theme. */
+
+.wikiCodeBlock {
+	position: relative;
+	width: 100%;
+	margin: 1em 0;
+}
+
+/* The <pre> margin would otherwise open a gap the absolute button lands in. */
+.wikiCodeBlock > pre {
+	margin: 0;
+	max-width: 100%;
+}
+
+.wikiCopyButton {
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+/* The theme icon colour fails contrast on the fixed dark hljs background;
+   the copied (Accept) state brings its own. */
+.wikiMarkdown .wikiCopyButton:not(.sapMBtnInverted) .sapUiIcon {
+	color: #c0c5ce; /* hljs foreground */
+}
+
+.wikiCodeBlock:hover .wikiCopyButton,
+.wikiCopyButton:focus-within {
+	opacity: 1;
+}
+
+/* touch devices have no hover, so keep the button reachable */
+html.sap-phone .wikiCopyButton {
+	opacity: 1;
+}
