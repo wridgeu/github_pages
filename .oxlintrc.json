@@ -9,5 +9,8 @@
 	"categories": {
 		"correctness": "error"
 	},
+	"rules": {
+		"complexity": "error"
+	},
 	"ignorePatterns": ["dist/**", "webapp/css/**", "webapp/resources/**", "webapp/util/serviceworker/**"]
 }
