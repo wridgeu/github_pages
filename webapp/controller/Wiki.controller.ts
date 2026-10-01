@@ -4,8 +4,7 @@ import { getSelectedContent, getWikiIndex, getContentEditLink } from "../util/gi
 import { markdownService } from "../util/markdownService";
 import BaseController from "./Base.controller";
 import SplitContainer from "sap/m/SplitContainer";
-import type Event from "sap/ui/base/Event";
-import type Control from "sap/ui/core/Control";
+import type { ListItemBase$PressEvent } from "sap/m/ListItemBase";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import Device from "sap/ui/Device";
 
@@ -77,8 +76,8 @@ export default class WikiController extends BaseController {
 	/**
 	 * Event-handler for sidebar item press
 	 */
-	public onSidebarSelection(event: Event): void {
-		const name = (event.getSource() as Control).getBindingContext("viewState").getProperty("name") as string;
+	public onSidebarSelection(event: ListItemBase$PressEvent): void {
+		const name = event.getSource().getBindingContext("viewState").getProperty("name") as string;
 		void this._showPage(name);
 	}
 
