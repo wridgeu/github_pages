@@ -65,7 +65,8 @@ export default class Markdown extends Control {
 				} else if (node instanceof Element && node.querySelector("pre")) {
 					rm.openStart(node.localName);
 					for (const { name, value } of node.attributes) {
-						if (name !== "class" && name !== "style") {
+						// rm.attr rejects names like xml:lang, which DOMPurify allows
+						if (name !== "class" && name !== "style" && /^[a-z_][\w-]*$/.test(name)) {
 							rm.attr(name, value);
 						}
 					}

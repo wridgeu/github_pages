@@ -1,13 +1,16 @@
+const WIKI_RAW_URL = "https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/";
+const WIKI_PAGE_URL = "https://github.com/wridgeu/wridgeu.github.io/wiki/";
+
 /**
  * Fetch the markdown content
  * @returns {Promise<string>} content of markdown file
  */
 async function getSelectedContent(requestedContent: string): Promise<string> {
-	const base = "https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/";
 	// pushed pages are stored with spaces, pages created in the web editor with hyphens
-	let response = await fetch(`${base}${requestedContent.replace(/[-*?]/g, "%20")}.md`);
-	if (response.status === 404) {
-		response = await fetch(`${base}${encodeURIComponent(requestedContent)}.md`);
+	const spaced = requestedContent.replace(/[-*?]/g, " ");
+	let response = await fetch(`${WIKI_RAW_URL}${encodeURIComponent(spaced)}.md`);
+	if (response.status === 404 && spaced !== requestedContent) {
+		response = await fetch(`${WIKI_RAW_URL}${encodeURIComponent(requestedContent)}.md`);
 	}
 	return response.text();
 }
@@ -19,16 +22,14 @@ async function getSelectedContent(requestedContent: string): Promise<string> {
  */
 function getWikiIndex(): Promise<string> {
 	//return sidebar to use as initial entry point
-	return fetch(`https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/_Sidebar.md`).then((response) =>
-		response.text(),
-	);
+	return fetch(`${WIKI_RAW_URL}_Sidebar.md`).then((response) => response.text());
 }
 
 function getContentEditLink(requestedContent: string): string {
-	return `https://github.com/wridgeu/wridgeu.github.io/wiki/${requestedContent}/_edit`;
+	return `${WIKI_PAGE_URL}${requestedContent}/_edit`;
 }
 
 /**
  * @namespace sapmarco.projectpages.util
  */
-export { getWikiIndex, getSelectedContent, getContentEditLink };
+export { WIKI_RAW_URL, WIKI_PAGE_URL, getWikiIndex, getSelectedContent, getContentEditLink };

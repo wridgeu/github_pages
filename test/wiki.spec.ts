@@ -253,3 +253,24 @@ test.describe("Wiki page stored with hyphens", () => {
 		await expect(page.locator(".wikiMarkdown")).toContainText("HYPHEN CONTENT");
 	});
 });
+
+test.describe("Wiki sidebar link forms", () => {
+	test("takes the page name from URL-text links, anchors and bold links", async ({ page }) => {
+		const url = "https://github.com/wridgeu/wridgeu.github.io/wiki";
+		const sidebar = [
+			`[${url}/First](${url}/First)`,
+			`[Second](${url}/Second#setup)`,
+			`**[Third](${url}/Third)**`,
+			"[Elsewhere](https://en.wikipedia.org/wiki/Elsewhere)",
+			"",
+		].join("\n");
+		await page.route("**/raw.githubusercontent.com/**", (route) =>
+			route.fulfill({
+				headers: { "access-control-allow-origin": "*" },
+				body: route.request().url().endsWith("_Sidebar.md") ? sidebar : "",
+			}),
+		);
+		await page.goto("/index.html#/wiki");
+		await expect(page.locator(".sidebar li")).toHaveText(["First", "Second", "Third"]);
+	});
+});

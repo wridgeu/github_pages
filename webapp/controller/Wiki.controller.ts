@@ -1,6 +1,6 @@
 import Page from "sap/m/Page";
 import Component from "../Component";
-import { getSelectedContent, getWikiIndex, getContentEditLink } from "../util/githubService";
+import { WIKI_PAGE_URL, getSelectedContent, getWikiIndex, getContentEditLink } from "../util/githubService";
 import { markdownService } from "../util/markdownService";
 import BaseController from "./Base.controller";
 import SplitContainer from "sap/m/SplitContainer";
@@ -66,7 +66,11 @@ export default class WikiController extends BaseController {
 		this._viewStateModel.setProperty("/busy", true);
 		try {
 			const wikiIndex = await getWikiIndex();
-			const pages = [...wikiIndex.matchAll(/\/wiki\/([^)\s>"]+)/g)].map(([, name]) => ({ name }));
+			// read real links, so anchors, titles and autolinks need no special casing
+			const sidebar = new DOMParser().parseFromString(markdownService.parse(wikiIndex), "text/html");
+			const pages = [...sidebar.querySelectorAll<HTMLAnchorElement>(`a[href^="${WIKI_PAGE_URL}"]`)].map((link) => ({
+				name: decodeURIComponent(link.href.slice(WIKI_PAGE_URL.length).split(/[#?]/)[0]),
+			}));
 			this._viewStateModel.setProperty("/pages", pages);
 		} finally {
 			this._viewStateModel.setProperty("/busy", false);
