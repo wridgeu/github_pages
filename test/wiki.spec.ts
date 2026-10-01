@@ -283,10 +283,16 @@ test.describe("Wiki deep links", () => {
 			const requested = route.request().url();
 			const headers = { "access-control-allow-origin": "*" };
 			if (requested.endsWith("_Sidebar.md")) {
-				return route.fulfill({ headers, body: `[First](${url}/First)\n[Second](${url}/Second)\n` });
+				return route.fulfill({
+					headers,
+					body: `[First](${url}/First)\n[Second](${url}/Second)\n[Third Page](${url}/Third%20Page)\n`,
+				});
 			}
 			if (requested.endsWith("First.md")) {
-				return route.fulfill({ headers, body: "# FIRST CONTENT" });
+				return route.fulfill({ headers, body: `# FIRST CONTENT\n\nSee [the third page](${url}/Third%20Page#usage).` });
+			}
+			if (requested.endsWith("Third%20Page.md")) {
+				return route.fulfill({ headers, body: "# THIRD CONTENT" });
 			}
 			if (requested.endsWith("Second.md")) {
 				return route.fulfill({ headers, body: "# SECOND CONTENT" });
@@ -298,7 +304,7 @@ test.describe("Wiki deep links", () => {
 	test("opens the page named in the URL", async ({ page }) => {
 		await page.goto("/index.html#/wiki/Second");
 		await expect(page.locator(".wikiMarkdown")).toContainText("SECOND CONTENT");
-		await expect(page.locator(".sidebar li")).toHaveText(["First", "Second"]);
+		await expect(page.locator(".sidebar li")).toHaveText(["First", "Second", "Third Page"]);
 	});
 
 	test("writes the selection to the URL and leaves the wiki in one back step", async ({ page }) => {
@@ -317,29 +323,56 @@ test.describe("Wiki deep links", () => {
 		await expect(page).toHaveURL(/#\/?$/);
 	});
 
-	test("does not fetch a page the sidebar does not list", async ({ page }) => {
+	test("follows a link to another wiki page inside the app", async ({ page }) => {
+		await page.goto("/index.html#/wiki/First");
+		const link = page.locator(".wikiMarkdown a", { hasText: "the third page" });
+		await expect(link).not.toHaveAttribute("target");
+		await link.click();
+		await expect(page).toHaveURL(/#\/wiki\/Third%20Page$/);
+		await expect(page.locator(".wikiMarkdown")).toContainText("THIRD CONTENT");
+	});
+
+	test("shows the not-found page without fetching a page the sidebar does not list", async ({ page }) => {
 		const fetched: string[] = [];
 		page.on("request", (request) => fetched.push(request.url()));
 		await page.goto("/index.html#/wiki/Missing");
-		await expect(page.locator(".wikiMarkdown")).toContainText("This page could not be loaded.");
+		await expect(page.locator(".sapMIllustratedMessage")).toContainText("Page not found");
+		await expect(page).toHaveURL(/#\/wiki\/Missing$/);
 		expect(fetched.filter((u) => u.includes("Missing"))).toEqual([]);
 	});
 
-	test("shows an error when a listed page is gone from GitHub", async ({ page }) => {
+	test("shows the not-found page when a listed page is gone from GitHub", async ({ page }) => {
 		await page.unrouteAll();
 		await page.route("**/raw.githubusercontent.com/**", (route) => {
 			const headers = { "access-control-allow-origin": "*" };
 			return route.request().url().endsWith("_Sidebar.md")
-				? route.fulfill({
-						headers,
-						body: `[Gone](${url}/Gone)
-`,
-					})
+				? route.fulfill({ headers, body: `[Gone](${url}/Gone)\n` })
 				: route.fulfill({ status: 404, headers, body: "404: Not Found" });
 		});
 		await page.goto("/index.html#/wiki/Gone");
-		const content = page.locator(".wikiMarkdown");
-		await expect(content).toContainText("This page could not be loaded.");
-		await expect(content).not.toContainText("404");
+		await expect(page.locator(".sapMIllustratedMessage")).toContainText("Page not found");
+	});
+
+	test("keeps an inline error when GitHub fails for a listed page", async ({ page }) => {
+		await page.unrouteAll();
+		await page.route("**/raw.githubusercontent.com/**", (route) => {
+			const headers = { "access-control-allow-origin": "*" };
+			return route.request().url().endsWith("_Sidebar.md")
+				? route.fulfill({ headers, body: `[Broken](${url}/Broken)\n` })
+				: route.fulfill({ status: 500, headers, body: "boom" });
+		});
+		await page.goto("/index.html#/wiki/Broken");
+		await expect(page.locator(".wikiMarkdown")).toContainText("This page could not be loaded.");
+	});
+});
+
+test.describe("Not-found page", () => {
+	test("catches unknown routes and leads back home", async ({ page }) => {
+		await page.goto("/index.html#/does-not-exist");
+		const message = page.locator(".sapMIllustratedMessage");
+		await expect(message).toContainText("Page not found");
+		await message.getByRole("button", { name: "Go to home" }).click();
+		await expect(message).toBeHidden();
+		await expect(page).toHaveURL(/#\/?$/);
 	});
 });

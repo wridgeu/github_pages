@@ -1,6 +1,6 @@
 import Page from "sap/m/Page";
 import Component from "../Component";
-import { WIKI_PAGE_URL, getSelectedContent, getWikiIndex, getContentEditLink } from "../util/githubService";
+import { getSelectedContent, getWikiIndex, getContentEditLink } from "../util/githubService";
 import { markdownService } from "../util/markdownService";
 import BaseController from "./Base.controller";
 import SplitContainer from "sap/m/SplitContainer";
@@ -76,10 +76,10 @@ export default class WikiController extends BaseController {
 		this._viewStateModel.setProperty("/busy", true);
 		try {
 			const wikiIndex = await getWikiIndex();
-			// read real links, so anchors, titles and autolinks need no special casing
+			// read the rendered links, which markdownService already turned into wiki routes
 			const sidebar = new DOMParser().parseFromString(markdownService.parse(wikiIndex), "text/html");
-			const pages = [...sidebar.querySelectorAll<HTMLAnchorElement>(`a[href^="${WIKI_PAGE_URL}"]`)].map((link) => ({
-				name: decodeURIComponent(link.href.slice(WIKI_PAGE_URL.length).split(/[#?]/)[0]),
+			const pages = [...sidebar.querySelectorAll<HTMLAnchorElement>('a[href^="#/wiki/"]')].map((link) => ({
+				name: decodeURIComponent(link.getAttribute("href").slice("#/wiki/".length)),
 			}));
 			this._viewStateModel.setProperty("/pages", pages);
 		} finally {
@@ -106,17 +106,18 @@ export default class WikiController extends BaseController {
 		const token = ++this._selectionToken;
 		this._viewStateModel.setProperty("/busy", true);
 		try {
-			let markdown: string;
+			// only pages listed in the GitHub sidebar are routable; anything else never reaches GitHub
+			const listed = (this._viewStateModel.getProperty("/pages") as { name: string }[]).some(
+				(p) => p.name === sMarkdownFileName,
+			);
+			let markdown: string | undefined;
 			let edit = "";
 			try {
-				// only pages listed in the GitHub sidebar are routable; anything else never reaches GitHub
-				if (
-					!(this._viewStateModel.getProperty("/pages") as { name: string }[]).some((p) => p.name === sMarkdownFileName)
-				) {
-					throw new Error(`Wiki page "${sMarkdownFileName}" is not in the sidebar`);
+				const content = listed ? await getSelectedContent(sMarkdownFileName) : undefined;
+				if (content !== undefined) {
+					markdown = markdownService.parse(content);
+					edit = getContentEditLink(sMarkdownFileName);
 				}
-				markdown = markdownService.parse(await getSelectedContent(sMarkdownFileName));
-				edit = getContentEditLink(sMarkdownFileName);
 			} catch {
 				// the i18n model loads async, so the bundle may still be a promise
 				const bundle = await (this.getOwnerComponent().getModel("i18n") as ResourceModel).getResourceBundle();
@@ -124,6 +125,12 @@ export default class WikiController extends BaseController {
 			}
 
 			if (token !== this._selectionToken) {
+				return;
+			}
+
+			if (markdown === undefined) {
+				// keep the hash, so the URL still shows what was asked for
+				void this.getRouter().getTargets().display("TargetNotFound");
 				return;
 			}
 
