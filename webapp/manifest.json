@@ -3,7 +3,11 @@
 	"sap.app": {
 		"id": "sapmarco.projectpages",
 		"type": "application",
-		"i18n": "i18n/i18n.properties",
+		"i18n": {
+			"bundleName": "sapmarco.projectpages.i18n.i18n",
+			"supportedLocales": ["en", "de"],
+			"fallbackLocale": "en"
+		},
 		"applicationVersion": {
 			"version": "${version}"
 		},
@@ -67,7 +71,7 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "sapmarco.projectpages.i18n.i18n",
-					"supportedLocales": ["de", "en"],
+					"supportedLocales": ["en", "de"],
 					"fallbackLocale": "en",
 					"async": true
 				}

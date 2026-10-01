@@ -6,6 +6,7 @@ test.use({ serviceWorkers: "block" });
 const SIDEBAR_MD = "[TestPage](https://github.com/wridgeu/wridgeu.github.io/wiki/TestPage)\n";
 
 const CODE_SNIPPET = "const answer = 42;";
+const NESTED_SNIPPET = "let nested = true;";
 const PAGE_MD = [
 	"# Test Wiki Page",
 	"",
@@ -14,6 +15,12 @@ const PAGE_MD = [
 	"```js",
 	CODE_SNIPPET,
 	"```",
+	"",
+	"- a list item with code",
+	"",
+	"  ```js",
+	`  ${NESTED_SNIPPET}`,
+	"  ```",
 	"",
 	"<script>window.__xssExecuted = true;</script>",
 	"",
@@ -63,14 +70,36 @@ test.describe("Wiki page", () => {
 		await context.grantPermissions(["clipboard-read", "clipboard-write"]);
 		await selectSidebarPage(page);
 
-		const copyButton = page.locator(".wikiMarkdown .wikiCodeBlock .wikiCopyButton");
-		await expect(copyButton).toHaveCount(1);
+		const copyButtons = page.locator(".wikiMarkdown .wikiCodeBlock .wikiCopyButton");
+		await expect(copyButtons).toHaveCount(2);
+		const copyButton = copyButtons.first();
 
 		await copyButton.click();
 		// wait for the confirmation so the read cannot race writeText
 		await expect(copyButton).toHaveAttribute("title", "Copied!");
 		expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(CODE_SNIPPET);
 		await expect(copyButton).toHaveAttribute("title", "Copy to clipboard");
+	});
+
+	test("adds a copy button to a code block nested in a list", async ({ page, context }) => {
+		await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+		await selectSidebarPage(page);
+
+		const nestedButton = page.locator(".wikiMarkdown li .wikiCodeBlock .wikiCopyButton");
+		await expect(nestedButton).toHaveCount(1);
+		await nestedButton.click();
+		await expect(nestedButton).toHaveAttribute("title", "Copied!");
+		expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(NESTED_SNIPPET);
+	});
+
+	test("renders code blocks without copy buttons when the clipboard is unavailable", async ({ page }) => {
+		// insecure contexts (plain http on a LAN address) have no navigator.clipboard
+		await page.addInitScript(() => Object.defineProperty(Navigator.prototype, "clipboard", { get: () => undefined }));
+		await page.reload();
+		await selectSidebarPage(page);
+
+		await expect(page.locator(".wikiMarkdown pre")).toHaveCount(2);
+		await expect(page.locator(".wikiMarkdown .wikiCopyButton")).toHaveCount(0);
 	});
 
 	test("does not duplicate sidebar entries across re-navigation", async ({ page }) => {
@@ -90,7 +119,7 @@ test.describe("Wiki page", () => {
 	test("does not leak a UIArea when the Markdown control re-renders", async ({ page }) => {
 		await selectSidebarPage(page);
 		const copyButton = page.locator(".wikiMarkdown .wikiCodeBlock .wikiCopyButton");
-		await expect(copyButton).toHaveCount(1);
+		await expect(copyButton).toHaveCount(2);
 
 		const uiAreaCount = () =>
 			page.evaluate(
@@ -118,7 +147,7 @@ test.describe("Wiki page", () => {
 			}
 		});
 
-		await expect(copyButton).toHaveCount(1);
+		await expect(copyButton).toHaveCount(2);
 		expect(await uiAreaCount()).toBe(before);
 	});
 });
@@ -203,5 +232,45 @@ test.describe("Wiki page rapid selection", () => {
 		await page.waitForTimeout(500);
 		await expect(content).toContainText("FAST CONTENT");
 		await expect(content).not.toContainText("SLOW CONTENT");
+	});
+});
+
+test.describe("Wiki page stored with hyphens", () => {
+	test("falls back to the hyphenated file name when the spaced one is missing", async ({ page }) => {
+		await page.route("**/raw.githubusercontent.com/**", (route) => {
+			const url = route.request().url();
+			const headers = { "access-control-allow-origin": "*" };
+			if (url.endsWith("_Sidebar.md")) {
+				return route.fulfill({ headers, body: "[x](https://github.com/wridgeu/wridgeu.github.io/wiki/Hyphen-Page)\n" });
+			}
+			if (url.endsWith("Hyphen-Page.md")) {
+				return route.fulfill({ headers, body: "# HYPHEN CONTENT" });
+			}
+			return route.fulfill({ status: 404, headers, body: "404: Not Found" });
+		});
+		await page.goto("/index.html#/wiki");
+		await page.locator(".sidebar").getByText("Hyphen-Page", { exact: true }).click();
+		await expect(page.locator(".wikiMarkdown")).toContainText("HYPHEN CONTENT");
+	});
+});
+
+test.describe("Wiki sidebar link forms", () => {
+	test("takes the page name from URL-text links, anchors and bold links", async ({ page }) => {
+		const url = "https://github.com/wridgeu/wridgeu.github.io/wiki";
+		const sidebar = [
+			`[${url}/First](${url}/First)`,
+			`[Second](${url}/Second#setup)`,
+			`**[Third](${url}/Third)**`,
+			"[Elsewhere](https://en.wikipedia.org/wiki/Elsewhere)",
+			"",
+		].join("\n");
+		await page.route("**/raw.githubusercontent.com/**", (route) =>
+			route.fulfill({
+				headers: { "access-control-allow-origin": "*" },
+				body: route.request().url().endsWith("_Sidebar.md") ? sidebar : "",
+			}),
+		);
+		await page.goto("/index.html#/wiki");
+		await expect(page.locator(".sidebar li")).toHaveText(["First", "Second", "Third"]);
 	});
 });
