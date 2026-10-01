@@ -2,6 +2,8 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
 	testDir: "./test",
+	// needs the built dist; run with npm run test:sw
+	testIgnore: "sw.spec.ts",
 	// one `ui5 serve` transpiles on the fly; parallel cold loads starve it and flake
 	fullyParallel: false,
 	workers: 1,
