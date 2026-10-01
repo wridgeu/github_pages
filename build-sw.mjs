@@ -32,7 +32,7 @@ const { count, size, warnings } = await generateSW({
 		`resources/sap/ui/core/themes/${themes}/fonts/*.woff2`,
 		"resources/sap/m/themes/base/illustrations/{metadata.json,sapIllus-Patterns.svg,sapIllus-*-PageNotFound.svg}",
 	],
-	globIgnores: ["sw.js"],
+	globIgnores: ["sw.js", "**/*-dbg.js", "**/designtime/**"],
 	// UI5 appends the app version to theme URLs
 	ignoreURLParametersMatching: [/^utm_/, /^fbclid$/, /^sap-ui-dist-version$/],
 	maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
@@ -41,7 +41,8 @@ const { count, size, warnings } = await generateSW({
 			// wiki markdown and images: show the cached copy, refresh it in the background
 			urlPattern: ({ url }) => url.origin === "https://raw.githubusercontent.com",
 			handler: "StaleWhileRevalidate",
-			options: { cacheName: "projectpages-wiki", expiration: { maxEntries: 50 } },
+			// wiki <img> responses are opaque, which browsers count heavily against the quota
+			options: { cacheName: "projectpages-wiki", expiration: { maxEntries: 50, purgeOnQuotaError: true } },
 		},
 		{
 			urlPattern: ({ request, sameOrigin }) => sameOrigin && request.destination === "image",

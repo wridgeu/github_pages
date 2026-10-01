@@ -44,12 +44,17 @@ test("serves the app, a read wiki page and both themes offline", async ({ page, 
 	expect(failed).toEqual([]);
 });
 
-test("deletes the caches of the previous service worker", async ({ page }) => {
-	// a page that registers no worker, so the old caches exist before the new one activates
+test("deletes the previous worker's caches, and only those", async ({ page }) => {
+	// a page that registers no worker, so the caches exist before the new one activates
 	await page.goto("/model/cv.json");
-	await page.evaluate(() => Promise.all(["app-1.25.1", "STATIC-0.0.0"].map((name) => caches.open(name))));
+	await page.evaluate(() =>
+		Promise.all(["app-1.25.1", "STATIC-0.0.0", "other-project-page"].map((name) => caches.open(name))),
+	);
 	await page.goto("/index.html");
 	await waitForController(page);
 	await expect.poll(() => page.evaluate(() => caches.keys())).not.toContain("STATIC-0.0.0");
-	expect(await page.evaluate(() => caches.keys())).not.toContain("app-1.25.1");
+	const keys = await page.evaluate(() => caches.keys());
+	expect(keys).not.toContain("app-1.25.1");
+	// project pages under wridgeu.github.io/* share this origin's caches
+	expect(keys).toContain("other-project-page");
 });

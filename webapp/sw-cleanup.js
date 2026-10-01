@@ -1,11 +1,11 @@
-// Deletes caches this site no longer uses, such as those of the pre-Workbox worker
-// (app-1.25.1, STATIC-0.0.0). Every current cache is named "projectpages-...".
+// Deletes the caches of the pre-Workbox worker, named "<app|STRATEGY>-<semver>" (app-1.25.1,
+// STATIC-0.0.0). Matched exactly: project pages under wridgeu.github.io/* share this origin's caches.
+const legacyCache = /^(app|[A-Z]+)-\d+\.\d+\.\d+$/;
+
 self.addEventListener("activate", (event) => {
 	event.waitUntil(
 		caches
 			.keys()
-			.then((keys) =>
-				Promise.all(keys.filter((key) => !key.startsWith("projectpages-")).map((key) => caches.delete(key))),
-			),
+			.then((keys) => Promise.all(keys.filter((key) => legacyCache.test(key)).map((key) => caches.delete(key)))),
 	);
 });
