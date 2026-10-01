@@ -2,11 +2,14 @@
  * Fetch the markdown content
  * @returns {Promise<string>} content of markdown file
  */
-function getSelectedContent(requestedContent: string): Promise<string> {
-	//return markdown content & encode '-' with %20
-	return fetch(
-		`https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/${requestedContent.replace(/[-*?]/g, "%20")}.md`,
-	).then((response) => response.text());
+async function getSelectedContent(requestedContent: string): Promise<string> {
+	const base = "https://raw.githubusercontent.com/wiki/wridgeu/wridgeu.github.io/";
+	// pushed pages are stored with spaces, pages created in the web editor with hyphens
+	let response = await fetch(`${base}${requestedContent.replace(/[-*?]/g, "%20")}.md`);
+	if (response.status === 404) {
+		response = await fetch(`${base}${encodeURIComponent(requestedContent)}.md`);
+	}
+	return response.text();
 }
 
 /**
