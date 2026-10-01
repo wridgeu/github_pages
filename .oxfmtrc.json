@@ -8,6 +8,7 @@
 		"webapp/css/ocean.minified.css",
 		"webapp/resources/**",
 		"webapp/util/serviceworker/**",
+		"webapp/**/*.gen.d.ts",
 		"wridgeu.github.io.wiki/**"
 	]
 }

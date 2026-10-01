@@ -35,12 +35,12 @@ export default class Markdown extends Control {
 		},
 	};
 
-	declare getContent: () => string;
-	declare setContent: (content: string) => this;
-	declare getCopyCodeTooltip: () => string;
-	declare setCopyCodeTooltip: (copyCodeTooltip: string) => this;
-	declare getCopyCodeCopiedText: () => string;
-	declare setCopyCodeCopiedText: (copyCodeCopiedText: string) => this;
+	// accessors and $MarkdownSettings come from Markdown.gen.d.ts (@ui5/ts-interface-generator)
+	constructor(idOrSettings?: string | $MarkdownSettings);
+	constructor(id?: string, settings?: $MarkdownSettings);
+	constructor(id?: string, settings?: $MarkdownSettings) {
+		super(id, settings);
+	}
 
 	private _revertTimers = new Map<Button, ReturnType<typeof setTimeout>>();
 	// parsed in onBeforeRendering so the buttons exist before the renderer runs
