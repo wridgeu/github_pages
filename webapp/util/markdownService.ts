@@ -38,8 +38,7 @@ const renderer = {
 			return false;
 		}
 		const image = token.text.trim().slice(2, -2);
-		const imagePath = `${WIKI_RAW_URL}${image}`;
-		return `<img class="wikiImage" src="${imagePath}">`;
+		return `<img class="wikiImage" src="${WIKI_RAW_URL}${image}">`;
 	},
 	// open links in a new tab so the SPA stays put; the stock renderer escapes href/title
 	link(this: RendererThis, token: Tokens.Link) {
