@@ -14,14 +14,16 @@
                 <masterPages>
                     <Page id="sidebarPage" titleAlignment="Center" title="{i18n>sidebar}">
                         <content>
-                            <List class="sidebar" id="sidebar" />
+                            <List class="sidebar" id="sidebar" items="{viewState>/pages}">
+                                <ActionListItem text="{viewState>name}" press=".onSidebarSelection" />
+                            </List>
                         </content>
                     </Page>
                 </masterPages>
                 <detailPages>
                     <Page id="markdownSection" showHeader="false">
                         <content>
-                            <control:Markdown content="{convertedmarkdown>/markdown}" copyCodeTooltip="{i18n>wikiCopyCode}" copyCodeCopiedText="{i18n>wikiCopyCodeDone}" />
+                            <control:Markdown class="container" content="{convertedmarkdown>/markdown}" copyCodeTooltip="{i18n>wikiCopyCode}" copyCodeCopiedText="{i18n>wikiCopyCodeDone}" />
                         </content>
                     </Page>
                 </detailPages>

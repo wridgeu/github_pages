@@ -6,6 +6,7 @@ test.use({ serviceWorkers: "block" });
 const SIDEBAR_MD = "[TestPage](https://github.com/wridgeu/wridgeu.github.io/wiki/TestPage)\n";
 
 const CODE_SNIPPET = "const answer = 42;";
+const NESTED_SNIPPET = "let nested = true;";
 const PAGE_MD = [
 	"# Test Wiki Page",
 	"",
@@ -14,6 +15,12 @@ const PAGE_MD = [
 	"```js",
 	CODE_SNIPPET,
 	"```",
+	"",
+	"- a list item with code",
+	"",
+	"  ```js",
+	`  ${NESTED_SNIPPET}`,
+	"  ```",
 	"",
 	"<script>window.__xssExecuted = true;</script>",
 	"",
@@ -63,14 +70,26 @@ test.describe("Wiki page", () => {
 		await context.grantPermissions(["clipboard-read", "clipboard-write"]);
 		await selectSidebarPage(page);
 
-		const copyButton = page.locator(".wikiMarkdown .wikiCodeBlock .wikiCopyButton");
-		await expect(copyButton).toHaveCount(1);
+		const copyButtons = page.locator(".wikiMarkdown .wikiCodeBlock .wikiCopyButton");
+		await expect(copyButtons).toHaveCount(2);
+		const copyButton = copyButtons.first();
 
 		await copyButton.click();
 		// wait for the confirmation so the read cannot race writeText
 		await expect(copyButton).toHaveAttribute("title", "Copied!");
 		expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(CODE_SNIPPET);
 		await expect(copyButton).toHaveAttribute("title", "Copy to clipboard");
+	});
+
+	test("adds a copy button to a code block nested in a list", async ({ page, context }) => {
+		await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+		await selectSidebarPage(page);
+
+		const nestedButton = page.locator(".wikiMarkdown li .wikiCodeBlock .wikiCopyButton");
+		await expect(nestedButton).toHaveCount(1);
+		await nestedButton.click();
+		await expect(nestedButton).toHaveAttribute("title", "Copied!");
+		expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(NESTED_SNIPPET);
 	});
 
 	test("does not duplicate sidebar entries across re-navigation", async ({ page }) => {
@@ -90,7 +109,7 @@ test.describe("Wiki page", () => {
 	test("does not leak a UIArea when the Markdown control re-renders", async ({ page }) => {
 		await selectSidebarPage(page);
 		const copyButton = page.locator(".wikiMarkdown .wikiCodeBlock .wikiCopyButton");
-		await expect(copyButton).toHaveCount(1);
+		await expect(copyButton).toHaveCount(2);
 
 		const uiAreaCount = () =>
 			page.evaluate(
@@ -118,7 +137,7 @@ test.describe("Wiki page", () => {
 			}
 		});
 
-		await expect(copyButton).toHaveCount(1);
+		await expect(copyButton).toHaveCount(2);
 		expect(await uiAreaCount()).toBe(before);
 	});
 });
