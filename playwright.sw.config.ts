@@ -13,7 +13,6 @@ export default defineConfig({
 	webServer: {
 		command: "ui5 serve --port 8081 --config ui5-dist.yaml",
 		url: "http://localhost:8081/index.html",
-		reuseExistingServer: false,
 		timeout: 120_000,
 	},
 });

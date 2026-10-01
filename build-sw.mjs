@@ -8,8 +8,8 @@ const { count, size, warnings } = await generateSW({
 	swDest: "dist/sw.js",
 	cacheId: "projectpages",
 	importScripts: ["sw-cleanup.js"],
-	// No skipWaiting: a new version takes over once every tab of the old one is closed,
-	// so a running page never mixes files from two deploys.
+	// skipWaiting stays off: a new version takes over once every tab of the old one is closed,
+	// so a running page never mixes files from two deploys
 	cleanupOutdatedCaches: true,
 	// The build is 250 MB of UI5 libraries; precache only what the app loads.
 	// The offline test (npm run test:sw) fails if this misses something.
@@ -35,6 +35,7 @@ const { count, size, warnings } = await generateSW({
 	globIgnores: ["sw.js", "**/*-dbg.js", "**/designtime/**"],
 	// UI5 appends the app version to theme URLs
 	ignoreURLParametersMatching: [/^utm_/, /^fbclid$/, /^sap-ui-dist-version$/],
+	// sap-ui-custom.js is ~4.7 MB, above the 2 MB default
 	maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
 	runtimeCaching: [
 		{
