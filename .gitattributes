@@ -16,6 +16,5 @@
 
 # Vendored and generated bundles: excluded from the formatter, and collapsed
 # in review diffs.
-webapp/util/serviceworker/ui5swlib.js linguist-generated
 webapp/css/ocean.minified.css linguist-generated
 package-lock.json linguist-generated
