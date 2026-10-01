@@ -43,5 +43,7 @@ server:
       afterMiddleware: compression
       configuration:
         debug: false
+        # regenerates control/*.gen.d.ts on serve; match the CLI's full JSDoc
+        generateTsInterfacesJsDoc: verbose
         transpileAsync: true
         transpileTypeScript: true

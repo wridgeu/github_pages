@@ -236,8 +236,6 @@ test.describe("Wiki page rapid selection", () => {
 });
 
 test.describe("Wiki page stored with hyphens", () => {
-	test.use({ serviceWorkers: "block" });
-
 	test("falls back to the hyphenated file name when the spaced one is missing", async ({ page }) => {
 		await page.route("**/raw.githubusercontent.com/**", (route) => {
 			const url = route.request().url();

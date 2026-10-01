@@ -108,7 +108,7 @@ export default class Markdown extends Control {
 		// a nested <pre> goes out inside its parent's outerHTML, so it gets no button
 		this._fragment.querySelectorAll("pre:not(pre pre)").forEach((pre, index) => {
 			// drop the trailing newline marked appends to every code block
-			const code = (pre.querySelector("code")?.textContent ?? pre.textContent ?? "").replace(/\n$/, "");
+			const code = (pre.querySelector("code") ?? pre).textContent.replace(/\n$/, "");
 			const button = new Button(`${this.getId()}-copy-${index}`, {
 				icon: "sap-icon://copy",
 				type: ButtonType.Transparent,

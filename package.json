@@ -20,7 +20,6 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "typecheck": "ts-interface-generator && tsc --noEmit",
-    "watch:controls": "ts-interface-generator --watch",
     "ui5lint": "ui5lint",
     "test": "playwright test",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm run ui5lint",
