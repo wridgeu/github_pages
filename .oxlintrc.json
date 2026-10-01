@@ -12,5 +12,5 @@
 	"rules": {
 		"complexity": "error"
 	},
-	"ignorePatterns": ["dist/**", "webapp/css/**", "webapp/resources/**", "webapp/util/serviceworker/**"]
+	"ignorePatterns": ["dist/**", "webapp/css/**", "webapp/resources/**", "webapp/util/serviceworker/**", "webapp/**/*.gen.d.ts"]
 }
