@@ -106,14 +106,14 @@ export default class WikiController extends BaseController {
 		const token = ++this._selectionToken;
 		this._viewStateModel.setProperty("/busy", true);
 		try {
-			// only pages listed in the GitHub sidebar are routable; anything else never reaches GitHub
-			const listed = (this._viewStateModel.getProperty("/pages") as { name: string }[]).some(
-				(p) => p.name === sMarkdownFileName,
-			);
+			const pages = this._viewStateModel.getProperty("/pages") as { name: string }[];
 			let markdown: string | undefined;
 			let edit = "";
 			try {
-				const content = listed ? await getSelectedContent(sMarkdownFileName) : undefined;
+				// only pages the sidebar lists are routable; anything else never reaches GitHub
+				const content = pages.some((p) => p.name === sMarkdownFileName)
+					? await getSelectedContent(sMarkdownFileName)
+					: undefined;
 				if (content !== undefined) {
 					markdown = markdownService.parse(content);
 					edit = getContentEditLink(sMarkdownFileName);

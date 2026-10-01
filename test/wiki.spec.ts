@@ -289,7 +289,10 @@ test.describe("Wiki deep links", () => {
 				});
 			}
 			if (requested.endsWith("First.md")) {
-				return route.fulfill({ headers, body: `# FIRST CONTENT\n\nSee [the third page](${url}/Third%20Page#usage).` });
+				return route.fulfill({
+					headers,
+					body: `# FIRST CONTENT\n\nSee [the third page](${url}/Third%20Page#usage) and [its history](${url}/Third%20Page/_history).`,
+				});
 			}
 			if (requested.endsWith("Third%20Page.md")) {
 				return route.fulfill({ headers, body: "# THIRD CONTENT" });
@@ -327,6 +330,8 @@ test.describe("Wiki deep links", () => {
 		await page.goto("/index.html#/wiki/First");
 		const link = page.locator(".wikiMarkdown a", { hasText: "the third page" });
 		await expect(link).not.toHaveAttribute("target");
+		// sub-paths have no route, so they stay GitHub links
+		await expect(page.locator(".wikiMarkdown a", { hasText: "its history" })).toHaveAttribute("target", "_blank");
 		await link.click();
 		await expect(page).toHaveURL(/#\/wiki\/Third%20Page$/);
 		await expect(page.locator(".wikiMarkdown")).toContainText("THIRD CONTENT");
