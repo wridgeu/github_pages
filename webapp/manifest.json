@@ -5,8 +5,8 @@
 		"type": "application",
 		"i18n": {
 			"bundleName": "sapmarco.projectpages.i18n.i18n",
-			"supportedLocales": ["", "de"],
-			"fallbackLocale": ""
+			"supportedLocales": ["en", "de"],
+			"fallbackLocale": "en"
 		},
 		"applicationVersion": {
 			"version": "${version}"
@@ -71,8 +71,8 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "sapmarco.projectpages.i18n.i18n",
-					"supportedLocales": ["", "de"],
-					"fallbackLocale": "",
+					"supportedLocales": ["en", "de"],
+					"fallbackLocale": "en",
 					"async": true
 				}
 			},
