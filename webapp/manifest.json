@@ -108,7 +108,7 @@
 				},
 				{
 					"name": "RouteWiki",
-					"pattern": "wiki",
+					"pattern": "wiki/:page:",
 					"target": ["TargetWiki"]
 				},
 				{

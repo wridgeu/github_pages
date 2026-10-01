@@ -274,3 +274,72 @@ test.describe("Wiki sidebar link forms", () => {
 		await expect(page.locator(".sidebar li")).toHaveText(["First", "Second", "Third"]);
 	});
 });
+
+test.describe("Wiki deep links", () => {
+	const url = "https://github.com/wridgeu/wridgeu.github.io/wiki";
+
+	test.beforeEach(async ({ page }) => {
+		await page.route("**/raw.githubusercontent.com/**", (route) => {
+			const requested = route.request().url();
+			const headers = { "access-control-allow-origin": "*" };
+			if (requested.endsWith("_Sidebar.md")) {
+				return route.fulfill({ headers, body: `[First](${url}/First)\n[Second](${url}/Second)\n` });
+			}
+			if (requested.endsWith("First.md")) {
+				return route.fulfill({ headers, body: "# FIRST CONTENT" });
+			}
+			if (requested.endsWith("Second.md")) {
+				return route.fulfill({ headers, body: "# SECOND CONTENT" });
+			}
+			return route.fulfill({ status: 404, headers, body: "404: Not Found" });
+		});
+	});
+
+	test("opens the page named in the URL", async ({ page }) => {
+		await page.goto("/index.html#/wiki/Second");
+		await expect(page.locator(".wikiMarkdown")).toContainText("SECOND CONTENT");
+		await expect(page.locator(".sidebar li")).toHaveText(["First", "Second"]);
+	});
+
+	test("writes the selection to the URL and leaves the wiki in one back step", async ({ page }) => {
+		await page.goto("/index.html#/");
+		await page.evaluate(() => (window.location.hash = "#/wiki"));
+		const sidebar = page.locator(".sidebar");
+		await sidebar.getByText("First", { exact: true }).click();
+		await expect(page).toHaveURL(/#\/wiki\/First$/);
+		await sidebar.getByText("Second", { exact: true }).click();
+		await expect(page).toHaveURL(/#\/wiki\/Second$/);
+		await expect(page.locator(".wikiMarkdown")).toContainText("SECOND CONTENT");
+
+		await page.locator('[id$="wikiPage-navButton"]').click();
+		await expect(sidebar).toBeHidden();
+		// UI5 normalises "#/" to "#"
+		await expect(page).toHaveURL(/#\/?$/);
+	});
+
+	test("does not fetch a page the sidebar does not list", async ({ page }) => {
+		const fetched: string[] = [];
+		page.on("request", (request) => fetched.push(request.url()));
+		await page.goto("/index.html#/wiki/Missing");
+		await expect(page.locator(".wikiMarkdown")).toContainText("This page could not be loaded.");
+		expect(fetched.filter((u) => u.includes("Missing"))).toEqual([]);
+	});
+
+	test("shows an error when a listed page is gone from GitHub", async ({ page }) => {
+		await page.unrouteAll();
+		await page.route("**/raw.githubusercontent.com/**", (route) => {
+			const headers = { "access-control-allow-origin": "*" };
+			return route.request().url().endsWith("_Sidebar.md")
+				? route.fulfill({
+						headers,
+						body: `[Gone](${url}/Gone)
+`,
+					})
+				: route.fulfill({ status: 404, headers, body: "404: Not Found" });
+		});
+		await page.goto("/index.html#/wiki/Gone");
+		const content = page.locator(".wikiMarkdown");
+		await expect(content).toContainText("This page could not be loaded.");
+		await expect(content).not.toContainText("404");
+	});
+});

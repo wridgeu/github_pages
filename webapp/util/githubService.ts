@@ -12,6 +12,9 @@ async function getSelectedContent(requestedContent: string): Promise<string> {
 	if (response.status === 404 && spaced !== requestedContent) {
 		response = await fetch(`${WIKI_RAW_URL}${encodeURIComponent(requestedContent)}.md`);
 	}
+	if (!response.ok) {
+		throw new Error(`Wiki page "${requestedContent}" responded with ${response.status}`);
+	}
 	return response.text();
 }
 
