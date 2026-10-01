@@ -13,8 +13,8 @@ includeStylesheet(
 );
 
 /**
- * Renders pre-converted markdown HTML, sanitized with DOMPurify unless
- * {@link #getSanitize sanitize} is off, and renders a copy button next to each `<pre>`.
+ * Renders pre-converted markdown HTML, sanitized with DOMPurify, and renders
+ * a copy button next to each `<pre>`.
  *
  * @namespace sapmarco.projectpages.control
  */
@@ -22,7 +22,6 @@ export default class Markdown extends Control {
 	static readonly metadata: MetadataOptions = {
 		properties: {
 			content: { type: "string", defaultValue: "" },
-			sanitize: { type: "boolean", defaultValue: true },
 			copyCodeTooltip: { type: "string", defaultValue: "Copy to clipboard" },
 			copyCodeCopiedText: { type: "string", defaultValue: "Copied!" },
 		},
@@ -38,8 +37,6 @@ export default class Markdown extends Control {
 
 	declare getContent: () => string;
 	declare setContent: (content: string) => this;
-	declare getSanitize: () => boolean;
-	declare setSanitize: (sanitize: boolean) => this;
 	declare getCopyCodeTooltip: () => string;
 	declare setCopyCodeTooltip: (copyCodeTooltip: string) => this;
 	declare getCopyCodeCopiedText: () => string;
@@ -47,12 +44,13 @@ export default class Markdown extends Control {
 
 	private _revertTimers = new Map<Button, ReturnType<typeof setTimeout>>();
 	// parsed in onBeforeRendering so the buttons exist before the renderer runs
-	private _fragment: DocumentFragment | null = null;
+	private _fragment: DocumentFragment;
 
 	static renderer = {
 		apiVersion: 4,
 		render(rm: RenderManager, control: Markdown): void {
-			const buttons = control.getAggregation("_copyButtons") as Button[];
+			// absent when the clipboard is unavailable
+			const buttons = (control.getAggregation("_copyButtons") as Button[]) ?? [];
 			let next = 0;
 			// Plain HTML goes out as is; only the path down to each <pre> is written
 			// element by element, so the copy button can sit next to it.
@@ -66,14 +64,14 @@ export default class Markdown extends Control {
 					rm.close("div");
 				} else if (node instanceof Element && node.querySelector("pre")) {
 					rm.openStart(node.localName);
-					for (const { name, value } of Array.from(node.attributes)) {
+					for (const { name, value } of node.attributes) {
 						if (name !== "class" && name !== "style") {
 							rm.attr(name, value);
 						}
 					}
 					node.classList.forEach((name) => rm.class(name));
 					const style = (node as HTMLElement).style;
-					for (let i = 0; i < (style?.length ?? 0); i++) {
+					for (let i = 0; i < style.length; i++) {
 						rm.style(style[i], style.getPropertyValue(style[i]));
 					}
 					rm.openEnd();
@@ -89,7 +87,7 @@ export default class Markdown extends Control {
 			rm.openStart("div", control);
 			rm.class("wikiMarkdown");
 			rm.openEnd();
-			control._fragment?.childNodes.forEach(renderNode);
+			control._fragment.childNodes.forEach(renderNode);
 			rm.close("div");
 		},
 	};
@@ -98,15 +96,8 @@ export default class Markdown extends Control {
 		this._clearRevertTimers();
 		this.destroyAggregation("_copyButtons", true);
 
-		const content = this.getContent();
-		if (this.getSanitize()) {
-			// keep the service's new-tab links; they carry rel="noopener noreferrer"
-			this._fragment = DOMPurify.sanitize(content, { ADD_ATTR: ["target"], RETURN_DOM_FRAGMENT: true });
-		} else {
-			const template = document.createElement("template");
-			template.innerHTML = content;
-			this._fragment = template.content;
-		}
+		// keep the service's new-tab links; they carry rel="noopener noreferrer"
+		this._fragment = DOMPurify.sanitize(this.getContent(), { ADD_ATTR: ["target"], RETURN_DOM_FRAGMENT: true });
 
 		// Clipboard API is only available in secure contexts.
 		if (!navigator.clipboard?.writeText) {
@@ -114,7 +105,8 @@ export default class Markdown extends Control {
 		}
 		const copyLabel = this.getCopyCodeTooltip();
 		const copiedLabel = this.getCopyCodeCopiedText();
-		this._fragment.querySelectorAll("pre").forEach((pre, index) => {
+		// a nested <pre> goes out inside its parent's outerHTML, so it gets no button
+		this._fragment.querySelectorAll("pre:not(pre pre)").forEach((pre, index) => {
 			// drop the trailing newline marked appends to every code block
 			const code = (pre.querySelector("code")?.textContent ?? pre.textContent ?? "").replace(/\n$/, "");
 			const button = new Button(`${this.getId()}-copy-${index}`, {
@@ -130,7 +122,6 @@ export default class Markdown extends Control {
 
 	exit(): void {
 		this._clearRevertTimers();
-		this._fragment = null;
 	}
 
 	private _copyCode(code: string, button: Button, copyLabel: string, copiedLabel: string): void {

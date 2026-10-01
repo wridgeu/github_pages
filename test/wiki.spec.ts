@@ -92,6 +92,16 @@ test.describe("Wiki page", () => {
 		expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(NESTED_SNIPPET);
 	});
 
+	test("renders code blocks without copy buttons when the clipboard is unavailable", async ({ page }) => {
+		// insecure contexts (plain http on a LAN address) have no navigator.clipboard
+		await page.addInitScript(() => Object.defineProperty(Navigator.prototype, "clipboard", { get: () => undefined }));
+		await page.reload();
+		await selectSidebarPage(page);
+
+		await expect(page.locator(".wikiMarkdown pre")).toHaveCount(2);
+		await expect(page.locator(".wikiMarkdown .wikiCopyButton")).toHaveCount(0);
+	});
+
 	test("does not duplicate sidebar entries across re-navigation", async ({ page }) => {
 		const sidebar = page.locator(".sidebar");
 		const entry = sidebar.getByText("TestPage", { exact: true });

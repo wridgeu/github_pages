@@ -67,13 +67,16 @@ export default class WikiController extends BaseController {
 		this._viewStateModel.setProperty("/busy", true);
 		try {
 			const wikiIndex = await getWikiIndex();
-			const pages = [...wikiIndex.matchAll(/\/wiki\/([^)\s]+)\)/g)].map(([, name]) => ({ name }));
+			const pages = [...wikiIndex.matchAll(/\/wiki\/([^)\s>"]+)/g)].map(([, name]) => ({ name }));
 			this._viewStateModel.setProperty("/pages", pages);
 		} finally {
 			this._viewStateModel.setProperty("/busy", false);
 		}
 	}
 
+	/**
+	 * Event-handler for sidebar item press
+	 */
 	public onSidebarSelection(event: Event): void {
 		const name = (event.getSource() as Control).getBindingContext("viewState").getProperty("name") as string;
 		void this._showPage(name);
