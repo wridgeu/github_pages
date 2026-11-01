@@ -39,7 +39,7 @@
     "@ui5/cli": "^4.0.57",
     "@ui5/linter": "^1.23.1",
     "@ui5/ts-interface-generator": "^0.11.2",
-    "oxfmt": "0.70.0",
+    "oxfmt": "0.75.0",
     "oxlint": "^1.85.0",
     "typescript": "~6.0.3",
     "ui5-middleware-livereload": "^3.3.1",
